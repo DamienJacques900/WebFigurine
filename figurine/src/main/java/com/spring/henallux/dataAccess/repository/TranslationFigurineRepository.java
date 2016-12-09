@@ -7,7 +7,7 @@ import com.spring.henallux.dataAccess.entity.*;
 
 @Repository
 @Transactional
-public interface TranslationFigurineRepository extends JpaRepository<TranslationFigurineEntity, Integer> //doit être un int
+public interface TranslationFigurineRepository extends JpaRepository<TranslationFigurineEntity, Integer>
 {
 
 }

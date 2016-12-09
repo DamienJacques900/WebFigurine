@@ -8,6 +8,9 @@ import com.spring.henallux.model.*;
 public class ProviderConverter 
 {
 	//USER =====================================================
+	//***************************COMMENTAIRE************************************
+	//Permet de transformer un model en entity
+	//**************************************************************************
 	public UserEntity userModeltoUserEntity(User user)
 	{
 		UserEntity userEntity = new UserEntity();
@@ -26,6 +29,9 @@ public class ProviderConverter
 		return userEntity;
 	}
 	
+	//***************************COMMENTAIRE************************************
+	//Permet de transformer un entity en model
+	//**************************************************************************
 	public User userEntitytoUserModel(UserEntity userEntity)
 	{
 		User user = new User();

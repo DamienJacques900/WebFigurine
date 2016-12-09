@@ -21,6 +21,9 @@ public class UserDAO
 	@Autowired
 	private UserRepository userRepository;
 	
+	//***************************COMMENTAIRE************************************
+	//Permet de récupérer les données dans la BD
+	//**************************************************************************
 	public ArrayList<User> getUsers()
 	{
 		List<UserEntity> userEntities = userRepository.findAll();
@@ -33,6 +36,9 @@ public class UserDAO
 		return users;
 	}
 	
+	//***************************COMMENTAIRE************************************
+	//Permet de sauvergarder les données dans la BD
+	//**************************************************************************
 	public User save(User user)
 	{
 		UserEntity userEntity = providerConverter.userModeltoUserEntity(user);

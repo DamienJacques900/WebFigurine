@@ -18,7 +18,7 @@
 		      	<form:form 	id="connectionForm"
 		      				method="POST"
 		      				action="/figurine/connection/connectionSend"
-		      				modelAttribute="currentUserConnectoin">
+		      				modelAttribute="currentUserConnection">
 		         
 			        <div class="input-field col s6">
 			          <form:input path="idUser" type="text" class="validate"/>

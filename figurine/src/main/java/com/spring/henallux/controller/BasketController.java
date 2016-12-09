@@ -24,6 +24,9 @@ public class BasketController
 	@RequestMapping(method=RequestMethod.GET)
 	public String home(Model model)
 	{
+		//***************************COMMENTAIRE************************************
+		//Récupération des valeurs de la BD pour les command et commandLine
+		//**************************************************************************
 		model.addAttribute("command",commandsService.getCommand());
 		model.addAttribute("commandLines",commandLinesService.getCommandLines());
 		model.addAttribute("command", new User());

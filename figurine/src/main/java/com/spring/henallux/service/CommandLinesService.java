@@ -23,6 +23,11 @@ public class CommandLinesService
 	
 	public ArrayList<CommandLine> getCommandLines()
 	{
+		//***************************COMMENTAIRE************************************
+		//On fait deux arrayList pour récupérer les valeurs de la BD mais ici c'est
+		//un peu inutile, on pourrait juste faire directement dans le controller
+		//la requête avec le DAO
+		//**************************************************************************
 		commandLine = new ArrayList<CommandLine>();
 		ArrayList<CommandLine> commandLines = commandLineDAO.getAllCommandLines();
 		

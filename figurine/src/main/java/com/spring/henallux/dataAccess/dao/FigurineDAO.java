@@ -21,6 +21,9 @@ public class FigurineDAO
 	@Autowired
 	private ProviderConverter providerConverter;
 	
+	//***************************COMMENTAIRE************************************
+	//Permet de sauvergarder les données dans la BD
+	//**************************************************************************
 	public Figurine save(Figurine figurine)
 	{
 		FigurineEntity figurineEntity = providerConverter.figurineModeltoFigurineEntity(figurine);
@@ -28,6 +31,9 @@ public class FigurineDAO
 		return providerConverter.figurineEntitytoFigurineModel(figurineEntity);
 	}
 	
+	//***************************COMMENTAIRE************************************
+	//Permet de récupérer les données dans la BD
+	//**************************************************************************
 	public ArrayList<Figurine> getAllFigurines()
 	{
 		List <FigurineEntity> figurineEntities = figurineRepository.findAll();

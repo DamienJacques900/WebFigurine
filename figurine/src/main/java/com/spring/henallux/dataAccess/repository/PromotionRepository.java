@@ -7,7 +7,7 @@ import com.spring.henallux.dataAccess.entity.*;
 
 @Repository
 @Transactional
-public interface PromotionRepository extends JpaRepository<PromotionEntity, Integer> //doit être int
+public interface PromotionRepository extends JpaRepository<PromotionEntity, Integer>
 {
 
 }

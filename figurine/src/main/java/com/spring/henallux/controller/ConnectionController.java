@@ -15,48 +15,57 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.spring.henallux.dataAccess.dao.UserDAO;
 import com.spring.henallux.model.User;
+import com.spring.henallux.model.UserConnection;
 
 @Controller
 @RequestMapping(value="/connection")
+//***************************COMMENTAIRE************************************
+//Permet d'avoir un attribut session et donc de conserver les valeur que l'on mettre à l'intérieur
+//**************************************************************************
 @SessionAttributes(ConnectionController.CURRENTUSERCONNECTION)
 public class ConnectionController 
 {
 	@Autowired
 	private UserDAO userDAO;
 	
-	protected static final String CURRENTUSERCONNECTION = "currentUserConnectoin";
+	protected static final String CURRENTUSERCONNECTION = "currentUserConnection";
 	
+	//***************************COMMENTAIRE************************************
+	//Permet de dire que CURRENTUSERCONNECTION sera un objet de la classe User
+	//**************************************************************************
 	@ModelAttribute(CURRENTUSERCONNECTION)
-	public User user()
+	public UserConnection userConnection()
 	{
-		return new User();
+		return new UserConnection();
 	}
 
 	@RequestMapping(method=RequestMethod.GET)
 	public String home(Model model)
 	{
-		model.addAttribute("connection", new User());
+		model.addAttribute("connection", new UserConnection());
 		return "integrated:connection";
 	}
 	//
 	//Bouton pour la CONNEXION=====================================
 	@RequestMapping(value="/connectionSend", method=RequestMethod.POST)
-	public String getFormConnectionData(Model model,@Valid @ModelAttribute(value=CURRENTUSERCONNECTION) User userConnection, final BindingResult errors)
-	{
-		System.out.println("coucou");
-		
+	public String getFormConnectionData(Model model,@Valid @ModelAttribute(value=CURRENTUSERCONNECTION) UserConnection userConnection, final BindingResult errors)
+	{	
+		//***************************COMMENTAIRE************************************
+		//Récupération des valeurs entrer dans les inputs
+		//**************************************************************************
 		String userName = userConnection.getIdUser();
 		String userPassword = userConnection.getPassword();
 			
 		ArrayList <User> users = userDAO.getUsers();
 		int i = 0;
-				
+			
+		//***************************COMMENTAIRE************************************
+		//Recherche tant que on a pas trouver le nom d'utilsateur et qu'on a pas atteint la fin de l'arrayList
+		//**************************************************************************
 		while(i < users.size()-1 && users.get(i).getIdUser().equals(userName)==false)
 		{
 			i++;
 		}	
-				
-		System.out.println(users.get(i).getIdUser()+" "+users.get(i).getPassword());
 			
 		if(users.get(i).getIdUser().equals(userName) && users.get(i).getPassword().equals(userPassword))
 			return "redirect:/userConnection";

@@ -25,6 +25,10 @@ public class FigurinesService
 
 	public ArrayList<Figurine> getFigurinesMovie() 
 	{
+		//***************************COMMENTAIRE************************************
+		//On fait deux arrayList pour récupérer les valeurs de la BD et récuperer
+		//uniquement les figurines de films
+		//**************************************************************************
 		figurinesMovie = new ArrayList<Figurine>();
 		ArrayList <Figurine> figurines = figurineDAO.getAllFigurines();
 		
@@ -41,6 +45,10 @@ public class FigurinesService
 	
 	public ArrayList<Figurine> getFigurinesJapaneseAnimation() 
 	{
+		//***************************COMMENTAIRE************************************
+		//On fait deux arrayList pour récupérer les valeurs de la BD et récuperer
+		//uniquement les figurines d'animations japonaises
+		//**************************************************************************
 		figurinesJapaneseAnimation = new ArrayList<Figurine>();
 		ArrayList <Figurine> figurines = figurineDAO.getAllFigurines();
 		
@@ -57,6 +65,10 @@ public class FigurinesService
 	
 	public ArrayList<Figurine> getFigurinesVideoGame() 
 	{
+		//***************************COMMENTAIRE************************************
+		//On fait deux arrayList pour récupérer les valeurs de la BD et récuperer
+		//uniquement les figurines de jeux vidéo
+		//**************************************************************************
 		figurinesVideoGame = new ArrayList<Figurine>();
 		ArrayList <Figurine> figurines = figurineDAO.getAllFigurines();
 		

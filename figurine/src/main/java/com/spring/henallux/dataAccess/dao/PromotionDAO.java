@@ -21,6 +21,9 @@ public class PromotionDAO
 	@Autowired
 	private ProviderConverter providerConverter;
 	
+	//***************************COMMENTAIRE************************************
+	//Permet de sauvergarder les données dans la BD
+	//**************************************************************************
 	public Promotion save(Promotion promotion)
 	{
 		PromotionEntity promotionEntity = providerConverter.promotionModeltoPromotionEntity(promotion);
@@ -28,6 +31,9 @@ public class PromotionDAO
 		return providerConverter.promotionEntitytoPromotionModel(promotionEntity);
 	}
 	
+	//***************************COMMENTAIRE************************************
+	//Permet de récupérer les données dans la BD
+	//**************************************************************************
 	public ArrayList<Promotion> getAllPromotions()
 	{
 		List <PromotionEntity> promotionEntities = promotionRepository.findAll();

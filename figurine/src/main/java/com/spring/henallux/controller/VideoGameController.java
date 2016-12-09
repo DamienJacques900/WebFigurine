@@ -20,6 +20,10 @@ public class VideoGameController
 	@RequestMapping(method=RequestMethod.GET)
 	public String home(Model model)
 	{
+		//***************************COMMENTAIRE************************************
+		//Récupération des valeurs des figurines pour la BD, ici on récupère juste les 
+		//valeurs pour les figurines des jeux vidéo
+		//**************************************************************************
 		model.addAttribute("figurineVideoGame", figurinesService.getFigurinesVideoGame());
 		model.addAttribute("addBasket", new Figurine());
 		model.addAttribute("searchName", new Figurine());

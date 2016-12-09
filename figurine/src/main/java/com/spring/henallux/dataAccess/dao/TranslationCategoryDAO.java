@@ -21,6 +21,9 @@ public class TranslationCategoryDAO
 	@Autowired
 	private ProviderConverter providerConverter;
 	
+	//***************************COMMENTAIRE************************************
+	//Permet de sauvergarder les données dans la BD
+	//**************************************************************************
 	public TranslationCategory save(TranslationCategory translationCategory)
 	{
 		TranslationCategoryEntity translationCategoryEntity = providerConverter.translationCategoryModeltoTranslationCategoryEntity(translationCategory);
@@ -28,6 +31,9 @@ public class TranslationCategoryDAO
 		return providerConverter.translationCategoryEntitytoTranslationCategoryModel(translationCategoryEntity);
 	}
 	
+	//***************************COMMENTAIRE************************************
+	//Permet de récupérer les données dans la BD
+	//**************************************************************************
 	public ArrayList<TranslationCategory> getAllTranslationCategories()
 	{
 		List <TranslationCategoryEntity> translationCategoryEntities = translationCategoryRepository.findAll();

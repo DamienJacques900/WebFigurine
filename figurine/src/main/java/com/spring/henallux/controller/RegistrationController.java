@@ -17,6 +17,9 @@ import com.spring.henallux.model.*;
 
 @Controller
 @RequestMapping(value="/registration")
+//***************************COMMENTAIRE************************************
+//Permet d'avoir un attribut session et donc de conserver les valeur que l'on mettre à l'intérieur
+//**************************************************************************
 @SessionAttributes(RegistrationController.CURRENTUSERREGISTRATION)
 public class RegistrationController 
 {

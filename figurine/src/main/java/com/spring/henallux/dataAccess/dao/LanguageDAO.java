@@ -21,6 +21,9 @@ public class LanguageDAO
 	@Autowired
 	private ProviderConverter providerConverter;
 	
+	//***************************COMMENTAIRE************************************
+	//Permet de sauvergarder les données dans la BD
+	//**************************************************************************
 	public Language save(Language language)
 	{
 		LanguageEntity languageEntity = providerConverter.languageModeltoLanguageEntity(language);
@@ -28,6 +31,9 @@ public class LanguageDAO
 		return providerConverter.languageEntitytoLanguageModel(languageEntity);
 	}
 	
+	//***************************COMMENTAIRE************************************
+	//Permet de récupérer les données dans la BD
+	//**************************************************************************
 	public ArrayList<Language> getAllLanguages()
 	{
 		List <LanguageEntity> languageEntities = languageRepository.findAll();

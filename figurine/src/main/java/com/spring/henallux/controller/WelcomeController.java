@@ -27,6 +27,9 @@ public class WelcomeController
 	@RequestMapping(method=RequestMethod.GET)
 	public String home(Model model)
 	{
+		//***************************COMMENTAIRE************************************
+		//Permet de récupérer toutes les figurines de la BD
+		//**************************************************************************
 		model.addAttribute("figurineAll", figurinesDAO.getAllFigurines());
 		return "integrated:welcome";
 	}

@@ -21,6 +21,9 @@ public class CategoryDAO
 	@Autowired
 	private ProviderConverter providerConverter;
 	
+	//***************************COMMENTAIRE************************************
+	//Permet de sauvergarder les données dans la BD
+	//**************************************************************************
 	public Category save(Category category)
 	{
 		CategoryEntity categoryEntity = providerConverter.categoryModeltoCategoryEntity(category);
@@ -28,6 +31,9 @@ public class CategoryDAO
 		return providerConverter.categoryEntitytoCategoryModel(categoryEntity);
 	}
 	
+	//***************************COMMENTAIRE************************************
+	//Permet de récupérer les données dans la BD
+	//**************************************************************************
 	public ArrayList<Category> getAllCategories()
 	{
 		List <CategoryEntity> categoryEntities = categoryRepository.findAll();

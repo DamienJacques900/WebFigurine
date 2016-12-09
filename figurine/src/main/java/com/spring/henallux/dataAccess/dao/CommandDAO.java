@@ -21,6 +21,9 @@ public class CommandDAO
 	@Autowired
 	private ProviderConverter providerConverter;
 	
+	//***************************COMMENTAIRE************************************
+	//Permet de sauvergarder les données dans la BD
+	//**************************************************************************
 	public Command save(Command command)
 	{
 		CommandEntity commandEntity = providerConverter.commandModeltoCommandEntity(command);
@@ -28,6 +31,9 @@ public class CommandDAO
 		return providerConverter.commandEntitytoCommandModel(commandEntity);
 	}
 	
+	//***************************COMMENTAIRE************************************
+	//Permet de récupérer les données dans la BD
+	//**************************************************************************
 	public ArrayList<Command> getAllCommands()
 	{
 		List <CommandEntity> commandeEntities = commandRepository.findAll();

@@ -21,6 +21,9 @@ public class CommandLineDAO
 	@Autowired
 	private ProviderConverter providerConverter;
 	
+	//***************************COMMENTAIRE************************************
+	//Permet de sauvergarder les données dans la BD
+	//**************************************************************************
 	public CommandLine save(CommandLine commandLine)
 	{
 		CommandLineEntity commandLineEntity = providerConverter.commandLineModeltoCommandLineEntity(commandLine);
@@ -28,6 +31,9 @@ public class CommandLineDAO
 		return providerConverter.commandLineEntitytoCommandLineModel(commandLineEntity);
 	}
 	
+	//***************************COMMENTAIRE************************************
+	//Permet de récupérer les données dans la BD
+	//**************************************************************************
 	public ArrayList<CommandLine> getAllCommandLines()
 	{
 		List <CommandLineEntity> commandLineEntities = commandLineRepository.findAll();

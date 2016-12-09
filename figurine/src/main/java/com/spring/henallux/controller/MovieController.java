@@ -21,6 +21,10 @@ public class MovieController
 	@RequestMapping(method=RequestMethod.GET)
 	public String home(Model model)
 	{
+		//***************************COMMENTAIRE************************************
+		//Récupération des valeurs des figurines pour la BD, ici on récupère juste les 
+		//valeurs pour les figurines des films
+		//**************************************************************************
 		model.addAttribute("figurineMovie", figurinesService.getFigurinesMovie());
 		model.addAttribute("addBasket", new Figurine());
 		model.addAttribute("searchName", new Figurine());

@@ -21,6 +21,9 @@ public class TranslationFigurineDAO
 	@Autowired
 	private ProviderConverter providerConverter;
 	
+	//***************************COMMENTAIRE************************************
+	//Permet de sauvergarder les données dans la BD
+	//**************************************************************************
 	public TranslationFigurine save(TranslationFigurine translationFigurine)
 	{
 		TranslationFigurineEntity translationFigurineEntity = providerConverter.translationFigurineModeltoTranslationFigurineEntity(translationFigurine);
@@ -28,6 +31,9 @@ public class TranslationFigurineDAO
 		return providerConverter.translationFigurineEntitytoTranslationFigurineModel(translationFigurineEntity);
 	}
 	
+	//***************************COMMENTAIRE************************************
+	//Permet de récupérer les données dans la BD
+	//**************************************************************************
 	public ArrayList<TranslationFigurine> getAllTranslationFigurines()
 	{
 		List <TranslationFigurineEntity> translationFigurineEntities = translationFigurineRepository.findAll();

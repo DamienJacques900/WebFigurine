@@ -20,6 +20,9 @@ public class UserConnectionController
 	@RequestMapping(method=RequestMethod.GET)
 	public String home(Model model)
 	{
+		//***************************COMMENTAIRE************************************
+		//Permet de récupérer toutes les figurines de la BD
+		//**************************************************************************
 		model.addAttribute("figurineAll", figurinesDAO.getAllFigurines());
 		model.addAttribute("description", new Figurine());
 		return "integrated:userConnection";
