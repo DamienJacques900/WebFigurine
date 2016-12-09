@@ -62,6 +62,18 @@
 			        </div>
 			        
 			        <div class="input-field col s6">
+			          <form:input path="numTel" type="text" class="validate"/>
+			          <form:label path="numTel" ><spring:message code="phone"/></form:label>
+			          <form:errors path="numTel"></form:errors>
+			        </div>
+			        
+			        <div class="input-field col s6">
+			          <form:input path="numFax" type="text" class="validate"/>
+			          <form:label path="numFax" ><spring:message code="fax"/></form:label>
+			          <form:errors path="numFax"></form:errors>
+			        </div>
+			        
+			        <div class="input-field col s6">
 			          <form:input path="postalCode" type="text" class="validate"/>
 			          <form:label path="postalCode" ><spring:message code="postalCode"/></form:label>
 			          <form:errors path="postalCode"></form:errors>

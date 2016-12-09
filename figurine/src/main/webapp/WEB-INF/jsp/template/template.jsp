@@ -19,7 +19,7 @@
 		
 	</head>
 	
-	<body style="background-image:url('images/fondsite2.jpeg')"></body>
+	<body style="background-image:url('<spring:url value='/images/fondsite2.jpeg'/>')"></body>
 	
 		<!-- DropDown figurine structure -->
 		<ul id="dropdownFigurine" class="dropdown-content">
@@ -98,11 +98,11 @@
 				 			</li>
 				 		</li>
 				 		
-				 		<li><a class="nav-btn waves-effect waves-light" href="${localeFr}">	
+				 		<li><a class="nav-btn waves-effect waves-light" href="<spring:url value='${localeFr}'/>">	
 								<img src ='<spring:url value="/images/francais.png"/>' height="30px" width="30px"/>
 							</a>
 						</li>
-				 		<li><a class="nav-btn waves-effect waves-light" href="${localeEn}">
+				 		<li><a class="nav-btn waves-effect waves-light" href="<spring:url value='${localeEn}'/>">
 								<img src ='<spring:url value="/images/anglais.png"/>' height="30px" width="30px"/>
 				 			</a>
 				 		</li>

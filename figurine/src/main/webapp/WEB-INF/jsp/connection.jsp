@@ -20,9 +20,9 @@
 		      				action="/figurine/connection/connectionSend"
 		      				modelAttribute="currentUserConnection">
 		         
-			        <div class="input-field col s6">
-			          <form:input path="idUser" type="text" class="validate"/>
+			        <div class="col s6">			       
 			          <form:label path="idUser"><spring:message code="userName"/></form:label>
+			          <form:input path="idUser" type="text" class="validate"/>
 			          <form:errors path="idUser"></form:errors>
 			        </div>
 				

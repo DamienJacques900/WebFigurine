@@ -85,7 +85,10 @@ body
 	background-image:url("images/background.jpg");
 }
 
-
+label
+{
+	color : #00c853;
+}
 
 /*input:invalid {
   border: 1px solid red;
