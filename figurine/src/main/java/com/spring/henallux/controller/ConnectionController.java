@@ -21,7 +21,6 @@ import com.spring.henallux.model.User;
 @SessionAttributes(ConnectionController.CURRENTUSERCONNECTION)
 public class ConnectionController 
 {
-	//Test github
 	@Autowired
 	private UserDAO userDAO;
 	
