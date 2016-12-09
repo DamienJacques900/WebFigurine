@@ -1,0 +1,10 @@
+# Local server
+server:
+  # port is used by spring-boot-admin
+  port: 8080
+  contextPath: /figurine
+
+spring:
+  datasource:
+    password: damienlouis
+    url: jdbc:mysql://localhost:3306/figurinebd?user=root

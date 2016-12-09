@@ -1,0 +1,330 @@
+//Promotion OK
+create table Promotion
+(
+	idPromotion int not null,
+	amountPourc float not null check (amountPourc > 0),
+	dateBegin date not null,
+	dateEnd date not null,
+
+	constraint pk_Promotion primary key(idPromotion),
+	check(startDate < enDate)	
+);
+
+//Catégorie OK
+create table Category
+(
+	idCategory int not null,
+	name varchar(50) not null,
+	dateOut date not null,
+	producer varchar(50) not null,
+
+	constraint pk_Category primary key(idCategory)
+);
+
+//Figurine OK
+create table Figurine
+(
+	idFigurine int not null,
+	name varchar(50) not null,
+	description varchar(300) not null,
+	size float not null,
+	weight float not null,
+	brand varchar(50) not null,
+	painting boolean not null,
+	cost float not null,
+	image varchar(50) not null,
+	category int not null,
+	promotion int,
+
+	constraint pk_Figurine primary key(idFigurine),
+	constraint fk_Category foreign key(category) references Category(idCategory),
+	constraint fk_Promotion foreign key(promotion) references Promotion(idPromotion),
+	check(cost > 0)
+);
+
+//Utilisateur OK
+create table User
+(
+	iduser varchar(50) not null,
+	lastName varchar(50) not null,
+	firstName varchar(50) not null,
+	email varchar(50) not null,
+	numTel varchar(50),
+	numFax varchar(50),
+	street varchar(50) not null,
+	city varchar(50) not null,
+	postalCode varchar(50) not null,
+	country varchar(50) not null,
+	password varchar(50) not null,
+
+	constraint pk_User primary key(iduser)
+);
+
+//Commande OK
+create table Command
+(
+	idCommand int not null,
+	dateCommand date not null,
+	user varchar(50) not null,
+
+	constraint pk_Command primary key(idCommand),
+	constraint fk_User foreign key(user) references User(idUser)
+);
+
+//Ligne commande OK
+create table CommandLine
+(
+	idCommandLine int not null,
+	nbFigurine int not null,
+	prizeCommand float not null,
+	command int not null,
+	figurine int not null,
+	
+	constraint pk_CommandLine primary key(idCommandLine),
+	constraint fk_Command foreign key(command) references Command(idCommand),
+	constraint fk_Figurine foreign key(figurine) references Figurine(idFigurine),	
+	check(nbFigurine > 0),
+	check(prizeCommand > 0)
+);
+
+//Langue OK
+create table Language
+(
+	idLanguage int not null,
+	name varchar(50) not null,
+
+	constraint pk_Language primary key(idLanguage)
+);
+
+//Figurine traduction OK
+create table TranslationFigurine
+(
+	idTranslationFigurine int not null,
+	name varchar(50) not null,
+	description varchar(300) not null,
+	language int not null,
+	figurine int not null,
+	
+	
+	constraint fk_FigurineTranslation foreign key(figurine) references Figurine(idFigurine),
+	constraint fk_LanguageFigurine foreign key(language) references Language(idLanguage),
+	constraint pk_TranslationFigurine primary key(idTranslationFigurine )
+);
+
+//Catégorie traduction OK
+create table TranslationCategory
+(
+	idTranslationCateogry int not null,
+	name varchar(50) not null,
+	language int not null,
+	category int not null,
+
+	constraint fk_CategoryTranslation foreign key(category) references Category(idCategory),
+	constraint fk_LanguageCategory foreign key(language) references Language(idLanguage),
+	constraint pk_TranslationCategory primary key(idTranslationCateogry )
+);
+
+
+//pour insert une date : STR_TO_DATE('1-01-2012', '%d-%m-%Y')
+
+//Promotion OK
+insert into Promotion
+value (1,0.25,STR_TO_DATE('1-10-2016', '%d-%m-%Y'),STR_TO_DATE('15-03-2017', '%d-%m-%Y'));
+
+insert into Promotion
+value (2,0.50,STR_TO_DATE('1-11-2016', '%d-%m-%Y'),STR_TO_DATE('15-02-2017', '%d-%m-%Y'));
+
+insert into Promotion
+value (3,0.75,STR_TO_DATE('1-12-2016', '%d-%m-%Y'),STR_TO_DATE('15-01-2017', '%d-%m-%Y'));
+
+//Création categories OK
+insert into category
+values(1,"Film",STR_TO_DATE('1-12-2012', '%d-%m-%Y'),"Marvel");
+
+insert into category
+values(2,"Manga",STR_TO_DATE('16-05-2014', '%d-%m-%Y'),"Bandai");
+
+insert into category
+values(3,"Jeux vidéo",STR_TO_DATE('21-11-2013', '%d-%m-%Y'),"Ubisoft");
+
+
+//Création figurines
+//Manga OK
+insert into figurine
+values(1,"Barbe blanche","Un des 4 Yonko, il possède le pouvoir de créer des tremblements de terre",35.30,1000.00,"Naimco",true,55.50,"figurineBarbeBlanche.png",2,1)     ;
+
+insert into figurine
+values(2,"Griffith","Chef de l'armée des faucons et ancien ami de Guts",40.00,2300.00,"Capcom",true,150.00,"figurineGriffith.png",2,1);
+
+insert into figurine
+values(3,"Guts","Héro du célèbre manga Berserk",26.5,500.00,"Capcom",true,90.90,"figurineGuts.png",2,2);
+
+insert into figurine
+values(4,"Luffy","Héro du célèbre manga One piece",33.45,500.00,"Naimco",true,35.60,"figurineLuffy.png",2,2);
+
+insert into figurine
+values(5,"Naruto","Héro principal du manga du même nom",34.12,3400.5,"Masashi",false,45.10,"figurineNaruto.png",2,3);
+
+insert into figurine
+values(6,"Zoro","Une membre de l'équipage de Luffy",45.5,2405.32,"Naimco",true,100.00,"figurineZoro.png",2,1);
+
+//Film OK
+
+insert into figurine
+values(7,"Batman","Justicier masqué de Gotham city",23.1,3000.0,"DC",true,120.05,"figurineBatman.png",1,3);
+
+insert into figurine
+values(8,"Gimli","Un nain compagnon de la communauté de l'anneau",50.9,2000.0,"New line cinema",true,150.24,"figurineGimli.png",1,1);
+
+insert into figurine
+values(9,"Iron Man","Héro du film du même nom",30.0,1000.0,"Disney",true,45.95,"figurineIronMan.png",1,1);
+
+insert into figurine
+values(10,"Rey","Héroine de la nouvelle série basé sur Star wars",12.45,2570.50,"Disney",false,74.99,"figurineRey.png",1,1);
+
+insert into figurine
+values(11,"Soldat de l'hiver","ennemi du deuxième film de Captain America",23.00,1700.0,"Disney",true,13.75,"figurineSoldatHiver.png",1,2);
+
+insert into figurine
+values(12,"Thor","Héro du film du même nom",37.8,2300.0,"Disney",true,5.5,"figurineThor.png",1,3);
+
+//Jeux vidéo OK
+
+insert into figurine
+values(13,"Portal","Personnage du célèbre jeu du même nom",15.00,1300.0,"Steam",true,10.00,"figurinePortal.png",3,1);
+
+insert into figurine
+values(14,"Arno","Héro du jeu Assissin's creed basé à Paris",30.90,1400.0,"Ubi",true,62.45,"figurineArnoAC.png",3,1);
+
+insert into figurine
+values(15,"Cloud","Héro de final fantasy VII",47.80,2700.0,"Square Enix",false,97.40,"figurineCloud.png",3,1);
+
+insert into figurine
+values(16,"Edward","Héro de Assassin's creed dans les caraïbes",23.0,3800.0,"Ubi",true,70.50,"figurineEdwardAC.png",3,2);
+
+insert into figurine
+values(17,"Ezio","Héro de Assassin's creed basé en Italie",35.67,3400.0,"Ubi",true,60.75,"figurineEzioAC.png",3,1);
+
+insert into figurine
+values(18,"Sora","Héro du meilleur jeu du monde, Kingdhom Hearts",50.35,3700.0,"Square Enix",true,250.90,"figurineSora.png",3,3);
+
+//User OK
+insert into User
+values("damien","Jacques","Damien","damien@gmail.com","080/ 00 00 00","078/ 00 00 00","Eug","Namur","5000","Belgique","1234");
+
+insert into User
+values("louis","Van DenDoren","Louis","louis@gmail.com","070/ 00 00 00","090/ 00 00 00","Tre","Charleroi","7000","Belgique","5678");
+
+//Commande OK
+insert into Command
+values(1,STR_TO_DATE('21-11-2013', '%d-%m-%Y'),"damien");
+
+insert into Command
+values(2,STR_TO_DATE('16-07-2014', '%d-%m-%Y'),"louis");
+
+insert into Command
+values(3,STR_TO_DATE('8-03-2015', '%d-%m-%Y'),"damien");
+
+//CommandLine OK
+insert into CommandLine
+values(1,1,5.5,1,12);
+
+insert into CommandLine
+values(2,1,35.60,1,4);
+
+insert into CommandLine
+values(3,2,27.50,2,11);
+
+insert into CommandLine
+values(4,1,150.24,2,8);
+
+insert into CommandLine
+values(5,3,137.85,1,9);
+
+//Language OK
+insert into Language
+values(1,"Anglais");
+
+insert into Language
+values(2,"Français");
+
+//TranslationFigurine OK
+insert into TranslationFigurine
+values(1,"Traduction 1","Traduction EN",1,1);
+
+insert into TranslationFigurine
+values(2,"Traduction 2","Traduction EN",1,2);
+
+insert into TranslationFigurine
+values(3,"Traduction 3","Traduction EN",1,3);
+
+insert into TranslationFigurine
+values(4,"Traduction 4","Traduction EN",1,4);
+
+insert into TranslationFigurine
+values(5,"Traduction 5","Traduction EN",1,5);
+
+insert into TranslationFigurine
+values(6,"Traduction 6","Traduction EN",1,6);
+
+insert into TranslationFigurine
+values(7,"Traduction 7","Traduction EN",1,7);
+
+insert into TranslationFigurine
+values(8,"Traduction 8","Traduction EN",1,8);
+
+insert into TranslationFigurine
+values(9,"Traduction 9","Traduction EN",1,9);
+
+insert into TranslationFigurine
+values(10,"Traduction 10","Traduction EN",1,10);
+
+insert into TranslationFigurine
+values(11,"Traduction 11","Traduction EN",1,11);
+
+insert into TranslationFigurine
+values(12,"Traduction 12","Traduction EN",1,12);
+
+insert into TranslationFigurine
+values(13,"Traduction 13","Traduction EN",1,13);
+
+insert into TranslationFigurine
+values(14,"Traduction 14","Traduction EN",1,14);
+
+insert into TranslationFigurine
+values(15,"Traduction 15","Traduction EN",1,15);
+
+insert into TranslationFigurine
+values(16,"Traduction 16","Traduction EN",1,16);
+
+insert into TranslationFigurine
+values(17,"Traduction 17","Traduction EN",1,17);
+
+insert into TranslationFigurine
+values(18,"Traduction 18","Traduction EN",1,18);
+
+
+
+
+//TranslationCategory OK
+insert into TranslationCategory
+values(1,"JapaneseAnimation",1,2);
+
+insert into TranslationCategory
+values(2,"Movie",1,1);
+
+insert into TranslationCategory
+values(3,"Video games",1,3);
+
+insert into TranslationCategory
+values(4,"Manga",1,2);
+
+insert into TranslationCategory
+values(5,"Film",1,1);
+
+insert into TranslationCategory
+values(6,"Jeux vidéo",1,3);
+
+
+
+

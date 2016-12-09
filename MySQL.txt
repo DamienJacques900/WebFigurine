@@ -1,0 +1,12 @@
+Account and roles
+
+password : damienlouis
+
+name : figurinebd
+
+user : root
+
+spring:
+  datasource:
+    password: damienlouis
+    url: jdbc:mysql://localhost:3306/figurinebd?user=root

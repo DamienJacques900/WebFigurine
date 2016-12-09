@@ -1,0 +1,107 @@
+.nav-btn
+{
+	color: white;
+}
+
+
+body 
+{
+  	display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main 
+{
+   	flex: 1 0 auto;
+}
+
+
+div
+{
+	padding : 0px 10px 0px 10px;
+}
+
+button
+{
+	margin : 10px;
+}
+
+.imageClass
+{
+	text-align : center ;
+}
+
+.menuInscription
+{
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
+
+.card 
+{
+    position: relative;
+    overflow: hidden;
+    margin: .5rem 0 1rem 0;
+    background-color: #fff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background-clip: padding-box;
+}
+
+.card .card-image 
+{
+    position: relative;
+    overflow: hidden;
+    margin:   10px;
+}
+
+body
+{
+	background-image:url("images/background.jpg");
+}
+
+
+
+/*input:invalid {
+  border: 1px solid red;
+}
+
+input:valid {
+  border: 1px solid green;
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
