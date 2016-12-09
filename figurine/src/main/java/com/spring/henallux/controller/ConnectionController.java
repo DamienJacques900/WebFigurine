@@ -43,22 +43,23 @@ public class ConnectionController
 	@RequestMapping(value="/connectionSend", method=RequestMethod.POST)
 	public String getFormConnectionData(Model model,@Valid @ModelAttribute(value=CURRENTUSERCONNECTION) User userConnection, final BindingResult errors)
 	{
-		if(!errors.hasErrors())
-		{
-			String userName = userConnection.getIdUser();
-			String userPassword = userConnection.getPassword();
+		System.out.println("coucou");
+		
+		String userName = userConnection.getIdUser();
+		String userPassword = userConnection.getPassword();
 			
-			ArrayList <User> users = userDAO.getUsers();
-			int i = 0;
+		ArrayList <User> users = userDAO.getUsers();
+		int i = 0;
 				
-			while(i < users.size()-1 && users.get(i).getIdUser().equals(userName)==false)
-			{
-				i++;
-			}	
+		while(i < users.size()-1 && users.get(i).getIdUser().equals(userName)==false)
+		{
+			i++;
+		}	
 				
-			if(users.get(i).getIdUser().equals(userName) && users.get(i).getPassword().equals(userPassword))
-				return "redirect:/userConnection";
-		}
+		System.out.println(users.get(i).getIdUser()+" "+users.get(i).getPassword());
+			
+		if(users.get(i).getIdUser().equals(userName) && users.get(i).getPassword().equals(userPassword))
+			return "redirect:/userConnection";
 		
 		return "integrated:connection";
 	}

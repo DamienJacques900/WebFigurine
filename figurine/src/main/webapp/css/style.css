@@ -38,6 +38,25 @@ button
 	margin-right: 20%;
 }
 
+h1,h2,h3,h4
+{
+	color : #9932CC;
+	font-style : italic;
+	font-family : futura;
+}
+
+p
+{
+	color : #ffb300;
+	font-style : italic;
+	font-family : futura;
+}
+
+a
+{
+	font-style : italic;
+	font-family : futura;
+}
 
 .card 
 {

@@ -49,7 +49,6 @@ public class RegistrationController
 			return "redirect:/userRegistration";		
 		}	
 		
-		model.addAttribute("connection", new User());
-		return "redirect:/registration";
+		return "integrated:registration";
 	}
 }

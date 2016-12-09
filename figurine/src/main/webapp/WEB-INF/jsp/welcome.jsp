@@ -42,7 +42,7 @@
 	
 		<div class="section no-pad-bot">
 		    <div class="container">
-		        <h1 class="header center rbwd-red-text text-base thin-text">Madoline</h1>
+		        <h1 class="header center rbwd-red-text text-base thin-text" style="text-color:blue">Madoline</h1>
 		        <h2 class="header center light thin-text">
 		        	<spring:message code="figurineSite"/>
 		        </h2>

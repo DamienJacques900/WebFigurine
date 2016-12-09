@@ -5,7 +5,7 @@
 <html>
 
 	<head>
-		<title><spring:message code="registrationConnection"/></title>
+		<title><spring:message code="registration"/></title>
 	</head>
 	
 	<body>
@@ -13,7 +13,7 @@
 	<div class="container"> 
 		<div class="menuInscription">
 		  
-		      <h1><i><img src="images/iconInscription.png" height="40px"></i>   <spring:message code="registration"/></h1>
+		      <h1><i><img src="<spring:url value='/images/iconInscription.png'/>" height="40px"></i>   <spring:message code="registration"/></h1>
 		      
 		      
 		      	<form:form 	id="registrationForm"

@@ -19,7 +19,7 @@
 		
 	</head>
 	
-	<body>
+	<body style="background-image:url('images/fondsite2.jpeg')"></body>
 	
 		<!-- DropDown figurine structure -->
 		<ul id="dropdownFigurine" class="dropdown-content">
@@ -29,7 +29,7 @@
 		  	</a>
 		  </li>
 		  <li>
-		  	<a href="<spring:url value='videoGame'/>">
+		  	<a href="<spring:url value='/videoGame'/>">
 		  		<spring:message code="videoGame"/>
 		  	</a>
 		  </li>
@@ -61,7 +61,7 @@
 		</spring:url>
 		
 		<header>
-			<nav class="grey">
+			<nav class="red">
 				<div class="nav-wrapper container">
 				 	<a href="#" class="brand-logo black-text">
 				 		<img src ='<spring:url value="/images/logo.png"/>' height="40px" width="33px"/>
@@ -122,7 +122,7 @@
 		</div>
 		
 				
-		<footer class="page-footer grey z-depth-5">
+		<footer class="page-footer red z-depth-5">
 			<div class="container">
 				<div class="row">
 					<div class="col l6 s12">
