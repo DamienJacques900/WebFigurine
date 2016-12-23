@@ -20,81 +20,83 @@
 		      				method="POST"
 		      				action="/figurine/registration/registrationSend"
 		      				modelAttribute="currentUserRegistration">
-			      	<div class="input-field col s6">
-			          <form:input path="idUser" type="text" class="validate"/>
-			          <form:label path="idUser" ><spring:message code="userName"/></form:label>
-			          <form:errors path="idUser"></form:errors>
-			        </div>
-			      	<div class="input-field col s6">
-			          <form:input path="lastName" type="text" class="validate"/>
-			          <form:label path="lastName" ><spring:message code="lastName"/></form:label>
-			          <form:errors path="lastName"></form:errors>
+			      	<div class="col s6">
+			      		<form:label path="idUser" ><spring:message code="userName"/></form:label>
+			          	<form:input path="idUser" type="text" class="validate"/>			         
+			          	<form:errors path="idUser"></form:errors>
 			        </div>
 			        
-			        <div class="input-field col s6">
-			          <form:input path="firstName" type="text" class="validate"/>
-			          <form:label path="firstName" ><spring:message code="firstName"/></form:label>
-			          <form:errors path="firstName"></form:errors>
+			        <div class="col s6">
+						<form:label path="password"><spring:message code="password"/></form:label>
+			          	<form:input path="password" type="password" class="validate"/>			       
+			          	<form:errors path="password"></form:errors>
 			        </div>
 			        
-			        <div class="input-field col s6">
-			          <form:input path="password" type="password" class="validate"/>
-			          <form:label path="password" ><spring:message code="password"/></form:label>
-			          <form:errors path="password"></form:errors>
+			        <div class="col s6">
+						<form:label path="confirmationPassword"><spring:message code="verificationPassword"/></form:label>
+			          	<form:input path="confirmationPassword" type="password" class="validate"/>			       
+			          	<form:errors path="confirmationPassword"></form:errors>
 			        </div>
 			        
-			        <div class="input-field col s6">
-			          <form:input path="password" type="password" class="validate"/>
-			          <form:label path="password" ><spring:message code="verificationPassword"/></form:label>
-			          <form:errors path="password"></form:errors>
+			      	<div class="col s6">
+			      		<form:label path="lastName" ><spring:message code="lastName"/></form:label>
+			          	<form:input path="lastName" type="text" class="validate"/>		          
+			          	<form:errors path="lastName"></form:errors>
 			        </div>
 			        
-			        <div class="input-field col s6">
-			          <form:input path="street" type="text" class="validate"/>
-			          <form:label path="street" ><spring:message code="street"/></form:label>
-			          <form:errors path="street"></form:errors>
+			        <div class="col s6">
+			        	<form:label path="firstName" ><spring:message code="firstName"/></form:label>
+			          	<form:input path="firstName" type="text" class="validate"/>			          
+			          	<form:errors path="firstName"></form:errors>
+			        </div>		       			     
+			        
+			        <div class="col s6">
+			        	<form:label path="street" ><spring:message code="street"/></form:label>
+			          	<form:input path="street" type="text" class="validate"/>			          
+			          	<form:errors path="street"></form:errors>
 			        </div>
 			        
-			        <div class="input-field col s6">
-			          <form:input path="city" type="text" class="validate"/>
-			          <form:label path="city" ><spring:message code="city"/></form:label>
-			          <form:errors path="city"></form:errors>
+			        <div class="col s6">
+			        	<form:label path="city" ><spring:message code="city"/></form:label>
+			          	<form:input path="city" type="text" class="validate"/>		          
+			          	<form:errors path="city"></form:errors>
 			        </div>
 			        
-			        <div class="input-field col s6">
-			          <form:input path="numTel" type="text" class="validate"/>
-			          <form:label path="numTel" ><spring:message code="phone"/></form:label>
-			          <form:errors path="numTel"></form:errors>
+			        <div class="col s6">
+			        	<form:label path="numTel" ><spring:message code="phone"/></form:label>
+				        <form:input path="numTel" type="text" class="validate"/>			          
+				        <form:errors path="numTel"></form:errors>
 			        </div>
 			        
-			        <div class="input-field col s6">
-			          <form:input path="numFax" type="text" class="validate"/>
-			          <form:label path="numFax" ><spring:message code="fax"/></form:label>
-			          <form:errors path="numFax"></form:errors>
+			        <div class="col s6">
+			        	<form:label path="numFax" ><spring:message code="fax"/></form:label>
+			          	<form:input path="numFax" type="text" class="validate"/>			          
+			          	<form:errors path="numFax"></form:errors>
 			        </div>
 			        
-			        <div class="input-field col s6">
-			          <form:input path="postalCode" type="text" class="validate"/>
-			          <form:label path="postalCode" ><spring:message code="postalCode"/></form:label>
-			          <form:errors path="postalCode"></form:errors>
+			        <div class="col s6">
+			        	<form:label path="postalCode" ><spring:message code="postalCode"/></form:label>
+			          	<form:input path="postalCode" type="text" class="validate"/>			          
+			          	<form:errors path="postalCode"></form:errors>
 			        </div>
 			        
-			        <div class="input-field col s6">
-			          <form:input path="country" type="text" class="validate"/>
-			          <form:label path="country" ><spring:message code="country"/></form:label>
-			          <form:errors path="country"></form:errors>
+			        <div class="col s6">
+			        	<form:label path="country" ><spring:message code="country"/></form:label>
+			          	<form:input path="country" type="text" class="validate"/>			          
+			          	<form:errors path="country"></form:errors>
 			        </div>
 			        
-			        <div class="input-field col s6">
-			          <form:input path="email" type="text" class="validate"/>
-			          <form:label path="email" ><spring:message code="email"/></form:label>
-			          <form:errors path="email"></form:errors>
-			        </div>
+			        <div class="col s6">
+			        	<form:label path="email" ><spring:message code="email"/></form:label>
+			          	<form:input path="email" type="text" class="validate"/>		          
+			          	<form:errors path="email"></form:errors>
+			        </div>		       			        
 			        
 					<form:button class="btn waves-effect waves-light" type="submit" name="action">
 						<spring:message code="validateButton"/>
 					  	<i class="material-icons right">send</i>
 					</form:button>
+									
 				</form:form>
         
 		   

@@ -21,15 +21,15 @@
 		      				modelAttribute="currentUserConnection">
 		         
 			        <div class="col s6">			       
-			          <form:label path="idUser"><spring:message code="userName"/></form:label>
-			          <form:input path="idUser" type="text" class="validate"/>
-			          <form:errors path="idUser"></form:errors>
+			          	<form:label path="idUser"><spring:message code="userName"/></form:label>
+			          	<form:input path="idUser" type="text" class="validate"/>
+			          	<form:errors path="idUser"></form:errors>
 			        </div>
 				
-					<div class="input-field col s6">
-			          <form:input path="password" type="password" class="validate"/>
-			          <form:label path="password"><spring:message code="password"/></form:label>
-			          <form:errors path="password"></form:errors>
+					<div class="col s6">
+						<form:label path="password"><spring:message code="password"/></form:label>
+			          	<form:input path="password" type="password" class="validate"/>			       
+			          	<form:errors path="password"></form:errors>
 			        </div>
 
 			        <form:button class="btn waves-effect waves-light">

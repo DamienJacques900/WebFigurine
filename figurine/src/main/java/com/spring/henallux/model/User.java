@@ -54,6 +54,10 @@ public class User
 	@NotNull( message = "Veuillez saisir votre mot de passe" )
 	private String password;
 	
+	@Size(min=4, max=30)
+	@NotNull( message = "Veuillez saisir votre mot de passe" )
+	private String confirmationPassword;
+	
 	@OneToMany(mappedBy="user")
 	private Collection<CommandEntity> commands;
 	
@@ -92,6 +96,11 @@ public class User
 	{
 		return new User(idUser,password);
 	}
+	public String getConfirmationPassword() 
+	{
+		return confirmationPassword;
+	}
+
 	public User getUser()
 	{
 		return new User(idUser,firstName,lastName,email,numTel,numFax,street,city,postalCode,country,password);
@@ -154,6 +163,11 @@ public class User
 	}
 	
 	//SETTERS ========================================================
+	
+	public void setConfirmationPassword(String confirmationPassword) 
+	{
+		this.confirmationPassword = confirmationPassword;
+	}
 	
 	public void setIdUser(String idUser) 
 	{

@@ -91,7 +91,7 @@
 				 		</li>				 
 				 		<li>
 				 			<li>
-					 			<a class="dropdown-button" href="#!" data-activates="dropdownAccount" data-beloworigin="true">
+					 			<a class="dropdown-button" href="<spring:url value='/registration'/>" data-activates="dropdownAccount" data-beloworigin="true">
 						 			<spring:message code="myAccount"/>
 						 			<i class="material-icons right">arrow_drop_down</i>
 					 			</a>
