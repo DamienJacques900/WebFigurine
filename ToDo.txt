@@ -1,0 +1,23 @@
+Page société
+
+catégorie dynamique
+
+détails des figurines
+
+panier
+
+avertir connexion bannière
+
+formulaire données facultatives
+
+mots passe différents message d'erreur dans les deux langues
+
+login déjà existant
+
+mdp crypté
+
+quand inscription erreur de modification langues
+
+libellé dynamique  BD
+
+
