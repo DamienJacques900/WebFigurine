@@ -73,7 +73,7 @@
 					      		</div>
 							</div>
 					    </li>
-					    <li>
+					    <li> 
 					      	<div class="collapsible-header"><i><img src="images/taille.png" height="20px"></i><spring:message code="height"/> (<spring:message code="cm"/>)</div>
 					      	<div class="collapsible-body">
 					      		<div class="row">
@@ -120,7 +120,7 @@
 					      			</form>
 					      		</div>
 					      	</div>
-					    </li>
+					    </li> 
 					    <li>
 							<div class="collapsible-header"><i><img src="images/marque.png" height="20px"></i><spring:message code="brand"/></div>
 							<div class="collapsible-body">
