@@ -25,6 +25,7 @@ public class FigurinesService
 
 	public Figurine getFigurineById(int idFigurine)
 	{
+		System.out.println("ID figurine : "+idFigurine);
 		Figurine figurineDescription = new Figurine();
 		ArrayList <Figurine> figurines = figurineDAO.getAllFigurines();
 		
@@ -36,6 +37,8 @@ public class FigurinesService
 			}	
 		}
 
+		System.out.println("Marque : "+figurineDescription.getBrand());
+		
 		return figurineDescription;
 	}
 	
