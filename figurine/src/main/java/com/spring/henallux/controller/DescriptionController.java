@@ -5,7 +5,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.spring.henallux.model.Figurine;
 import com.spring.henallux.model.User;
 
 
@@ -15,6 +17,15 @@ public class DescriptionController
 {	
 	@RequestMapping(method=RequestMethod.GET)
 	public String home(Model model)
+	{
+		
+		return "integrated:description";
+	}
+	
+	@RequestMapping(value="/figurine",
+					params={"descriptionFigurine"},
+					method=RequestMethod.GET)
+	public String getFigurineDescription(@RequestParam(required=false, defaultValue="Pas de description")final String descriptionFigurine)
 	{
 		return "integrated:description";
 	}

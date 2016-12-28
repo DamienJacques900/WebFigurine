@@ -191,7 +191,7 @@
 								      	
 											<div>
 				        						<p class="center-align" style="font-weight:bold">
-				        							<a href="description">
+				        							<a href="description/figurine?descriptionFigurine=${figurine.description}">				        							
 					        							${figurine.name}
 					        							<%
 					        								//request.setAttribute("FigurineName",figurineAnimation.getName());

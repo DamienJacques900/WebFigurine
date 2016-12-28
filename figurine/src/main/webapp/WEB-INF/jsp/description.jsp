@@ -23,7 +23,7 @@
 				</div>
 				<div class="col s6">
 					<div>        					
-						<p class="truncate"><spring:message code="description"/> : ${figurine.description}</p>	
+						<p class="truncate"><spring:message code="description"/> : <%=request.getParameter("descriptionFigurine") %></p>	
 						<p><spring:message code="size"/> : ${figurine.size} cm</p>	
 						<p><spring:message code="weight"/> : ${figurine.weight} g</p>	
 						<p><spring:message code="brand"/> : ${figurine.brand}</p>	
