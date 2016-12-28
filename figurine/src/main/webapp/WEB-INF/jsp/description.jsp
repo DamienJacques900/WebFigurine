@@ -19,10 +19,10 @@
 			
 			<div class="row">
 				<div class="col s6">
-					<img src="images/allFigurine/${figurineDescription.image}" alt="" height="250px">
+					<img src="../images/allFigurine/${figurineDescription.image}" alt="">
 				</div>
 				<div class="col s6">
-					<div>        					
+					<div class="card-image">        					
 						<p class="truncate"><spring:message code="description"/> :${figurineDescription.description} </p>	
 						<p><spring:message code="size"/> : ${figurineDescription.size} cm</p>	
 						<p><spring:message code="weight"/> : ${figurineDescription.weight} g</p>	
