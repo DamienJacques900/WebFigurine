@@ -25,8 +25,9 @@ public class DescriptionController
 	@RequestMapping(value="/figurine",
 					params={"descriptionFigurine"},
 					method=RequestMethod.GET)
-	public String getFigurineDescription(@RequestParam(required=false, defaultValue="Pas de description")final String descriptionFigurine)
+	public String getFigurineDescription(@RequestParam(required=false, defaultValue="Pas de description")final String descriptionFigurine, final Model model)
 	{
+		model.addAttribute("descriptionToDisplay", descriptionFigurine);
 		return "integrated:description";
 	}
 	

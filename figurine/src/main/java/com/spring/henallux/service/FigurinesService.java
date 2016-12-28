@@ -23,6 +23,22 @@ public class FigurinesService
 		//ArrayList <Figurine> figurines = figurineDAO.getAllFigurines();
 	}
 
+	public Figurine getFigurineById(int idFigurine)
+	{
+		Figurine figurineDescription = new Figurine();
+		ArrayList <Figurine> figurines = figurineDAO.getAllFigurines();
+		
+		for(int i=0;i<figurines.size();i++)
+		{		
+			if(figurines.get(i).getIdFigurine()==idFigurine)
+			{
+				figurineDescription = figurines.get(i);
+			}	
+		}
+
+		return figurineDescription;
+	}
+	
 	public ArrayList<Figurine> getFigurinesMovie() 
 	{
 		//***************************COMMENTAIRE************************************
