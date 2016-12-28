@@ -11,6 +11,7 @@ import com.spring.henallux.model.*;
 @Service
 public class FigurinesService 
 {
+	private ArrayList<Figurine> figurinesSearch;
 	private ArrayList<Figurine> figurinesMovie;
 	private ArrayList<Figurine> figurinesJapaneseAnimation;
 	private ArrayList<Figurine> figurinesVideoGame;
@@ -23,6 +24,72 @@ public class FigurinesService
 		//ArrayList <Figurine> figurines = figurineDAO.getAllFigurines();
 	}
 
+	public ArrayList<Figurine> getFigurinesByMoney(double moneyMin, double moneyMax)
+	{
+		figurinesSearch = new ArrayList<Figurine>();
+		ArrayList <Figurine> figurines = figurineDAO.getAllFigurines();
+		
+		for(int i=0;i<figurines.size();i++)
+		{		
+			if(figurines.get(i).getCost() >= moneyMin && figurines.get(i).getCost() <= moneyMax)
+			{
+				figurinesSearch.add(figurines.get(i));
+			}	
+		}
+
+		return figurinesSearch;
+	}
+	
+	public ArrayList<Figurine> getFigurinesByHeight(double heightMin, double heightMax)
+	{
+		figurinesSearch = new ArrayList<Figurine>();
+		ArrayList <Figurine> figurines = figurineDAO.getAllFigurines();
+		
+		for(int i=0;i<figurines.size();i++)
+		{		
+			if(figurines.get(i).getSize() >= heightMin && figurines.get(i).getSize() <= heightMax)
+			{
+				figurinesSearch.add(figurines.get(i));
+			}	
+		}
+
+		return figurinesSearch;
+	}
+	
+	public ArrayList<Figurine> getFigurinesByWeight(double weightMin, double weightMax)
+	{
+		figurinesSearch = new ArrayList<Figurine>();
+		ArrayList <Figurine> figurines = figurineDAO.getAllFigurines();
+		
+		for(int i=0;i<figurines.size();i++)
+		{		
+			if(figurines.get(i).getWeight() >= weightMin && figurines.get(i).getWeight() <= weightMax)
+			{
+				figurinesSearch.add(figurines.get(i));
+			}	
+		}
+
+		return figurinesSearch;
+	}
+	
+	public ArrayList<Figurine> getFigurinesByName(String nameFigurine)
+	{
+		figurinesSearch = new ArrayList<Figurine>();
+		ArrayList <Figurine> figurines = figurineDAO.getAllFigurines();
+		
+		for(int i=0;i<figurines.size();i++)
+		{		
+			if(figurines.get(i).getName().contains(nameFigurine))
+			{
+				figurinesSearch.add(figurines.get(i));
+			}	
+		}
+
+		return figurinesSearch;
+	}
+	
+	
+	
 	public Figurine getFigurineById(int idFigurine)
 	{
 		Figurine figurineDescription = new Figurine();
@@ -38,6 +105,8 @@ public class FigurinesService
 		
 		return figurineDescription;
 	}
+	
+	
 	
 	public ArrayList<Figurine> getFigurinesMovie() 
 	{

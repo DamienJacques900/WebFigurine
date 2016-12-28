@@ -174,9 +174,6 @@
 				        						<p class="center-align" style="font-weight:bold">
 				        							<a href="description/figurine?idFigurine=${figurine.idFigurine}">
 					        							${figurine.name}
-					        							<%
-					        								//request.setAttribute("FigurineName",figurineAnimation.getName());
-					        							%>
 					        						</a>
 				        						</p>
 				        					</div>

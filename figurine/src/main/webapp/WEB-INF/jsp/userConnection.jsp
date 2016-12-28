@@ -171,17 +171,14 @@
 								      			modelAttribute="description">  								      	
 											<div>
 												<p class="center-align" style="font-weight:bold">
-					        						<a href="description">
-					        							${figurine.name}
-					        							<%
-					        								//request.setAttribute("FigurineName",figurineAnimation.getName());
-					        							%>
+					        						<a href="description/figurine?idFigurine=${figurine.idFigurine}">
+					        							${figurine.name}				        						
 					        						</a>
 					        					</p>
 				        					</div>
 				        					<div class="card-image">
 				        					
-				        						<a href="description">
+				        						<a href="description/figurine?idFigurine=${figurine.idFigurine}">
 				        							<img src="images/allFigurine/${figurine.image}" alt="" height="250px">
 				        						</a>
 				        					
