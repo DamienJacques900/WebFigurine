@@ -78,7 +78,7 @@
 				 		</li> 
 				 		
 				 		<li>
-				 			<a class="nav-btn waves-effect waves-light" href="<spring:url value='/welcome'/>">
+				 			<a class="nav-btn waves-effect waves-light" href="<spring:url value='/figurine'/>">
 				 			<spring:message code="figurine"/>
 				 			</a>
 				 		</li>
@@ -88,28 +88,36 @@
 				 			<spring:message code="basket"/>
 				 			</a>
 				 		</li>
-				 		<c:choose>	
-				 			<c:when test="${currentUserConnection}" == null>			 
-						 		<li>
-							 		<a class="nav-btn waves-effect waves-light" href="<spring:url value='/connection'/>">
-						 				<spring:message code="connection"/>
-						 			</a>
-						 		</li>
+				 					 
+						 		
+						 	
+						 	<c:choose>
+						 		<c:when test="${currentUserConnection.idUser eq null}">
+						 			<li>
+							 			<a class="nav-btn waves-effect waves-light" href="<spring:url value='/connection'/>">
+						 					<spring:message code="connection"/>
+						 				</a>
+						 			</li>
 					 		
-						 		<li>
-							 		<a class="nav-btn waves-effect waves-light" href="<spring:url value='/registration'/>">
-						 				<spring:message code="registration"/>
-						 			</a>
-						 		</li>
-						 	</c:when>
-						 	<c:otherwise>
-						 		<li>
-							 		<a class="nav-btn waves-effect waves-light" href="<spring:url value='/registration'/>">
-						 				<spring:message code="registration"/>
-						 			</a>
-						 		</li>
-						 	</c:otherwise>
-				 		</c:choose>
+						 			<li>
+							 			<a class="nav-btn waves-effect waves-light" href="<spring:url value='/registration'/>">
+						 					<spring:message code="registration"/>
+						 				</a>
+						 			</li>
+						 		</c:when>
+						 		
+						 		<c:otherwise>
+						 			<li>
+							 			<a class="nav-btn waves-effect waves-light" href="<spring:url value='/disconnect'/>">
+						 					<spring:message code="disconnect"/>
+						 				</a>
+						 			</li>
+						 			<li>
+						 				Vous êtes connecté en tant que : <span style="color:blue;">${currentUserConnection.idUser} </span>
+						 			</li>						 		
+						 		</c:otherwise>
+						 	</c:choose>
+						 
 				 		
 				 		<li><a class="nav-btn waves-effect waves-light" href="<spring:url value='${localeFr}'/>">	
 								<img src ='<spring:url value="/images/francais.png"/>' height="30px" width="30px"/>

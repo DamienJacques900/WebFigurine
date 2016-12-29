@@ -1,11 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="include/importTags.jsp" %>
 
 
 <html>
 
+	<!-- <head>
+		<title><spring:message code="reception"/></title>
+		<script type="text/javascript">
+		// Pause slider
+		$('.slider').slider('pause');
+		// Start slider
+		$('.slider').slider('start');
+		// Next slide
+		$('.slider').slider('next');
+		// Previous slide
+		$('.slider').slider('prev');
+		</script>	
+	</head>-->
+	
+	
 	<head>
-		<title><spring:message code="animationJapanese"/></title>
+		<title><spring:message code="reception"/></title>
 		<script type="text/javascript">
 		var slider = document.getElementById('test5');
 		  noUiSlider.create(slider, {
@@ -24,56 +39,53 @@
 	</head>
 	
 	<body>
+	
+		<div class="section no-pad-bot">
+		    <div class="container">
+		        <h1 class="header center rbwd-red-text text-base thin-text" style="text-color:blue">Voici toutes les figurines</h1>
+		    </div>
+		    
+		    
+		</div>
+		
 		<div class="container">
 			<h2>
-				<spring:message code="findAnimation"/>
+				<spring:message code="findFigurine"/>
 			</h2>
-			
 			<div class="row">
 				<div class="col s3">
-					<form:form	id="searchNameID"
-		      					method="POST"
-		      					action="/figurine/movie/searchName"
-		      					modelAttribute="searchName">
+					<form>
 						<div class="input-field">
 							<input id="search" type="search" required>
 							<label for="search"><i class="material-icons">search</i></label>
 							<i class="material-icons">close</i>
 						</div>
-						<form:button class="waves-effect waves-light btn">
+						<button class="waves-effect waves-light btn">
 					      	<spring:message code="searchButton"/>
-					    </form:button>	
-					</form:form>
+					    </button>	
+					</form>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col s3">
 				
-				<a href="<spring:url value='/videoGame'/>">
-					<button class="btn waves-effect waves-light green" style="width:100%;">
-						<spring:message code="videoGame"/>
-					</button>
-				</a>
-				
-				
-				<a href="<spring:url value='/japaneseAnimation'/>">
-					<button class="btn waves-effect waves-light red" style="width:100%;">
-						<spring:message code="animationJapanese"/>
-					</button>
-				</a>
-				
-				
-				<a href="<spring:url value='/movie'/>">
-					<button class="btn waves-effect waves-light orange" style="width:100%;">					
-			  				<spring:message code="movie"/>	  			
-					</button>
-				</a>
-				
-				
+			
+				<c:forEach items="${categoryAll}" var="category">
+					<a href="<spring:url value='/figurine/byCategory/${category.idCategory}'/>">
+						<button class="btn waves-effect waves-light blue" style="width:100%;">
+							${category.name}
+						</button>
+					</a>	
+				</c:forEach>
+							
 				
 					<ul class="collapsible" data-collapsible="accordion">
 					 	<li>
-							<div class="collapsible-header"><i><img src="images/euro.png" height="20px"></i><spring:message code="prize"/></div>
+							<div class="collapsible-header">
+								<i>
+									<img src="<spring:url value='/images/euro.png'/>" height="20px">
+								</i>
+								<spring:message code="prize"/></div>
 							<div class="collapsible-body">
 								<div class="row">
 					      			<form class="col s12">
@@ -96,8 +108,12 @@
 					      		</div>
 							</div>
 					    </li>
-					    <li> 
-					      	<div class="collapsible-header"><i><img src="images/taille.png" height="20px"></i><spring:message code="height"/> (<spring:message code="cm"/>)</div>
+					    <li>
+					      	<div class="collapsible-header">
+					      		<i>
+					      			<img src="<spring:url value='/images/taille.png'/>" height="20px">
+					      		</i>
+					      		<spring:message code="height"/> (<spring:message code="cm"/>)</div>
 					      	<div class="collapsible-body">
 					      		<div class="row">
 					      			<form class="col s12">
@@ -121,7 +137,11 @@
 					      	</div>
 					    </li>
 					    <li>
-					      	<div class="collapsible-header"><i><img src="images/poids.png" height="20px"></i><spring:message code="weight"/> (<spring:message code="gram"/>)</div>
+					      	<div class="collapsible-header">
+					      		<i>
+					      			<img src="<spring:url value='/images/poids.pn'/>g" height="20px">
+					      		</i>
+					      		<spring:message code="weight"/> (<spring:message code="gram"/>)</div>
 					      	<div class="collapsible-body">
 					      		<div class="row">
 					      			<form class="col s12">
@@ -143,30 +163,32 @@
 					      			</form>
 					      		</div>
 					      	</div>
-					    </li> 				
+					    </li>
+					   
 					</ul>
 	        	</div>
 	        	
 	        	<div class="col s9">
-	        		<div class="row">        		
-	        			<c:forEach items="${figurineAnimation}" var="figurine">
+	        		<div class="row">
+	        			<c:forEach items="${figurineAll}" var="figurine">
 		        			<div class="col s4">
 		        				<div class="card">	
 		        					<form:form	id="descriptionID"
 								      			method="POST"
-								      			action="/figurine/japaneseAnimation/description"
+								      			action="/figurine/welcome/description"
 								      			modelAttribute="description">  								      	
 											<div>
 												<p class="center-align" style="font-weight:bold">
-					        						<a href="description/figurine?idFigurine=${figurine.idFigurine}">
-					        							${figurine.name}				        						
+					        						<a href="<spring:url value='/description/figurine?idFigurine=${figurine.idFigurine}'/>">
+					        							${figurine.name}
 					        						</a>
+					        						
 					        					</p>
 				        					</div>
 				        					<div class="card-image">
 				        					
-				        						<a href="description/figurine?idFigurine=${figurine.idFigurine}">
-				        							<img src="images/allFigurine/${figurine.image}" alt="" height="250px">
+				        						<a href="<spring:url value='/description/figurine?idFigurine=${figurine.idFigurine}'/>">
+				        							<img src="<spring:url value='/images/allFigurine/${figurine.image}'/>" alt="" height="250px"/>
 				        						</a>
 				        					
 				        						<p class="center-align" style="font-weight:bold">
@@ -176,11 +198,14 @@
 		        					</form:form> 
 		        				</div>
 		        			</div>
-	        			</c:forEach> 
+	        			</c:forEach>
 	        		</div>
 	        	</div>
         	</div>
 		</div>
+
+		
+		
 	</body>
 	
 </html>

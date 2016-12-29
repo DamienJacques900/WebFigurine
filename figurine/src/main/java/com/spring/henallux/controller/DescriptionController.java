@@ -38,8 +38,9 @@ public class DescriptionController
 	
 	//Bouton pour la COMMANDE===============================================
 	@RequestMapping(value="/command", method=RequestMethod.POST)
-	public String getFormCommandData(Model model, @ModelAttribute(value="command") User userCommand)
+	public String getCommand(Model model, @ModelAttribute(value="command") User userCommand)
 	{
+		
 		return "integrated:userCommand";
 	}
 }
