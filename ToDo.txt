@@ -1,23 +1,27 @@
-Page société
+Page société ->		OK						
 
-catégorie dynamique
+catégorie dynamique ->	
 
-détails des figurines
+détails des figurines -> Fait mais problème lors du changement de langue
 
-panier
+panier ->	
 
-avertir connexion bannière
+avertir connexion bannière ->	
 
-formulaire données facultatives
+formulaire données facultatives ->	
 
-mots passe différents message d'erreur dans les deux langues
+mots passe différents message d'erreur dans les deux langues ->	
 
-login déjà existant
+login déjà existant ->	
 
-mdp crypté
+mdp crypté ->	
 
-quand inscription erreur de modification langues
+quand inscription erreur de modification langues ->	
 
-libellé dynamique  BD
+libellé dynamique  BD ->	
 
+
+A faire :
+
+Modifier lien figurine template!
 
