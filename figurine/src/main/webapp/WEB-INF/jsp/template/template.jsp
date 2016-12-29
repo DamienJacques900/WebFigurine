@@ -63,7 +63,7 @@
 		<header>
 			<nav class="red">
 				<div class="nav-wrapper container">
-				 	<a href="#" class="brand-logo black-text">
+				 	<a href="<spring:url value='/welcome'/>" class="brand-logo black-text">
 				 		<img src ='<spring:url value="/images/logo.png"/>' height="40px" width="33px"/>
 				 		Madoline
 					</a>   
@@ -76,26 +76,27 @@
 				 				<spring:message code="reception"/>
 							</a>
 				 		</li> 
+				 		
 				 		<li>
-				 			<li>
-					 			<a class="dropdown-button" href="#!" data-activates="dropdownFigurine" data-beloworigin="true">
-						 			<spring:message code="figurine"/>
-						 			<i class="material-icons right">arrow_drop_down</i>
-					 			</a>
-				 			</li>	
-						</li>
+				 			<a class="nav-btn waves-effect waves-light" href="<spring:url value='/welcome'/>">
+				 			<spring:message code="figurine"/>
+				 			</a>
+				 		</li>
+				 	
 				 		<li>
 				 			<a class="nav-btn waves-effect waves-light" href="<spring:url value='/basket'/>">
 				 			<spring:message code="basket"/>
 				 			</a>
 				 		</li>				 
 				 		<li>
-				 			<li>
-					 			<a class="dropdown-button" href="<spring:url value='/registration'/>" data-activates="dropdownAccount" data-beloworigin="true">
-						 			<spring:message code="myAccount"/>
-						 			<i class="material-icons right">arrow_drop_down</i>
-					 			</a>
-				 			</li>
+					 		<a class="nav-btn waves-effect waves-light" href="<spring:url value='/connection'/>">
+				 				<spring:message code="connection"/>
+				 			</a>
+				 		</li>
+				 		<li>
+					 		<a class="nav-btn waves-effect waves-light" href="<spring:url value='/registration'/>">
+				 				<spring:message code="registration"/>
+				 			</a>
 				 		</li>
 				 		
 				 		<li><a class="nav-btn waves-effect waves-light" href="<spring:url value='${localeFr}'/>">	
@@ -137,6 +138,7 @@
 						<ul>
 							<li><a>Facebook</a></li>
 							<li><a>Twitter</a></li>
+							<li><a href="<spring:url value='/society'/>"><spring:message code="society"/></a></li>
 						</ul>
 					</div>
 				</div>

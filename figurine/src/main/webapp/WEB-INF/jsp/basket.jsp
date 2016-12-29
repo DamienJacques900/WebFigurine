@@ -20,7 +20,7 @@
 			  			<li class="collection-item avatar">
 					    	<img src="images/figurine1.png" alt="" height="50px">
 						     <span class="title"><a href="#!">${commandLine.figurine}</a></span>
-						     <p><spring:message code="brand"/> : Marque1 <br>
+						     <p><spring:message code="brand"/> : ${commandLine.figurine} <br>
 						      	<spring:message code="description"/> : <div class="truncate"><spring:message code="long"/></div>
 						     </p>
 						     <p class="secondary-content">

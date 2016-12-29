@@ -24,6 +24,9 @@ public class WelcomeController
 	@Autowired
 	private FigurineDAO figurinesDAO;
 	
+	@Autowired
+	private FigurinesService figurinesService;
+	
 	@RequestMapping(method=RequestMethod.GET)
 	public String home(Model model)
 	{

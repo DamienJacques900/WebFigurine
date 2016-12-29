@@ -48,6 +48,29 @@
 			</div>
 			<div class="row">
 				<div class="col s3">
+				
+				<a href="<spring:url value='/videoGame'/>">
+					<button class="btn waves-effect waves-light green" style="width:100%;">
+						<spring:message code="videoGame"/>
+					</button>
+				</a>
+				
+				
+				<a href="<spring:url value='/japaneseAnimation'/>">
+					<button class="btn waves-effect waves-light red" style="width:100%;">
+						<spring:message code="animationJapanese"/>
+					</button>
+				</a>
+				
+				
+				<a href="<spring:url value='/movie'/>">
+					<button class="btn waves-effect waves-light orange" style="width:100%;">					
+			  				<spring:message code="movie"/>	  			
+					</button>
+				</a>
+				
+				
+				
 					<ul class="collapsible" data-collapsible="accordion">
 					 	<li>
 							<div class="collapsible-header"><i><img src="images/euro.png" height="20px"></i><spring:message code="prize"/></div>
@@ -120,43 +143,7 @@
 					      			</form>
 					      		</div>
 					      	</div>
-					    </li> 
-					    <li>
-							<div class="collapsible-header"><i><img src="images/marque.png" height="20px"></i><spring:message code="brand"/></div>
-							<div class="collapsible-body">
-								<form:form>
-									<ul>
-										<li>
-										  	<input type="checkbox" id="marque1"/>
-										  	<label for="marque1">Marque1</label>
-										</li>
-										<li>
-										  	<input type="checkbox" id="marque2"/>
-										  	<label for="marque2">Marque2</label>
-										</li>
-										<li>
-										  	<input type="checkbox" id="marque3"/>
-										  	<label for="marque3">Marque3</label>
-										</li>
-										<li>
-										  	<input type="checkbox" id="marque4"/>
-										  	<label for="marque4">Marque4</label>
-										</li>
-										<li> 
-										  	<input type="checkbox" id="marque5"/>
-										  	<label for="marque5">Marque5</label>
-										</li>
-										<li>
-										  	<input type="checkbox" id="marque6"/>
-										  	<label for="marque6">Marque6</label>
-										</li>
-									</ul>
-									<button class="waves-effect waves-light btn">
-						      			<spring:message code="searchButton"/>
-						      		</button>
-					      		</form:form>
-							</div>
-					    </li>
+					    </li> 				
 					</ul>
 	        	</div>
 	        	
