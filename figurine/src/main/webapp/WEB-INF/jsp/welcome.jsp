@@ -78,46 +78,23 @@
 			<div class="row">
 				<div class="col s3">
 				
-				<form:form id="descriptionID"
-						   method="POST"
-						   action="/figurine/japaneseAnimation/description"
-						   modelAttribute="description">
-					<a href="<spring:url value='/videoGame'/>">
-						<form:button class="btn waves-effect waves-light green" style="width:100%;">
-							<spring:message code="videoGame"/>
-						</form:button>
-					</a>
-				</form:form>
-				
-				<form:form id="descriptionID"
-						   method="POST"
-						   action="/figurine/japaneseAnimation/description"
-						   modelAttribute="description">
-					<a href="<spring:url value='/japaneseAnimation'/>">
-						<form:button class="btn waves-effect waves-light red" style="width:100%;">
-							<spring:message code="animationJapanese"/>
-						</form:button>
-					</a>
-				</form:form>
-				
-				
-				<form:form id="descriptionID"
-						   method="POST"
-						   action="/figurine/japaneseAnimation/description"
-						   modelAttribute="description">
-					<a href="<spring:url value='/movie'/>">
-						<form:button class="btn waves-effect waves-light orange" style="width:100%;">					
-				  				<spring:message code="movie"/>	  			
-						</form:button>
-					</a>
-				</form:form>
-				
-				
 			
+				<c:forEach items="${categoryAll}" var="category">
+					<a href="<spring:url value='/welcome/byCategory/${category.idCategory}'/>">
+						<button class="btn waves-effect waves-light blue" style="width:100%;">
+							${category.name}
+						</button>
+					</a>	
+				</c:forEach>
+							
 				
 					<ul class="collapsible" data-collapsible="accordion">
 					 	<li>
-							<div class="collapsible-header"><i><img src="images/euro.png" height="20px"></i><spring:message code="prize"/></div>
+							<div class="collapsible-header">
+								<i>
+									<img src="<spring:url value='/images/euro.png'/>" height="20px">
+								</i>
+								<spring:message code="prize"/></div>
 							<div class="collapsible-body">
 								<div class="row">
 					      			<form class="col s12">
@@ -141,7 +118,11 @@
 							</div>
 					    </li>
 					    <li>
-					      	<div class="collapsible-header"><i><img src="images/taille.png" height="20px"></i><spring:message code="height"/> (<spring:message code="cm"/>)</div>
+					      	<div class="collapsible-header">
+					      		<i>
+					      			<img src="<spring:url value='/images/taille.png'/>" height="20px">
+					      		</i>
+					      		<spring:message code="height"/> (<spring:message code="cm"/>)</div>
 					      	<div class="collapsible-body">
 					      		<div class="row">
 					      			<form class="col s12">
@@ -165,7 +146,11 @@
 					      	</div>
 					    </li>
 					    <li>
-					      	<div class="collapsible-header"><i><img src="images/poids.png" height="20px"></i><spring:message code="weight"/> (<spring:message code="gram"/>)</div>
+					      	<div class="collapsible-header">
+					      		<i>
+					      			<img src="<spring:url value='/images/poids.pn'/>g" height="20px">
+					      		</i>
+					      		<spring:message code="weight"/> (<spring:message code="gram"/>)</div>
 					      	<div class="collapsible-body">
 					      		<div class="row">
 					      			<form class="col s12">
@@ -203,18 +188,16 @@
 								      			modelAttribute="description">  								      	
 											<div>
 												<p class="center-align" style="font-weight:bold">
-					        						<a href="description/figurine?idFigurine=${figurine.idFigurine}">
+					        						<a href="<spring:url value='/description/figurine?idFigurine=${figurine.idFigurine}'/>">
 					        							${figurine.name}
-					        							<%
-					        								//request.setAttribute("FigurineName",figurineAnimation.getName());
-					        							%>
 					        						</a>
+					        						
 					        					</p>
 				        					</div>
 				        					<div class="card-image">
 				        					
-				        						<a href="description/figurine?idFigurine=${figurine.idFigurine}">
-				        							<img src="images/allFigurine/${figurine.image}" alt="" height="250px">
+				        						<a href="<spring:url value='/description/figurine?idFigurine=${figurine.idFigurine}'/>">
+				        							<img src="<spring:url value='/images/allFigurine/${figurine.image}'/>" alt="" height="250px"/>
 				        						</a>
 				        					
 				        						<p class="center-align" style="font-weight:bold">

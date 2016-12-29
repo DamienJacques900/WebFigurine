@@ -15,7 +15,7 @@
 		<link href="<spring:url value='http://fonts.googleapis.com/icon?family=Material+Icons' />" rel="stylesheet">
 		<script type="text/javascript"></script>
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-		<script type="text/javascript" src="<spring:url value='js/materialize.js' />" ></script>
+		<script type="text/javascript" src="<spring:url value='/js/materialize.js' />" ></script>
 		
 	</head>
 	
@@ -42,7 +42,7 @@
 		
 		<ul id="dropdownAccount" class="dropdown-content">
 		  <li>
-		  	<a  href="<spring:url value='/connection'/>">
+		  	<a href="<spring:url value='/connection'/>">
 		  		<spring:message code="connection"/>
 		  	</a>
 		  </li>
@@ -87,17 +87,29 @@
 				 			<a class="nav-btn waves-effect waves-light" href="<spring:url value='/basket'/>">
 				 			<spring:message code="basket"/>
 				 			</a>
-				 		</li>				 
-				 		<li>
-					 		<a class="nav-btn waves-effect waves-light" href="<spring:url value='/connection'/>">
-				 				<spring:message code="connection"/>
-				 			</a>
 				 		</li>
-				 		<li>
-					 		<a class="nav-btn waves-effect waves-light" href="<spring:url value='/registration'/>">
-				 				<spring:message code="registration"/>
-				 			</a>
-				 		</li>
+				 		<c:choose>	
+				 			<c:when test="${currentUserConnection}" == null>			 
+						 		<li>
+							 		<a class="nav-btn waves-effect waves-light" href="<spring:url value='/connection'/>">
+						 				<spring:message code="connection"/>
+						 			</a>
+						 		</li>
+					 		
+						 		<li>
+							 		<a class="nav-btn waves-effect waves-light" href="<spring:url value='/registration'/>">
+						 				<spring:message code="registration"/>
+						 			</a>
+						 		</li>
+						 	</c:when>
+						 	<c:otherwise>
+						 		<li>
+							 		<a class="nav-btn waves-effect waves-light" href="<spring:url value='/registration'/>">
+						 				<spring:message code="registration"/>
+						 			</a>
+						 		</li>
+						 	</c:otherwise>
+				 		</c:choose>
 				 		
 				 		<li><a class="nav-btn waves-effect waves-light" href="<spring:url value='${localeFr}'/>">	
 								<img src ='<spring:url value="/images/francais.png"/>' height="30px" width="30px"/>

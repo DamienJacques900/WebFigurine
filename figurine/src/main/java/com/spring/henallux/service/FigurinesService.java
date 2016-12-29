@@ -15,6 +15,7 @@ public class FigurinesService
 	private ArrayList<Figurine> figurinesMovie;
 	private ArrayList<Figurine> figurinesJapaneseAnimation;
 	private ArrayList<Figurine> figurinesVideoGame;
+	private ArrayList<Figurine> figurinesCategory;
 	
 	@Autowired
 	private FigurineDAO figurineDAO;
@@ -166,6 +167,24 @@ public class FigurinesService
 		}
 		return figurinesVideoGame;
 	}
+	
+	
+	public ArrayList<Figurine> getFigurineByCategory(int idCategory)
+	{
+		figurinesCategory = new ArrayList<Figurine>();
+		ArrayList <Figurine> figurines = figurineDAO.getAllFigurines();
+		
+		for(int i=0;i<figurines.size();i++)
+		{		
+			if(figurines.get(i).getCategory()==idCategory)
+			{
+				figurinesCategory.add(figurines.get(i));
+			}						
+		}
+		return figurinesCategory;
+	}
+	
+	
 
 	public void setFigurinesMovie(ArrayList<Figurine> figurines) 
 	{
