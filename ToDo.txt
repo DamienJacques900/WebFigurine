@@ -1,6 +1,6 @@
 Page société ->		OK						
 
-catégorie dynamique ->	
+catégorie dynamique ->	Ok mais pas langue
 
 détails des figurines -> Fait mais problème lors du changement de langue
 
