@@ -2,7 +2,7 @@ Page société ->		OK
 
 catégorie dynamique ->	Ok
 
-détails des figurines -> Fait mais problème lors du changement de langue
+détails des figurines -> OK
 
 panier (pouvoir supprimer et modifier le nombre) ->	
 
@@ -10,15 +10,20 @@ avertir connexion bannière ->	OK
 
 formulaire données facultatives ->  OK
 
-mots passe différents message d'erreur dans les deux langues ->	
-
 login déjà existant ->	OK
 
 mdp crypté ->	
 
+libellé dynamique BD ->	
+
+gestion des promotions ->
+
+
+Langue :
+
 quand inscription erreur de modification langues ->	
 
-libellé dynamique BD ->	
+mots passe différents message d'erreur dans les deux langues ->	
 
 
 A faire :
@@ -26,6 +31,12 @@ A faire :
 Modifier lien figurine template! -> OK
 
 
+
+Attention : 
+
 Entity = pour mettre sur BD
 
 Model = permet de créer entity
+
+Quand on veut récupérer dans une page jsp des valeurs, attention de voir si c'est des arrayList ou des simple objet
+Si c'est des simples objets alors => ${objet.attribut} mais si c'est une arrayList alors => ${objet[i].name}!!!!
