@@ -105,6 +105,7 @@ create table TranslationFigurine
 	category int not null,
 	
 	constraint fk_FigurineTranslation foreign key(figurine) references Figurine(idFigurine),
+	constraint fk_FigurineTranslation foreign keycategory references Figurine(idCategory),
 	constraint fk_LanguageFigurine foreign key(language) references Language(idLanguage),
 	constraint pk_TranslationFigurine primary key(idTranslationFigurine )
 );
