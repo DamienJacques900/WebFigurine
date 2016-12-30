@@ -30,6 +30,8 @@ A faire :
 
 Modifier lien figurine template! -> OK
 
+Modifier les controller et jsp pour les connexion réussi et inscription réussi 
+
 
 
 Attention : 
