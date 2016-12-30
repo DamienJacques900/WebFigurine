@@ -18,6 +18,7 @@ import com.spring.henallux.dataAccess.dao.CategoryDAO;
 import com.spring.henallux.dataAccess.dao.FigurineDAO;
 import com.spring.henallux.dataAccess.dao.LanguageDAO;
 import com.spring.henallux.dataAccess.dao.TranslationCategoryDAO;
+import com.spring.henallux.dataAccess.dao.TranslationFigurineDAO;
 import com.spring.henallux.model.Figurine;
 import com.spring.henallux.model.Language;
 import com.spring.henallux.service.FigurinesService;
@@ -45,6 +46,9 @@ public class WelcomeController
 	@Autowired
 	private FigurinesService figurinesService;
 	
+	@Autowired
+	private TranslationFigurineDAO translationFigurineDAO;
+	
 	@RequestMapping(method=RequestMethod.GET)
 	public String home(Model model, Locale locale)
 	{
@@ -55,6 +59,7 @@ public class WelcomeController
 		model.addAttribute("figurineAll", figurinesDAO.getAllFigurines());
 		Language language = languagesDAO.getLanguageByName(locale.toString());
 		model.addAttribute("categoryTranslations", translationCategoriesDAO.getTransalationCategoryById(language.getIdLanguage()));
+		model.addAttribute("figurineTranslations", translationFigurineDAO.getAllTranslationFigurinesByLanguage(language.getIdLanguage()));
 		return "integrated:welcome";
 	}
 	
@@ -65,6 +70,7 @@ public class WelcomeController
 		model.addAttribute("categoryAll", categoriesDAO.getAllCategories());
 		Language language = languagesDAO.getLanguageByName(locale.toString());	
 		model.addAttribute("categoryTranslations", translationCategoriesDAO.getTransalationCategoryById(language.getIdLanguage()));
+		//model.addAttribute("figurineTranslations", translationFigurineDAO.getTransalationFigurineByIdCatAndLanguage(categoryId,language.getIdLanguage()));
 		return "integrated:welcome";
 	}
 	

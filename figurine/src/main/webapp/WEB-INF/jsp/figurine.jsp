@@ -172,7 +172,7 @@
 	        	
 	        	<div class="col s9">
 	        		<div class="row">
-	        			<c:forEach items="${figurineAll}" var="figurine">
+	        			<c:forEach items="${figurineAll}" var="figurine"  varStatus="status" >
 		        			<div class="col s4">
 		        				<div class="card">	
 		        					<form:form	id="descriptionID"
@@ -181,15 +181,15 @@
 								      			modelAttribute="description">  								      	
 											<div>
 												<p class="center-align" style="font-weight:bold">
-					        						<a href="<spring:url value='/description/figurine?idFigurine=${figurine.idFigurine}'/>">
-					        							${figurine.name}
+					        						<a href="<spring:url value='/description/figurine/${figurine.idFigurine}'/>">
+					        							${figurineTranslations[status.index].name}
 					        						</a>
 					        						
 					        					</p>
 				        					</div>
 				        					<div class="card-image">
 				        					
-				        						<a href="<spring:url value='/description/figurine?idFigurine=${figurine.idFigurine}'/>">
+				        						<a href="<spring:url value='/description/figurine/${figurine.idFigurine}'/>">
 				        							<img src="<spring:url value='/images/allFigurine/${figurine.image}'/>" alt="" height="250px"/>
 				        						</a>
 				        					

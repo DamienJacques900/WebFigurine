@@ -59,6 +59,7 @@ public class ProviderConverter
 		translationFigurineEntity.setDescription(translationFigurine.getDescription());
 		translationFigurineEntity.setFigurine(translationFigurine.getFigurine());
 		translationFigurineEntity.setLanguage(translationFigurine.getLanguage());
+		//translationFigurineEntity.setCategory(translationFigurine.getCategory());
 		
 		return translationFigurineEntity;
 	}
@@ -71,6 +72,7 @@ public class ProviderConverter
 		translationFigurine.setDescription(translationFigurineEntity.getDescription());
 		translationFigurine.setFigurine(translationFigurineEntity.getFigurine());
 		translationFigurine.setLanguage(translationFigurineEntity.getLanguage());
+		//translationFigurine.setCategory(translationFigurineEntity.getCategory());
 		
 		return translationFigurine;
 	}

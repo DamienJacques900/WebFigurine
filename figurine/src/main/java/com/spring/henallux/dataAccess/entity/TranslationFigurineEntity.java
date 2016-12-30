@@ -32,6 +32,22 @@ public class TranslationFigurineEntity
 	@Max(1000)
 	@Column(name="language")
 	private int language;
+	
+	@NotNull
+	@Min(1)
+	@Max(1000)
+	@Column(name="category")
+	private int category;
+
+	public int getCategory() 
+	{
+		return category;
+	}
+
+	public void setCategory(int category) 
+	{
+		this.category = category;
+	}
 
 	public String getName() 
 	{

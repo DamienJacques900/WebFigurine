@@ -179,7 +179,7 @@
 	        	
 	        	<div class="col s9">
 	        		<div class="row">
-	        			<c:forEach items="${figurineAll}" var="figurine">
+	        			<c:forEach items="${figurineAll}" var="figurine" varStatus="status" >
 		        			<div class="col s4">
 		        				<div class="card">	
 		        					<form:form	id="descriptionID"
@@ -189,7 +189,7 @@
 											<div>
 												<p class="center-align" style="font-weight:bold">
 					        						<a href="<spring:url value='/description/figurine/${figurine.idFigurine}'/>">
-					        							${figurine.name}
+					        							${figurineTranslations[status.index].name}
 					        						</a>
 					        						
 					        					</p>

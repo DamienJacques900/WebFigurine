@@ -63,4 +63,51 @@ public class TranslationFigurineDAO
 		return figurineWanted;
 	}
 	
+	
+	public TranslationFigurine getTransalationFigurineByCategory(Integer categoryId)
+	{
+		TranslationFigurine figurineWanted = new TranslationFigurine();
+		List<TranslationFigurineEntity> translationFigurineEntities = translationFigurineRepository.findAll();
+		
+		for(TranslationFigurineEntity entity : translationFigurineEntities)
+		{	
+			if(entity.getFigurine() == categoryId)
+			{
+				figurineWanted = providerConverter.translationFigurineEntitytoTranslationFigurineModel(entity);
+			}			
+		}
+		
+		return figurineWanted;
+	}
+	
+	public ArrayList<TranslationFigurine> getAllTranslationFigurinesByLanguage(Integer language)
+	{
+		List <TranslationFigurineEntity> translationFigurineEntities = translationFigurineRepository.findAll();
+		ArrayList <TranslationFigurine> translationFigurines = new ArrayList<>();
+		for (TranslationFigurineEntity entity : translationFigurineEntities)
+		{
+			if(entity.getLanguage() == language)
+			{
+				TranslationFigurine translationFigurine = providerConverter.translationFigurineEntitytoTranslationFigurineModel(entity);
+				translationFigurines.add(translationFigurine);
+			}
+		}
+		return translationFigurines;
+	}
+	
+	public ArrayList<TranslationFigurine> getTransalationFigurineByIdCatAndLanguage(Integer categoryId, Integer language)
+	{
+		List <TranslationFigurineEntity> translationFigurineEntities = translationFigurineRepository.findAll();
+		ArrayList <TranslationFigurine> translationFigurines = new ArrayList<>();
+		for (TranslationFigurineEntity entity : translationFigurineEntities)
+		{
+			if(entity.getLanguage() == language)
+			{
+				TranslationFigurine translationFigurine = providerConverter.translationFigurineEntitytoTranslationFigurineModel(entity);
+				translationFigurines.add(translationFigurine);
+			}
+		}
+		return translationFigurines;
+	}
+	
 }

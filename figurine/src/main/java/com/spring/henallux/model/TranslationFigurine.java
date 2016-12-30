@@ -27,6 +27,19 @@ public class TranslationFigurine
 	@Max(1000)
 	private int language;
 	
+	@NotNull
+	@Min(1)
+	@Max(1000)
+	private int category;
+	
+	public int getCategory() 
+	{
+		return category;
+	}
+	public void setCategory(int category) 
+	{
+		this.category = category;
+	}
 	public int getIdTranslationFigurine() 
 	{
 		return idTranslationFigurine;
