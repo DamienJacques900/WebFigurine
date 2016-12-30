@@ -1,10 +1,15 @@
 package com.spring.henallux.model;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+
+import com.spring.henallux.dataAccess.entity.CommandEntity;
+import com.spring.henallux.dataAccess.entity.UserEntity;
 
 public class CommandLine 
 {
@@ -25,12 +30,13 @@ public class CommandLine
 	@NotNull
 	@Min(0)
 	@Max(1000)
-	private int figurine;
+	private CommandEntity command;
 	
 	@NotNull
 	@Min(0)
 	@Max(1000)
-	private int command;
+	private int figurine;
+
 	
 	public CommandLine()
 	{
@@ -77,12 +83,12 @@ public class CommandLine
 		this.figurine = figurine;
 	}
 
-	public int getCommand() 
+	public CommandEntity getCommand() 
 	{
 		return command;
 	}
 
-	public void setCommand(int command) 
+	public void setCommand(CommandEntity command) 
 	{
 		this.command = command;
 	}

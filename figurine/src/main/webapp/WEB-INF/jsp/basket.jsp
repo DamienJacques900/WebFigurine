@@ -26,34 +26,18 @@
 						     <p class="secondary-content">
 						     	<spring:message code="prize"/> : ${commandLine.prizeCommand} <spring:message code="euro"/><br>
 						     	<spring:message code="nbFigurine"/> ${commandLine.nbFigurine}
-						     </p>			     
-				    	</li>
-			  		</c:forEach>
-				    <li class="collection-item avatar">
-				      <img src="images/figurine1.png" alt="" height="50px">
-				      <span class="title"><a href="#!">Figurine 1</a></span>
-				      <p><spring:message code="brand"/> : Marque1 <br>
-				         <spring:message code="description"/> : <div class="truncate"><spring:message code="long"/></div>
-				      </p>
-				      <p class="secondary-content"><spring:message code="prize"/> : 50 <spring:message code="euro"/></p>
-				      
-				    </li>
-				    <li class="collection-item avatar">
-				      <img src="images/figurine2.png" alt="" height="50px">
-				      <span class="title"><a href="#!">Figurine 2</a></span>
-				      <p><spring:message code="brand"/> : Marque2 <br>
-				         <spring:message code="description"/> : <p class="truncate"><spring:message code="long"/></p>
-				      </p>
-				      <p class="secondary-content"><spring:message code="prize"/> : 50 <spring:message code="euro"/></p>
-				    </li>
-				    <li class="collection-item avatar">
-				      <img src="images/figurine3.png" alt="" height="50px">
-				      <span class="title"><a href="#!">Figurine 3</a></span>
-				      <p><spring:message code="brand"/> : Marque3 <br>
-				         <spring:message code="description"/> : <p class="truncate"><spring:message code="long"/></p>
-				      </p>
-				      <p class="secondary-content"><spring:message code="prize"/> : 50 <spring:message code="euro"/></p>
-				    </li>
+						     	</br>
+						     	
+						     	<button class="waves-effect waves-light btn">
+				    				<spring:message code="delete"/>
+				    			</button>	
+				    			<button class="waves-effect waves-light btn">
+				    				<spring:message code="modify"/>
+				    			</button>
+						     </p>		
+						          
+				    	</li>				    	
+			  		</c:forEach>			   
 				  </ul>
 	                   	
 	  			</div>

@@ -79,8 +79,8 @@
 				<div class="col s3">
 				
 			
-				<c:forEach items="${categoryAll}" var="category">
-					<a href="<spring:url value='/welcome/byCategory/${category.idCategory}'/>">
+				<c:forEach items="${categoryTranslations}" var="category">
+					<a href="<spring:url value='/welcome/byCategory/${category.idTranslationCategory}'/>">
 						<button class="btn waves-effect waves-light blue" style="width:100%;">
 							${category.name}
 						</button>

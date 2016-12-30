@@ -48,8 +48,23 @@ public class RegistrationController
 	{
 		if(!errors.hasErrors())
 		{
-			userDAO.save(userRegistration);
-			return "redirect:/userRegistration";		
+			Boolean existing = false;
+			ArrayList<User> users = userDAO.getUsers();
+			for(int i = 0; i < users.size();i++)
+			{
+				if(users.get(i).getIdUser().equals(userRegistration.getIdUser()))
+				{
+					existing = true;
+					break;
+				}					
+			}
+			if(!existing)
+			{
+				userDAO.save(userRegistration);
+				return "redirect:/userRegistration";	
+			}	
+						
+			return "integrated:registration";
 		}	
 		
 		return "integrated:registration";

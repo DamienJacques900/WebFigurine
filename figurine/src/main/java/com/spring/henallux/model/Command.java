@@ -1,10 +1,14 @@
 package com.spring.henallux.model;
 
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.*;
+
+import com.spring.henallux.dataAccess.entity.CommandEntity;
 
 
 public class Command 
@@ -20,6 +24,9 @@ public class Command
 	
 	@NotNull
 	private User user;
+	
+	@OneToMany(mappedBy="command")
+	private Collection<CommandLine> commandsLine;
 	
 
 	public User getUser() {

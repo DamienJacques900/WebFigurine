@@ -49,25 +49,13 @@
 			<div class="row">
 				<div class="col s3">
 				
-				<a href="<spring:url value='/videoGame'/>">
-					<button class="btn waves-effect waves-light green" style="width:100%;">
-						<spring:message code="videoGame"/>
-					</button>
-				</a>
-				
-				
-				<a href="<spring:url value='/japaneseAnimation'/>">
-					<button class="btn waves-effect waves-light red" style="width:100%;">
-						<spring:message code="animationJapanese"/>
-					</button>
-				</a>
-				
-				
-				<a href="<spring:url value='/movie'/>">
-					<button class="btn waves-effect waves-light orange" style="width:100%;">					
-			  				<spring:message code="movie"/>	  			
-					</button>
-				</a>
+				<c:forEach items="${categoryTranslations}" var="category">
+					<a href="<spring:url value='/figurine/byCategory/${category.idTranslationCategory}'/>">
+						<button class="btn waves-effect waves-light blue" style="width:100%;">
+							${category.name}
+						</button>
+					</a>	
+				</c:forEach>
 				
 					<ul class="collapsible" data-collapsible="accordion">
 					 	<li>

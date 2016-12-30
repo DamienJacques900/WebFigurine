@@ -5,6 +5,8 @@ import java.util.*;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
+import com.spring.henallux.model.Command;
+
 @Entity
 @Table(name="user")
 public class UserEntity 
@@ -65,8 +67,8 @@ public class UserEntity
 	@NotNull( message = "Veuillez saisir votre mot de passe" )
 	private String password;
 	
-	@OneToMany(mappedBy="userEnt")
-	private Collection<CommandEntity> commands;
+	/*@OneToMany(mappedBy="user", fetch = FetchType.LAZY)
+	private Collection<CommandEntity> commands;*/
 	
 
 	public String getIdUser() 

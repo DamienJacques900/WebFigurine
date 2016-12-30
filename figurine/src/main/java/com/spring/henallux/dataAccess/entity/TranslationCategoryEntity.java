@@ -8,7 +8,7 @@ import javax.validation.constraints.*;
 public class TranslationCategoryEntity 
 {
 	@Id
-	@Column(name="idtranslationcategory")
+	@Column(name="idtranslationcateogry")
 	private int idTranslationCategory;
 	
 	@NotNull

@@ -58,9 +58,6 @@ public class User
 	@NotNull( message = "Veuillez saisir votre mot de passe" )
 	private String confirmationPassword;
 	
-	@OneToMany(mappedBy="user")
-	private Collection<CommandEntity> commands;
-	
 	public User()
 	{
 		

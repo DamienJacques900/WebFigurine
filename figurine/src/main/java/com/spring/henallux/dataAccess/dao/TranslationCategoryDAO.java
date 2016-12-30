@@ -45,4 +45,24 @@ public class TranslationCategoryDAO
 		}
 		return translationCategories;
 	}
+	
+	
+	
+	public ArrayList<TranslationCategory> getTransalationCategoryById(Integer languageId)
+	{
+		List<TranslationCategoryEntity> translationCategoryEntities = translationCategoryRepository.findAll();
+		
+		ArrayList<TranslationCategory> translationCategory = new ArrayList<TranslationCategory>();
+		
+		for(TranslationCategoryEntity entity : translationCategoryEntities)
+		{	
+			
+			if(entity.getLanguage() == languageId)
+			{
+				translationCategory.add(providerConverter.translationCategoryEntitytoTranslationCategoryModel(entity));
+			}			
+		}
+		
+		return translationCategory;
+	}
 }

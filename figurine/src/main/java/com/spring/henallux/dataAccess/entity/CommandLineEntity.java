@@ -6,6 +6,14 @@ import javax.validation.constraints.*;
 
 @Entity
 @Table(name="commandline")
+@NamedQueries
+({
+	@NamedQuery
+	(
+			name = "findCommandLineByCommandId",
+			query = "from CommandLineEntity b where b.command.idCommand = :valueIdCommand"
+	)
+})
 public class CommandLineEntity 
 {
 	@Id
@@ -29,8 +37,9 @@ public class CommandLineEntity
 	@NotNull
 	@Min(0)
 	@Max(1000)
-	@Column(name="command")
-	private int command;
+	@JoinColumn(name="command", referencedColumnName="idcommand")
+	@ManyToOne
+	private CommandEntity command;
 	
 	@NotNull
 	@Min(0)
@@ -59,12 +68,12 @@ public class CommandLineEntity
 		this.figurine = figurine;
 	}
 
-	public int getCommand() 
+	public CommandEntity getCommand() 
 	{
 		return command;
 	}
 
-	public void setCommand(int command) 
+	public void setCommand(CommandEntity command) 
 	{
 		this.command = command;
 	}

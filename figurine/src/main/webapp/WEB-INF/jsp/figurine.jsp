@@ -42,7 +42,9 @@
 	
 		<div class="section no-pad-bot">
 		    <div class="container">
-		        <h1 class="header center rbwd-red-text text-base thin-text" style="text-color:blue">Voici toutes les figurines</h1>
+		        <h1 class="header center rbwd-red-text text-base thin-text" style="text-color:blue">
+		        	<spring:message code="figurineSection"/>
+		        </h1>
 		    </div>
 		    
 		    
@@ -70,8 +72,8 @@
 				<div class="col s3">
 				
 			
-				<c:forEach items="${categoryAll}" var="category">
-					<a href="<spring:url value='/figurine/byCategory/${category.idCategory}'/>">
+				<c:forEach items="${categoryTranslations}" var="category">
+					<a href="<spring:url value='/figurine/byCategory/${category.idTranslationCategory}'/>">
 						<button class="btn waves-effect waves-light blue" style="width:100%;">
 							${category.name}
 						</button>

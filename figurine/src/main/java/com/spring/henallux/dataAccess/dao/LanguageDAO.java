@@ -45,4 +45,17 @@ public class LanguageDAO
 		}
 		return languages;
 	}
+	
+	public Language getLanguageByName(String name)
+	{
+		List<LanguageEntity> languageEntities = languageRepository.findAll();
+				
+		for(LanguageEntity entity : languageEntities)
+		{
+			if(entity.getName().equals(name))
+				return providerConverter.languageEntitytoLanguageModel(entity);
+		}
+		
+		return new Language();
+	}
 }

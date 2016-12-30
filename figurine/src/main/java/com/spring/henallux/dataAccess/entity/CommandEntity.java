@@ -1,5 +1,6 @@
 package com.spring.henallux.dataAccess.entity;
 
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.*;
@@ -25,6 +26,9 @@ public class CommandEntity
 	@JoinColumn(name="user", referencedColumnName="iduser")
 	@ManyToOne
 	private UserEntity userEnt;
+	
+	@OneToMany(mappedBy="command", fetch = FetchType.LAZY)
+	private Collection<CommandLineEntity> commandLines;
 
 
 

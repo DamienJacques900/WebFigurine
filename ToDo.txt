@@ -1,12 +1,12 @@
 Page société ->		OK						
 
-catégorie dynamique ->	Ok mais pas langue
+catégorie dynamique ->	Ok
 
 détails des figurines -> Fait mais problème lors du changement de langue
 
-panier ->	
+panier (pouvoir supprimer et modifier le nombre) ->	
 
-avertir connexion bannière ->	
+avertir connexion bannière ->	OK
 
 formulaire données facultatives ->	
 
@@ -18,10 +18,14 @@ mdp crypté ->
 
 quand inscription erreur de modification langues ->	
 
-libellé dynamique  BD ->	
+libellé dynamique BD ->	
 
 
 A faire :
 
-Modifier lien figurine template!
+Modifier lien figurine template! -> OK
 
+
+Entity = pour mettre sur BD
+
+Model = permet de créer entity

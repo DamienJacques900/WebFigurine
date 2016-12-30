@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.spring.henallux.dataAccess.dao.CommandLineDAO;
 import com.spring.henallux.model.User;
 import com.spring.henallux.service.*;
 
@@ -21,6 +22,9 @@ public class BasketController
 	@Autowired
 	private CommandsService commandsService;
 	
+	@Autowired
+	private CommandLineDAO commandLineDAO;
+	
 	@RequestMapping(method=RequestMethod.GET)
 	public String home(Model model)
 	{
@@ -29,6 +33,7 @@ public class BasketController
 		//**************************************************************************
 		model.addAttribute("command",commandsService.getCommand());
 		model.addAttribute("commandLines",commandLinesService.getCommandLines());
+		//model.addAttribute("commandLines",commandLineDAO.findCommandForCommandLine());
 		model.addAttribute("command", new User());
 		return "integrated:basket";
 	}
