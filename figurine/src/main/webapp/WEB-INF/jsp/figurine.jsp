@@ -20,7 +20,7 @@
 	
 	
 	<head>
-		<title><spring:message code="reception"/></title>
+		<title><spring:message code="figurine"/></title>
 		<script type="text/javascript">
 		var slider = document.getElementById('test5');
 		  noUiSlider.create(slider, {
@@ -73,7 +73,7 @@
 				
 			
 				<c:forEach items="${categoryTranslations}" var="category">
-					<a href="<spring:url value='/figurine/byCategory/${category.idTranslationCategory}'/>">
+					<a href="<spring:url value='/figurine/byCategory/${category.category}'/>">
 						<button class="btn waves-effect waves-light blue" style="width:100%;">
 							${category.name}
 						</button>

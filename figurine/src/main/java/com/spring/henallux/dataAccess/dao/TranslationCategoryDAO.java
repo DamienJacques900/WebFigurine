@@ -56,7 +56,6 @@ public class TranslationCategoryDAO
 		
 		for(TranslationCategoryEntity entity : translationCategoryEntities)
 		{	
-			
 			if(entity.getLanguage() == languageId)
 			{
 				translationCategory.add(providerConverter.translationCategoryEntitytoTranslationCategoryModel(entity));
