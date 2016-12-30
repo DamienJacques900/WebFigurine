@@ -26,7 +26,8 @@
 						<p class="truncate"><spring:message code="description"/> :${figurineDescription.description} </p>	
 						<p><spring:message code="size"/> : ${figurineDescription.size} cm</p>	
 						<p><spring:message code="weight"/> : ${figurineDescription.weight} g</p>	
-						<p><spring:message code="brand"/> : ${figurineDescription.brand}</p>	
+						<p><spring:message code="brand"/> : ${figurineDescription.brand}</p>
+						<p><spring:message code="prize"/> : ${figurineDescription.cost} euros</p>	
 					</div>
 					
 					<button class="waves-effect waves-light btn">

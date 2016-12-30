@@ -8,11 +8,11 @@ panier (pouvoir supprimer et modifier le nombre) ->
 
 avertir connexion bannière ->	OK
 
-formulaire données facultatives ->	
+formulaire données facultatives ->  OK
 
 mots passe différents message d'erreur dans les deux langues ->	
 
-login déjà existant ->	
+login déjà existant ->	OK
 
 mdp crypté ->	
 

@@ -5,55 +5,65 @@ import java.util.Collection;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import com.spring.henallux.dataAccess.entity.CommandEntity;
 
 //import javax.validation.constraints.*;
 
 public class User 
 {
+	@NotEmpty
 	@Size(min=5, max=30)
 	@Column(name="iduser")
 	@NotNull( message = "Veuillez saisir un nom d'utilisateur" )
 	private String idUser;
 	
+	@NotEmpty
 	@Size(min=5, max=30)
 	@NotNull( message = "Veuillez saisir votre prénom" )
 	private String firstName;
 	
+	@NotEmpty
 	@Size(min=5, max=50)
 	@NotNull( message = "Veuillez saisir votre nom" )
 	private String lastName;
 	
+	@NotEmpty
 	@NotNull( message = "Veuillez saisir une adresse email" )
 	@Pattern( regexp = "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)", message = "Merci de saisir une adresse mail valide" )
 	private String email;
 	
-	@Size(min=5, max=30)
 	private String numTel;
 	
-	@Size(min=5, max=30)
 	private String numFax;
 	
+	@NotEmpty
 	@Size(min=5, max=30)
 	@NotNull( message = "Veuillez saisir votre rue" )
 	private String street;
 	
+	@NotEmpty
 	@Size(min=5, max=30)
 	@NotNull( message = "Veuillez saisir la ville où vous habitez" )
 	private String city;
 	
+	@NotEmpty
 	@Size(min=3, max=10)
 	@NotNull( message = "Veuillez saisir votre code postal" )
 	private String postalCode;
 	
+	@NotEmpty
 	@Size(min=5, max=30)
 	@NotNull( message = "Veuillez saisir votre pays" )
 	private String country;
 	
+	@NotEmpty
 	@Size(min=4, max=30)
 	@NotNull( message = "Veuillez saisir votre mot de passe" )
 	private String password;
 	
+	@NotEmpty
 	@Size(min=4, max=30)
 	@NotNull( message = "Veuillez saisir votre mot de passe" )
 	private String confirmationPassword;
