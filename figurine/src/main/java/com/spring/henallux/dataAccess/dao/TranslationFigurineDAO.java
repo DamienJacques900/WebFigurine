@@ -101,7 +101,7 @@ public class TranslationFigurineDAO
 		ArrayList <TranslationFigurine> translationFigurines = new ArrayList<>();
 		for (TranslationFigurineEntity entity : translationFigurineEntities)
 		{
-			if(entity.getLanguage() == language)
+			if(entity.getLanguage() == language /*&& entity.getCategory() == categoryId*/)
 			{
 				TranslationFigurine translationFigurine = providerConverter.translationFigurineEntitytoTranslationFigurineModel(entity);
 				translationFigurines.add(translationFigurine);
