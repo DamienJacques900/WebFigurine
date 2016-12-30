@@ -102,7 +102,7 @@ create table TranslationFigurine
 	description varchar(300) not null,
 	language int not null,
 	figurine int not null,
-	
+	category int not null,
 	
 	constraint fk_FigurineTranslation foreign key(figurine) references Figurine(idFigurine),
 	constraint fk_LanguageFigurine foreign key(language) references Language(idLanguage),
@@ -251,112 +251,112 @@ values(2,"fr");
 
 
 insert into TranslationFigurine
-values(1,"White beard","One of the 4 Yonko, it has the power to create earthquakes",1,1);
+values(1,"White beard","One of the 4 Yonko, it has the power to create earthquakes",1,1,1);
 
 insert into TranslationFigurine
-values(2,"Griffith","Chief of the Falcon Army and former friend of Guts",1,2);
+values(2,"Griffith","Chief of the Falcon Army and former friend of Guts",1,2,1);
 
 insert into TranslationFigurine
-values(3,"Guts","Translation EN 3",1,3);
+values(3,"Guts","Translation EN 3",1,3,1);
 
 insert into TranslationFigurine
-values(4,"Luffy","Translation EN 4",1,4);
+values(4,"Luffy","Translation EN 4",1,4,1);
 
 insert into TranslationFigurine
-values(5,"Naruto","Translation EN 5",1,5);
+values(5,"Naruto","Translation EN 5",1,5,1);
 
 insert into TranslationFigurine
-values(6,"Zoro","Translation EN 6",1,6);
+values(6,"Zoro","Translation EN 6",1,6,1);
 
 insert into TranslationFigurine
-values(7,"Batman","Translation EN 7",1,7);
+values(7,"Batman","Translation EN 7",1,7,2);
 
 insert into TranslationFigurine
-values(8,"Gimli","Translation EN 8",1,8);
+values(8,"Gimli","Translation EN 8",1,8,2);
 
 insert into TranslationFigurine
-values(9,"Iron Man","Translation EN 9",1,9);
+values(9,"Iron Man","Translation EN 9",1,9,2);
 
 insert into TranslationFigurine
-values(10,"Rey","Translation EN 10",1,10);
+values(10,"Rey","Translation EN 10",1,10,2);
 
 insert into TranslationFigurine
-values(11,"Soldier of winter","Translation EN 11",1,11);
+values(11,"Soldier of winter","Translation EN 11",1,11,2);
 
 insert into TranslationFigurine
-values(12,"Thor","Translation EN 12",1,12);
+values(12,"Thor","Translation EN 12",1,12,2);
 
 insert into TranslationFigurine
-values(13,"Portal","Translation EN 13",1,13);
+values(13,"Portal","Translation EN 13",1,13,3);
 
 insert into TranslationFigurine
-values(14,"Arno","Translation EN 14",1,14);
+values(14,"Arno","Translation EN 14",1,14,3);
 
 insert into TranslationFigurine
-values(15,"Cloud","Translation EN 15",1,15);
+values(15,"Cloud","Translation EN 15",1,15,3);
 
 insert into TranslationFigurine
-values(16,"Edward","Translation EN 16",1,16);
+values(16,"Edward","Translation EN 16",1,16,3);
 
 insert into TranslationFigurine
-values(17,"Ezio","Translation EN 17",1,17);
+values(17,"Ezio","Translation EN 17",1,17,3);
 
 insert into TranslationFigurine
-values(18,"Sora","Translation EN 18",1,18);
+values(18,"Sora","Translation EN 18",1,18,3);
 
 insert into TranslationFigurine
-values(19,"Barbe blanche","Un des 4 Yonko, il possède le pouvoir de créer des tremblements de terre",2,1);
+values(19,"Barbe blanche","Un des 4 Yonko, il possède le pouvoir de créer des tremblements de terre",2,1,1);
 
 insert into TranslationFigurine
-values(20,"Griffith","Chef de l'armée des faucons et ancien ami de Guts",2,2);
+values(20,"Griffith","Chef de l'armée des faucons et ancien ami de Guts",2,2,1);
 
 insert into TranslationFigurine
-values(21,"Guts","Traduction FR 3",2,3);
+values(21,"Guts","Traduction FR 3",2,3,1);
 
 insert into TranslationFigurine
-values(22,"Luffy","Traduction FR 4",2,4);
+values(22,"Luffy","Traduction FR 4",2,4,1);
 
 insert into TranslationFigurine
-values(23,"Naruto","Traduction FR 5",2,5);
+values(23,"Naruto","Traduction FR 5",2,5,1);
 
 insert into TranslationFigurine
-values(24,"Zoro","Traduction FR 6",2,6);
+values(24,"Zoro","Traduction FR 6",2,6,1);
 
 insert into TranslationFigurine
-values(25,"Batman","Traduction FR 7",2,7);
+values(25,"Batman","Traduction FR 7",2,7,2);
 
 insert into TranslationFigurine
-values(26,"Gimli","Traduction FR 8",2,8);
+values(26,"Gimli","Traduction FR 8",2,8,2);
 
 insert into TranslationFigurine
-values(27,"Iron Man","Traduction FR 9",2,9);
+values(27,"Iron Man","Traduction FR 9",2,9,2);
 
 insert into TranslationFigurine
-values(28,"Rey","Traduction FR 10",2,10);
+values(28,"Rey","Traduction FR 10",2,10,2);
 
 insert into TranslationFigurine
-values(29,"Soldat de l'hiver","Traduction FR 11",2,11);
+values(29,"Soldat de l'hiver","Traduction FR 11",2,11,2);
 
 insert into TranslationFigurine
-values(30,"Thor","Traduction FR 12",2,12);
+values(30,"Thor","Traduction FR 12",2,12,2);
 
 insert into TranslationFigurine
-values(31,"Portal","Traduction FR 13",2,13);
+values(31,"Portal","Traduction FR 13",2,13,3);
 
 insert into TranslationFigurine
-values(32,"Arno","Traduction FR 14",2,14);
+values(32,"Arno","Traduction FR 14",2,14,3);
 
 insert into TranslationFigurine
-values(33,"Cloud","Traduction FR 15",2,15);
+values(33,"Cloud","Traduction FR 15",2,15,3);
 
 insert into TranslationFigurine
-values(34,"Edward","Traduction FR 16",2,16);
+values(34,"Edward","Traduction FR 16",2,16,3);
 
 insert into TranslationFigurine
-values(35,"Ezio","Traduction FR 17",2,17);
+values(35,"Ezio","Traduction FR 17",2,17,3);
 
 insert into TranslationFigurine
-values(36,"Sora","Traduction FR 18",2,18);
+values(36,"Sora","Traduction FR 18",2,18,3);
 
 
 
