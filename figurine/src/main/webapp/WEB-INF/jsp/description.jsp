@@ -19,15 +19,16 @@
 			
 			<div class="row">
 				<div class="col s6">
-					<img src="../images/allFigurine/${figurineDescription.image}" alt="">
+					<img src="../../images/allFigurine/${figurine.image}" alt="">
 				</div>
 				<div class="col s6">
-					<div class="card-image">        					
-						<p class="truncate"><spring:message code="description"/> :${figurineDescription.description} </p>	
-						<p><spring:message code="size"/> : ${figurineDescription.size} cm</p>	
-						<p><spring:message code="weight"/> : ${figurineDescription.weight} g</p>	
-						<p><spring:message code="brand"/> : ${figurineDescription.brand}</p>
-						<p><spring:message code="prize"/> : ${figurineDescription.cost} euros</p>	
+					<div class="card-image">        
+						<p><spring:message code="name"/> :${figurineTranslations.name} </p>						
+						<p><spring:message code="description"/> :${figurineTranslations.description} </p>	
+						<p><spring:message code="size"/> : ${figurine.size} cm</p>	
+						<p><spring:message code="weight"/> : ${figurine.weight} g</p>	
+						<p><spring:message code="brand"/> : ${figurine.brand}</p>
+						<p><spring:message code="prize"/> : ${figurine.cost} euros</p>	
 					</div>
 					
 					<button class="waves-effect waves-light btn">

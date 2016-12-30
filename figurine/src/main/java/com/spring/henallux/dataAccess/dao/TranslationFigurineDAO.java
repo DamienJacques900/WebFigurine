@@ -45,4 +45,22 @@ public class TranslationFigurineDAO
 		}
 		return translationFigurines;
 	}
+	
+	
+	public TranslationFigurine getTransalationFigurineById(Integer figurineId, Integer languageId)
+	{
+		TranslationFigurine figurineWanted = new TranslationFigurine();
+		List<TranslationFigurineEntity> translationFigurineEntities = translationFigurineRepository.findAll();
+		
+		for(TranslationFigurineEntity entity : translationFigurineEntities)
+		{	
+			if(entity.getLanguage() == languageId && entity.getFigurine() == figurineId)
+			{
+				figurineWanted = providerConverter.translationFigurineEntitytoTranslationFigurineModel(entity);
+			}			
+		}
+		
+		return figurineWanted;
+	}
+	
 }

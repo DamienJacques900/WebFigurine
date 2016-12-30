@@ -40,7 +40,7 @@ public class WelcomeController
 	private LanguageDAO languagesDAO;
 	
 	@Autowired
-	private TranslationCategoryDAO categoriesTranslationDAO;
+	private TranslationCategoryDAO translationCategoriesDAO;
 	
 	@Autowired
 	private FigurinesService figurinesService;
@@ -54,8 +54,7 @@ public class WelcomeController
 		model.addAttribute("categoryAll", categoriesDAO.getAllCategories());
 		model.addAttribute("figurineAll", figurinesDAO.getAllFigurines());
 		Language language = languagesDAO.getLanguageByName(locale.toString());
-		System.out.println(language.getIdLanguage()+" "+locale.toString());
-		model.addAttribute("categoryTranslations", categoriesTranslationDAO.getTransalationCategoryById(language.getIdLanguage()));
+		model.addAttribute("categoryTranslations", translationCategoriesDAO.getTransalationCategoryById(language.getIdLanguage()));
 		return "integrated:welcome";
 	}
 	
@@ -65,7 +64,7 @@ public class WelcomeController
 		model.addAttribute("figurineAll", figurinesService.getFigurineByCategory(categoryId));	
 		model.addAttribute("categoryAll", categoriesDAO.getAllCategories());
 		Language language = languagesDAO.getLanguageByName(locale.toString());	
-		model.addAttribute("categoryTranslations", categoriesTranslationDAO.getTransalationCategoryById(language.getIdLanguage()));
+		model.addAttribute("categoryTranslations", translationCategoriesDAO.getTransalationCategoryById(language.getIdLanguage()));
 		return "integrated:welcome";
 	}
 	

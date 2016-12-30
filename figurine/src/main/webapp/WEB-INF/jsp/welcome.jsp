@@ -188,7 +188,7 @@
 								      			modelAttribute="description">  								      	
 											<div>
 												<p class="center-align" style="font-weight:bold">
-					        						<a href="<spring:url value='/description/figurine?idFigurine=${figurine.idFigurine}'/>">
+					        						<a href="<spring:url value='/description/figurine/${figurine.idFigurine}'/>">
 					        							${figurine.name}
 					        						</a>
 					        						
@@ -196,7 +196,7 @@
 				        					</div>
 				        					<div class="card-image">
 				        					
-				        						<a href="<spring:url value='/description/figurine?idFigurine=${figurine.idFigurine}'/>">
+				        						<a href="<spring:url value='/description/figurine/${figurine.idFigurine}'/>">
 				        							<img src="<spring:url value='/images/allFigurine/${figurine.image}'/>" alt="" height="250px"/>
 				        						</a>
 				        					
