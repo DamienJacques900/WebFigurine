@@ -53,10 +53,7 @@ public class FigurineController
 	@RequestMapping("/byCategory/{categoryId}")
 	public String byCategory(Model model, @PathVariable("categoryId") Integer categoryId, Locale locale)
 	{
-		if(categoryId>categoriesDAO.getAllCategories().size())
-			model.addAttribute("figurineAll", figurinesService.getFigurineByCategory(categoryId-categoriesDAO.getAllCategories().size()));		
-		else
-			model.addAttribute("figurineAll", figurinesService.getFigurineByCategory(categoryId));	
+		model.addAttribute("figurineAll", figurinesService.getFigurineByCategory(categoryId));	
 		model.addAttribute("categoryAll", categoriesDAO.getAllCategories());
 		Language language = languagesDAO.getLanguageByName(locale.toString());		
 		model.addAttribute("categoryTranslations", categoriesTranslationDAO.getTransalationCategoryById(language.getIdLanguage()));

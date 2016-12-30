@@ -80,7 +80,7 @@
 				
 			
 				<c:forEach items="${categoryTranslations}" var="category">
-					<a href="<spring:url value='/welcome/byCategory/${category.idTranslationCategory}'/>">
+					<a href="<spring:url value='/welcome/byCategory/${category.category}'/>">
 						<button class="btn waves-effect waves-light blue" style="width:100%;">
 							${category.name}
 						</button>
