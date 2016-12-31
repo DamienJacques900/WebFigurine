@@ -71,5 +71,21 @@ public class ConnectionController
 			return "redirect:/userConnection";
 		
 		return "integrated:connection";
+		
+		/*User user = userDAO.getUsersById(userName);
+		if(user == null)
+		{
+			errors.rejectValue("idUser", "errorIdUser");
+		}
+		if(userPassword != user.getPassword())
+		{
+			errors.rejectValue("password", "errorPassword");
+		}
+		if(errors.hasErrors())
+		{
+			return "integrated:connection";
+		}		
+	
+		return "redirect:/userConnection";*/
 	}
 }

@@ -14,9 +14,9 @@ login déjà existant ->	OK
 
 mdp crypté ->	
 
-libellé dynamique BD ->	
+libellé dynamique BD ->	OK
 
-gestion des promotions ->
+gestion des promotions -> 
 
 
 Langue :
@@ -30,7 +30,7 @@ A faire :
 
 Modifier lien figurine template! -> OK
 
-Modifier les controller et jsp pour les connexion réussi et inscription réussi 
+Modifier les controller et jsp pour les connexion réussi et inscription réussi -> OK 
 
 
 
@@ -41,4 +41,5 @@ Entity = pour mettre sur BD
 Model = permet de créer entity
 
 Quand on veut récupérer dans une page jsp des valeurs, attention de voir si c'est des arrayList ou des simple objet
-Si c'est des simples objets alors => ${objet.attribut} mais si c'est une arrayList alors => ${objet[i].name}!!!!
+Si c'est des simples objets alors => ${objet.attribut} mais si c'est une arrayList alors => ${objet[i].name} 
+(exception arrayList : pas pour les foreach)!!!!

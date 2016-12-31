@@ -113,7 +113,7 @@
 						 				</a>
 						 			</li>
 						 			<li>
-						 				Vous êtes connecté en tant que : <span style="color:blue;">${currentUserConnection.idUser} </span>
+						 				<spring:message code="connectedAs"/> : <span style="color:blue;">${currentUserConnection.idUser} </span>
 						 			</li>						 		
 						 		</c:otherwise>
 						 	</c:choose>

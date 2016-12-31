@@ -50,7 +50,7 @@
 				<div class="col s3">
 				
 				<c:forEach items="${categoryTranslations}" var="category">
-					<a href="<spring:url value='/figurine/byCategory/${category.idTranslationCategory}'/>">
+					<a href="<spring:url value='/figurine/byCategory/${category.category}'/>">
 						<button class="btn waves-effect waves-light blue" style="width:100%;">
 							${category.name}
 						</button>
@@ -135,7 +135,7 @@
 	        	
 	        	<div class="col s9">
 	        		<div class="row">
-	        			<c:forEach items="${figurineAll}" var="figurine">
+	        			<c:forEach items="${figurineAll}" var="figurine" varStatus="status">
 		        			<div class="col s4">
 		        				<div class="card">	
 		        					<form:form	id="descriptionID"
@@ -144,15 +144,15 @@
 								      			modelAttribute="description">  								      	
 											<div>
 												<p class="center-align" style="font-weight:bold">
-					        						<a href="description/figurine?idFigurine=${figurine.idFigurine}">
-					        							${figurine.name}				        						
+					        						<a href="<spring:url value='/description/figurine/${figurine.idFigurine}'/>">
+					        							${figurineTranslations[status.index].name}				        						
 					        						</a>
 					        					</p>
 				        					</div>
 				        					<div class="card-image">
 				        					
-				        						<a href="description/figurine?idFigurine=${figurine.idFigurine}">
-				        							<img src="images/allFigurine/${figurine.image}" alt="" height="250px">
+				        						<a href="<spring:url value='/description/figurine/${figurine.idFigurine}'/>">
+				        							<img src="<spring:url value='/images/allFigurine/${figurine.image}'/>" alt="" height="250px">
 				        						</a>
 				        					
 				        						<p class="center-align" style="font-weight:bold">

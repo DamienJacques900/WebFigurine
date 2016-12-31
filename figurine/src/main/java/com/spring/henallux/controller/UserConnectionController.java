@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.henallux.dataAccess.dao.CategoryDAO;
 import com.spring.henallux.dataAccess.dao.FigurineDAO;
+import com.spring.henallux.dataAccess.dao.LanguageDAO;
+import com.spring.henallux.dataAccess.dao.TranslationCategoryDAO;
+import com.spring.henallux.dataAccess.dao.TranslationFigurineDAO;
 import com.spring.henallux.model.Figurine;
+import com.spring.henallux.model.Language;
 import com.spring.henallux.service.FigurinesService;
 
 @Controller
@@ -26,32 +30,29 @@ public class UserConnectionController
 	private CategoryDAO categoriesDAO;
 	
 	@Autowired
+	private LanguageDAO languagesDAO;
+	
+	@Autowired
+	private TranslationCategoryDAO translationCategoriesDAO;
+	
+	@Autowired
 	private FigurinesService figurinesService;
 	
+	@Autowired
+	private TranslationFigurineDAO translationFigurineDAO;
+	
 	@RequestMapping(method=RequestMethod.GET)
-	public String home(Model model)
+	public String home(Model model, Locale locale)
 	{
 		//***************************COMMENTAIRE************************************
 		//Permet de récupérer toutes les figurines de la BD
 		//**************************************************************************
 		model.addAttribute("categoryAll", categoriesDAO.getAllCategories());
 		model.addAttribute("figurineAll", figurinesDAO.getAllFigurines());
-		model.addAttribute("description", new Figurine());
+		Language language = languagesDAO.getLanguageByName(locale.toString());
+		model.addAttribute("categoryTranslations", translationCategoriesDAO.getTransalationCategoryById(language.getIdLanguage()));
+		model.addAttribute("figurineTranslations", translationFigurineDAO.getAllTranslationFigurinesByLanguage(language.getIdLanguage()));
 		return "integrated:userConnection";
-	}
-	
-	//Bouton pour la AJOUTER PANIER===============================================
-	@RequestMapping(value="/addBasket", method=RequestMethod.POST)
-	public String getFormCommandData(Model model, @ModelAttribute(value="addBasket") Figurine figurineBasket)
-	{
-		return "redirect:/userCommand";
-	}
-	
-	//Bouton pour la AJOUTER PANIER===============================================
-	@RequestMapping(value="/description", method=RequestMethod.POST)
-	public String getDescriptionData(Model model, @ModelAttribute(value="description") Figurine figurineDescription)
-	{
-		return "redirect:/description";
 	}
 	
 	@RequestMapping("/byCategory/{categoryId}")
@@ -59,9 +60,11 @@ public class UserConnectionController
 	{
 		model.addAttribute("figurineAll", figurinesService.getFigurineByCategory(categoryId));
 		model.addAttribute("categoryAll", categoriesDAO.getAllCategories());
-		//Language currentLanguage = languagesDAO.getLanguageByLabel(locale.toString());
-		//model.addAttribute("categoryTranslations", categoryTranslationDAO.getCategoryTranslationsByLanguage(currentLanguage.getIdLanguage()));
+		Language language = languagesDAO.getLanguageByName(locale.toString());	
+		model.addAttribute("categoryTranslations", translationCategoriesDAO.getTransalationCategoryById(language.getIdLanguage()));
+		model.addAttribute("figurineTranslations", translationFigurineDAO.getTransalationFigurineByIdCatAndLanguage(categoryId,language.getIdLanguage()));
 		return "integrated:welcome";
 	}
+	
 		
 }
