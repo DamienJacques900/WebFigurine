@@ -23,13 +23,13 @@
 			        <div class="col s6">			       
 			          	<form:label path="idUser"><spring:message code="userName"/></form:label>
 			          	<form:input path="idUser" type="text" class="validate"/>
-			          	<form:errors path="idUser"></form:errors>
+			          	<form:errors path="idUser" style="color:red"></form:errors>
 			        </div>
 				
 					<div class="col s6">
 						<form:label path="password"><spring:message code="password"/></form:label>
 			          	<form:input path="password" type="password" class="validate"/>			       
-			          	<form:errors path="password"></form:errors>
+			          	<form:errors path="password" style="color:red"></form:errors>
 			        </div>
 
 			        <form:button class="btn waves-effect waves-light">

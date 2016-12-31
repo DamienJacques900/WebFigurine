@@ -90,6 +90,11 @@ label
 	color : #00c853;
 }
 
+errors
+{
+	color : red;
+}
+
 /*input:invalid {
   border: 1px solid red;
 }
