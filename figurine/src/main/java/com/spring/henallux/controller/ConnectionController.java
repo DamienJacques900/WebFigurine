@@ -68,11 +68,13 @@ public class ConnectionController
 		}	
 			
 		if(users.get(i).getIdUser().equals(userName) && users.get(i).getPassword().equals(userPassword))
+		{
+			userConnection.setConnected("ok");
 			return "redirect:/userConnection";
+		}
+			
 		
-		model.addAttribute("currentUserConnection", new UserConnection());
-		//Faire 
-		
+		userConnection.setConnected(null);	
 		return "integrated:connection";
 		
 		/*User user = userDAO.getUsersById(userName);

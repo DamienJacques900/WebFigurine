@@ -13,6 +13,15 @@ public class UserConnection
 	@Size(min=4, max=30)
 	private String password;
 	
+	private String connected;
+	
+	public String getConnected() {
+		return connected;
+	}
+
+	public void setConnected(String connected) {
+		this.connected = connected;
+	}
 
 	public String getIdUser() {
 		return idUser;

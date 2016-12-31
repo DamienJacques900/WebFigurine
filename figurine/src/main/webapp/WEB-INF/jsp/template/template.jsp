@@ -92,7 +92,7 @@
 						 		
 						 	
 						 	<c:choose>
-						 		<c:when test="${currentUserConnection.idUser eq null}">
+						 		<c:when test="${currentUserConnection.connected eq null}">
 						 			<li>
 							 			<a class="nav-btn waves-effect waves-light" href="<spring:url value='/connection'/>">
 						 					<spring:message code="connection"/>
