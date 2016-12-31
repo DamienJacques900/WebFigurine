@@ -18,6 +18,7 @@ libellé dynamique BD ->	OK
 
 gestion des promotions -> 
 
+Dans connectionController faire un nouvelle attribut et le mettre à null et test comme ça
 
 Langue :
 
