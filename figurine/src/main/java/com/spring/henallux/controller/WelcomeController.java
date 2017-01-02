@@ -21,6 +21,7 @@ import com.spring.henallux.dataAccess.dao.TranslationCategoryDAO;
 import com.spring.henallux.dataAccess.dao.TranslationFigurineDAO;
 import com.spring.henallux.model.Figurine;
 import com.spring.henallux.model.Language;
+import com.spring.henallux.model.User;
 import com.spring.henallux.service.FigurinesService;
 
 @Controller
@@ -74,7 +75,12 @@ public class WelcomeController
 		return "integrated:welcome";
 	}
 	
-	
+	//Bouton pour COMMANDER si connecté===============================================
+	@RequestMapping(value="/searchName", method=RequestMethod.POST)
+	public String getCommand(Model model, @ModelAttribute(value="figurineName") Figurine figurine)
+	{
+		return "integrated:userCommand";
+	}
 	
 	
 }

@@ -2,22 +2,7 @@
 <%@ include file="include/importTags.jsp" %>
 
 
-<html>
-
-	<!-- <head>
-		<title><spring:message code="reception"/></title>
-		<script type="text/javascript">
-		// Pause slider
-		$('.slider').slider('pause');
-		// Start slider
-		$('.slider').slider('start');
-		// Next slide
-		$('.slider').slider('next');
-		// Previous slide
-		$('.slider').slider('prev');
-		</script>	
-	</head>-->
-	
+<html>	
 	
 	<head>
 		<title><spring:message code="reception"/></title>
@@ -63,10 +48,13 @@
 			</h2>
 			<div class="row">
 				<div class="col s3">
-					<form:form>
+					<form:form id="searchByName"
+		      				   method="POST"
+		      				   action="/figurine/welcome/searchName"
+		      				   modelAttribute="figurineName">
 						<div class="input-field">
-							<input id="search" type="search" required>
-							<label for="search"><i class="material-icons">search</i></label>
+							<form:input path="name" id="search" type="search" required/>
+							<form:label path="name" for="search"><i class="material-icons">search</i></form:label>
 							<i class="material-icons">close</i>
 						</div>
 						<button class="waves-effect waves-light btn">

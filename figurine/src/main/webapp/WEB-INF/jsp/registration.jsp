@@ -63,13 +63,13 @@
 			        </div>
 			        
 			        <div class="col s6">
-			        	<form:label path="numTel" ><spring:message code="phone"/> * <spring:message code="optional"/>	</form:label>
+			        	<form:label path="numTel" ><spring:message code="phone"/> (<spring:message code="optional"/>)	</form:label>
 				        <form:input path="numTel" type="text" class="validate"/>	          
 				        <form:errors path="numTel"></form:errors>
 			        </div>
 			        
 			        <div class="col s6">
-			        	<form:label path="numFax" ><spring:message code="fax"/> * <spring:message code="optional"/></form:label>
+			        	<form:label path="numFax" ><spring:message code="fax"/>  (<spring:message code="optional"/>)</form:label>
 			          	<form:input path="numFax" type="text" class="validate"/>			          
 			          	<form:errors path="numFax" style="color:red"></form:errors>
 			        </div>
