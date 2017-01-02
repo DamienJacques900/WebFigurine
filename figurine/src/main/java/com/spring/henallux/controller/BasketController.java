@@ -65,6 +65,7 @@ public class BasketController
 		return "integrated:userCommand";
 	}
 	
+	//Bouton pour MODIFIER===============================================
 	@RequestMapping(value="/nbFigurineBasket", method = RequestMethod.POST)
 	public String modifiyCommandLine(Model model, @ModelAttribute(value="figurineBasket") CommandLine commandLine)
 	{			
@@ -73,6 +74,7 @@ public class BasketController
 		return "redirect:/basket";
 	}
 	
+	//Bouton pour SUPPRIMER===============================================
 	@RequestMapping(value="/deleteFigurineBasket", method = RequestMethod.POST)
 	public String deleteCommandLine(Model model, @ModelAttribute(value="deleteBasket") CommandLine commandLine)
 	{				
