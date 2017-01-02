@@ -137,10 +137,12 @@
 				 	</ul>				 					 
 				</div>
 			</nav>
+			
 		</header>
-		<div>
+
+		<main>
 			<tiles:insertAttribute name="main-content"/>
-		</div>
+		</main>
 		
 				
 		<footer class="page-footer red z-depth-5">
@@ -164,14 +166,14 @@
 				</div>
 			</div>
 			
-		<div class="footer-copyright">
-            <div class="container">
-	            2016 Copyright Henallux LouisDamien
-	            <a class="grey-text text-lighten-4 right" href="#!">
-	            	<spring:message code="moreLink"/>
-	            </a>
-            </div>
-          </div>
+			<div class="footer-copyright">
+            	<div class="container">
+	           	 2016 Copyright Henallux LouisDamien
+	            	<a class="grey-text text-lighten-4 right" href="#!">
+	            		<spring:message code="moreLink"/>
+	            	</a>
+            	</div>
+          	</div>
 		</footer>
 	</body>
 	

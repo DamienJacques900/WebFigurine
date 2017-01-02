@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import com.spring.henallux.dataAccess.dao.UserDAO;
 import com.spring.henallux.dataAccess.entity.UserEntity;
 import com.spring.henallux.model.*;
+import com.spring.henallux.service.CryptPassword;
 
 @Controller
 @RequestMapping(value="/registration")
@@ -46,6 +47,8 @@ public class RegistrationController
 	@RequestMapping(value="/registrationSend", method=RequestMethod.POST)
 	public String getFormRegistrationData(Model model,@Valid @ModelAttribute(value=CURRENTUSERREGISTRATION) User userRegistration,Errors errors)
 	{
+		CryptPassword crypt = new CryptPassword();
+		
 		if(!errors.hasErrors())
 		{
 			Boolean existing = false;
@@ -60,6 +63,8 @@ public class RegistrationController
 			}
 			if(!existing)
 			{
+				userRegistration.setPassword(crypt.cryptInMD5(userRegistration.getPassword()));
+				userRegistration.setConfirmationPassword(crypt.cryptInMD5(userRegistration.getPassword()));
 				userDAO.save(userRegistration);
 				return "redirect:/userRegistration";	
 			}	

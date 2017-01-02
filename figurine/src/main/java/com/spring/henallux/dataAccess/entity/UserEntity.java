@@ -70,7 +70,7 @@ public class UserEntity
 	
 	@Column(name="password")
 	@NotEmpty
-	@Size(min=4, max=30)
+	@Size(min=4, max=150)
 	@NotNull( message = "Veuillez saisir votre mot de passe" )
 	private String password;
 	

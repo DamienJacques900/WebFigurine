@@ -148,7 +148,7 @@
 					    <li>
 					      	<div class="collapsible-header">
 					      		<i>
-					      			<img src="<spring:url value='/images/poids.pn'/>g" height="20px">
+					      			<img src="<spring:url value='/images/poids.png'/>" height="20px">
 					      		</i>
 					      		<spring:message code="weight"/> (<spring:message code="gram"/>)</div>
 					      	<div class="collapsible-body">
@@ -197,7 +197,7 @@
 				        					<div class="card-image">
 				        					
 				        						<a href="<spring:url value='/description/figurine/${figurine.idFigurine}'/>">
-				        							<img src="<spring:url value='/images/allFigurine/${figurine.image}'/>" alt="" height="250px"/>
+				        							<img src="<spring:url value='/images/allFigurine/${figurine.image}'/>" alt="" height="250px" width="auto"/>
 				        						</a>
 				        					
 				        						<p class="center-align" style="font-weight:bold">

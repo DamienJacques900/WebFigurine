@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.spring.henallux.dataAccess.dao.UserDAO;
 import com.spring.henallux.model.User;
 import com.spring.henallux.model.UserConnection;
+import com.spring.henallux.service.CryptPassword;
 
 @Controller
 @RequestMapping(value="/connection")
@@ -53,10 +54,14 @@ public class ConnectionController
 		//***************************COMMENTAIRE************************************
 		//Récupération des valeurs entrer dans les inputs
 		//**************************************************************************
+		
+		CryptPassword crypt = new CryptPassword();
+		
+		
 		String userName = userConnection.getIdUser();
-		String userPassword = userConnection.getPassword();
+		String userPassword = crypt.cryptInMD5(userConnection.getPassword());
 			
-		ArrayList <User> users = userDAO.getUsers();
+		/*ArrayList <User> users = userDAO.getUsers();
 		int i = 0;
 			
 		//***************************COMMENTAIRE************************************
@@ -75,22 +80,21 @@ public class ConnectionController
 			
 		
 		userConnection.setConnected(null);	
-		return "integrated:connection";
+		return "integrated:connection";*/
 		
-		/*User user = userDAO.getUsersById(userName);
-		if(user == null)
+		User user = userDAO.getUsersById(userName);
+
+		if(user == null || !userPassword.equals(user.getPassword()))
 		{
-			errors.rejectValue("idUser", "errorIdUser");
-		}
-		if(userPassword != user.getPassword())
-		{
-			errors.rejectValue("password", "errorPassword");
+			errors.rejectValue("password", "errorConnection");
 		}
 		if(errors.hasErrors())
 		{
+			userConnection.setConnected(null);	
 			return "integrated:connection";
-		}		
-	
-		return "redirect:/userConnection";*/
+		}	
+			
+		userConnection.setConnected("ok");
+		return "redirect:/userConnection";
 	}
 }

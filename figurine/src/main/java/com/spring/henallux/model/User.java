@@ -59,12 +59,12 @@ public class User
 	private String country;
 	
 	@NotEmpty
-	@Size(min=4, max=30)
+	@Size(min=4, max=150)
 	@NotNull( message = "Veuillez saisir votre mot de passe" )
 	private String password;
 	
 	@NotEmpty
-	@Size(min=4, max=30)
+	@Size(min=4, max=150)
 	@NotNull( message = "Veuillez saisir votre mot de passe" )
 	private String confirmationPassword;
 	

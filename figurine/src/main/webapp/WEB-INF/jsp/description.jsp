@@ -19,7 +19,7 @@
 			
 			<div class="row">
 				<div class="col s6">
-					<img src="../../images/allFigurine/${figurine.image}" alt="">
+					<img src="../../images/allFigurine/${figurine.image}" alt="" style="height:400px; width:auto ">
 				</div>
 				<div class="col s6">
 					<div class="card-image">        
