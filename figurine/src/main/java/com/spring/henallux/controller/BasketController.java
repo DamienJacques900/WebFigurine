@@ -54,6 +54,7 @@ public class BasketController
 		model.addAttribute("figurineTranslations", translationFigurineDAO.getAllTranslationFigurinesByLanguage(language.getIdLanguage()));
 		model.addAttribute("totalValue",commandLinesService.getTotalValueCommandLine());
 		model.addAttribute("figurineBasket", new CommandLine());
+		model.addAttribute("deleteBasket", new CommandLine());
 		return "integrated:basket";
 	}
 	
@@ -65,10 +66,17 @@ public class BasketController
 	}
 	
 	@RequestMapping(value="/nbFigurineBasket", method = RequestMethod.POST)
-	public String getCommand(Model model, @ModelAttribute(value="figurineBasket") CommandLine commandLine)
+	public String modifiyCommandLine(Model model, @ModelAttribute(value="figurineBasket") CommandLine commandLine)
 	{			
 		commandLine.setNbFigurine(commandLine.getNbFigurine());		
 		commandLineDAO.save(commandLine);
+		return "redirect:/basket";
+	}
+	
+	@RequestMapping(value="/deleteFigurineBasket", method = RequestMethod.POST)
+	public String deleteCommandLine(Model model, @ModelAttribute(value="deleteBasket") CommandLine commandLine)
+	{				
+		commandLineDAO.delete(commandLine);
 		return "redirect:/basket";
 	}
 	

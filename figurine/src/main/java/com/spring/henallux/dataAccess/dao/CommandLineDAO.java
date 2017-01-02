@@ -37,19 +37,12 @@ public class CommandLineDAO
 		return providerConverter.commandLineEntitytoCommandLineModel(commandLineEntity);
 	}
 	
-	
-	public void deleteCommandLine(Integer idCommandLine) 
+	public void delete(CommandLine commandLine)
 	{
-	    String query = "delete FROM figurinebd.commandline WHERE idCommandLine="+idCommandLine;
-	   /* Connection con = null;
-	    PreparedStatement ps = null;
-
-	        con = dataSource.getConnection();
-	        ps = con.prepareStatement(query);
-	        ps.setString(1, id);
-	        int out = ps.executeUpdate();*/
-
+		CommandLineEntity commandLineEntity = providerConverter.commandLineModeltoCommandLineEntity(commandLine);
+		commandLineRepository.delete(commandLineEntity);
 	}
+	
 	
 	//***************************COMMENTAIRE************************************
 	//Permet de récupérer les données dans la BD

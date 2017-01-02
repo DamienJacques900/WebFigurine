@@ -19,7 +19,7 @@
 		
 	</head>
 	
-	<body style="background-image:url('<spring:url value='/images/fondsite2.jpeg'/>')"></body>
+	<body ></body>
 	
 		<!-- DropDown figurine structure -->
 		<ul id="dropdownFigurine" class="dropdown-content">

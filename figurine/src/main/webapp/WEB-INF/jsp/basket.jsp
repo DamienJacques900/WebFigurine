@@ -28,32 +28,40 @@
 									     <p><spring:message code="brand"/> : ${figurineAllCommand[status.index].brand} <br>
 									      	<spring:message code="description"/> : ${figurine.description}
 									     </p>
-									     <br>
-									     <br>
-									     <br>
+									     
+									     
 									     <p class="secondary-content">
-									     	<spring:message code="prize"/> : ${commandLine.prizeCommand} <spring:message code="euro"/><br>
+									     	<spring:message code="prize"/> : ${commandLine.prizeCommand*commandLine.nbFigurine} <spring:message code="euro"/><br>
 									     	
 							    			<br>
-											<spring:message code="nbFigurine"/>
+											
 											
 											<form:form id="newCommandLine"
 													   method="POST"
-													   action="/figurine/description/nbFigurineBasket"
+													   action="/figurine/basket/nbFigurineBasket"
 													   modelAttribute="figurineBasket">
-											<form:input path="nbFigurine" id="user_lic" type="number" min="1" max="100" step="1" value ="${commandLine.nbFigurine}"/>
-									     	<form:hidden path="prizeCommand" value="${commandLine.prizeCommand}"/>
-									     	<form:hidden path="figurine" value="${commandLine.figurine}"/>
-									     	<form:hidden path="command" value="${commandLine.command}"/>
-									     	<form:hidden path="idCommandeLine" value="${commandLine.idCommandeLine}"/>
-									     	
-									     	
-									     	<button class="waves-effect waves-light btn">
-							    				<spring:message code="delete"/>
-							    			</button>	
-							    			<form:button class="waves-effect waves-light btn">
-							    				<spring:message code="modify"/>
-							    			</form:button>
+												<p><spring:message code="nbFigurine"/></p>
+												<form:input path="nbFigurine" id="user_lic" type="number" min="1" max="100" step="1" value ="${commandLine.nbFigurine}"/>
+										     	<form:hidden path="prizeCommand" value="${commandLine.prizeCommand}"/>
+										     	<form:hidden path="figurine" value="${commandLine.figurine}"/>
+										     	<form:hidden path="command" value="${commandLine.command}"/>
+										     	<form:hidden path="idCommandeLine" value="${commandLine.idCommandeLine}"/>
+										     										     	
+										     	
+								    			<form:button class="waves-effect waves-light btn">
+								    				<spring:message code="modify"/>
+								    			</form:button>
+							    			</form:form>
+							    			<form:form id="newCommandLine"
+													   method="POST"
+													   action="/figurine/basket/deleteFigurineBasket"
+													   modelAttribute="deleteBasket">
+													   
+												<form:hidden path="idCommandeLine" value="${commandLine.idCommandeLine}"/>
+													  
+								    			<form:button class="waves-effect waves-light btn">
+								    				<spring:message code="delete"/>
+								    			</form:button>
 							    			</form:form>
 									     	
 									     </p>
