@@ -53,7 +53,7 @@ create table User
 	city varchar(50) not null,
 	postalCode varchar(50) not null,
 	country varchar(50) not null,
-	password varchar(50) not null,
+	password varchar(150) not null,
 
 	constraint pk_User primary key(iduser)
 );

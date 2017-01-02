@@ -12,7 +12,7 @@ formulaire données facultatives ->  OK
 
 login déjà existant ->	OK
 
-mdp crypté ->	
+mdp crypté ->	OK
 
 libellé dynamique BD ->	OK
 
