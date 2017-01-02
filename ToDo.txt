@@ -4,7 +4,9 @@ catégorie dynamique ->	Ok
 
 détails des figurines -> OK
 
-panier (pouvoir supprimer et modifier le nombre) ->	
+panier (pouvoir supprimer et modifier le nombre) ->	OK
+
+panier ( pouvoir commander et faire en fonction des l'utilisateur)
 
 avertir connexion bannière ->	OK
 
@@ -43,3 +45,5 @@ Model = permet de créer entity
 Quand on veut récupérer dans une page jsp des valeurs, attention de voir si c'est des arrayList ou des simple objet
 Si c'est des simples objets alors => ${objet.attribut} mais si c'est une arrayList alors => ${objet[i].name} 
 (exception arrayList : pas pour les foreach)!!!!
+
+A mettre dans le body du template pour avoir un fond : style="background-image:url('<spring:url value='/images/fond.jpg'/>')"
