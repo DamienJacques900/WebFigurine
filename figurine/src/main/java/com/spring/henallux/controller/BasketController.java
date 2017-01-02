@@ -58,11 +58,18 @@ public class BasketController
 		return "integrated:basket";
 	}
 	
-	//Bouton pour la COMMANDE===============================================
+	//Bouton pour COMMANDER si connecté===============================================
 	@RequestMapping(value="/command", method=RequestMethod.POST)
-	public String getFormCommandData(Model model, @ModelAttribute(value="command") User userCommand)
+	public String getCommand(Model model, @ModelAttribute(value="command") User userCommand)
 	{
 		return "integrated:userCommand";
+	}
+	
+	//Bouton pour COMMANDER si pas connecté===============================================
+	@RequestMapping(value="/commandNotPossible", method=RequestMethod.POST)
+	public String getCommandUserRequired(Model model, @ModelAttribute(value="command") User userCommand)
+	{
+		return "integrated:userCommandRequired";
 	}
 	
 	//Bouton pour MODIFIER===============================================

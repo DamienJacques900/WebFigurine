@@ -109,14 +109,32 @@
 		  					</div>
 		  				</ul>		  				
 		  			</div>
-		  			<form:form 	id="commandUser"
-		      					method="POST"
-		      					action="/figurine/basket/command"
-		      					modelAttribute="command">
-			  			<form:button class="btn waves-effect waves-light" type="submit" name="action">
-					        <spring:message code="commandButton"/>
-			  			</form:button>
-		  			</form:form>
+		  			<c:choose>
+		  				<c:when test="${currentUserConnection.connected eq null}">
+				  			<form:form 	id="commandUser"
+				      					method="POST"
+				      					action="/figurine/basket/commandNotPossible"
+				      					modelAttribute="command">
+					  			
+							  	<form:button class="btn waves-effect waves-light" type="submit" name="action" disabled="${commandLines[0].figurine eq null}">
+									<spring:message code="commandButton"/>
+							  	</form:button>
+						  								  			
+				  			</form:form>
+			  			</c:when>
+			  			<c:otherwise>
+			  				<form:form 	id="commandUser"
+				      					method="POST"
+				      					action="/figurine/basket/command"
+				      					modelAttribute="command">
+				      					
+				      			<form:button class="btn waves-effect waves-light" type="submit" name="action" disabled="${commandLines[0].figurine eq null}">
+									<spring:message code="commandButton"/>									
+							  	</form:button>
+							  	
+				  			</form:form>
+			  			</c:otherwise>
+		  			</c:choose>
 	  			</div>
   			</div>
 		</div>

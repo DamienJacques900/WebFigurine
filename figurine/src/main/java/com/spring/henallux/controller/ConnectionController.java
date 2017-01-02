@@ -50,37 +50,12 @@ public class ConnectionController
 	//Bouton pour la CONNEXION=====================================
 	@RequestMapping(value="/connectionSend", method=RequestMethod.POST)
 	public String getFormConnectionData(Model model,@Valid @ModelAttribute(value=CURRENTUSERCONNECTION) UserConnection userConnection, final BindingResult errors)
-	{	
-		//***************************COMMENTAIRE************************************
-		//Récupération des valeurs entrer dans les inputs
-		//**************************************************************************
-		
+	{			
 		CryptPassword crypt = new CryptPassword();
 		
 		
 		String userName = userConnection.getIdUser();
 		String userPassword = crypt.cryptInMD5(userConnection.getPassword());
-			
-		/*ArrayList <User> users = userDAO.getUsers();
-		int i = 0;
-			
-		//***************************COMMENTAIRE************************************
-		//Recherche tant que on a pas trouver le nom d'utilsateur et qu'on a pas atteint la fin de l'arrayList
-		//**************************************************************************
-		while(i < users.size()-1 && users.get(i).getIdUser().equals(userName)==false)
-		{
-			i++;
-		}	
-			
-		if(users.get(i).getIdUser().equals(userName) && users.get(i).getPassword().equals(userPassword))
-		{
-			userConnection.setConnected("ok");
-			return "redirect:/userConnection";
-		}
-			
-		
-		userConnection.setConnected(null);	
-		return "integrated:connection";*/
 		
 		User user = userDAO.getUsersById(userName);
 
