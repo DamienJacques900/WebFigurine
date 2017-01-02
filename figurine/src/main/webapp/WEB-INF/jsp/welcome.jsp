@@ -57,9 +57,9 @@
 							<form:label path="name" for="search"><i class="material-icons">search</i></form:label>
 							<i class="material-icons">close</i>
 						</div>
-						<button class="waves-effect waves-light btn">
+						<form:button class="waves-effect waves-light btn">
 					      	<spring:message code="searchButton"/>
-					    </button>	
+					    </form:button>	
 					</form:form>
 				</div>
 			</div>
