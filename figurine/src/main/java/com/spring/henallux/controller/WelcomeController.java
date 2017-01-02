@@ -1,5 +1,6 @@
 package com.spring.henallux.controller;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 //import java.util.Locale;
@@ -21,6 +22,7 @@ import com.spring.henallux.dataAccess.dao.TranslationCategoryDAO;
 import com.spring.henallux.dataAccess.dao.TranslationFigurineDAO;
 import com.spring.henallux.model.Figurine;
 import com.spring.henallux.model.Language;
+import com.spring.henallux.model.TranslationFigurine;
 import com.spring.henallux.model.User;
 import com.spring.henallux.service.FigurinesService;
 
@@ -61,6 +63,7 @@ public class WelcomeController
 		Language language = languagesDAO.getLanguageByName(locale.toString());
 		model.addAttribute("categoryTranslations", translationCategoriesDAO.getTransalationCategoryById(language.getIdLanguage()));
 		model.addAttribute("figurineTranslations", translationFigurineDAO.getAllTranslationFigurinesByLanguage(language.getIdLanguage()));
+		model.addAttribute("figurineName", new Figurine());
 		return "integrated:welcome";
 	}
 	
@@ -72,13 +75,20 @@ public class WelcomeController
 		Language language = languagesDAO.getLanguageByName(locale.toString());	
 		model.addAttribute("categoryTranslations", translationCategoriesDAO.getTransalationCategoryById(language.getIdLanguage()));
 		model.addAttribute("figurineTranslations", translationFigurineDAO.getTransalationFigurineByIdCatAndLanguage(categoryId,language.getIdLanguage()));
+		model.addAttribute("figurineName", new Figurine());
 		return "integrated:welcome";
 	}
 	
-	//Bouton pour COMMANDER si connecté===============================================
+	//Bouton pour RECHERCHER par nom===============================================
 	@RequestMapping(value="/searchName", method=RequestMethod.POST)
-	public String getCommand(Model model, @ModelAttribute(value="figurineName") Figurine figurine)
+	public String getCommand(Model model, @ModelAttribute(value="figurineName") Figurine figurine, Locale locale)
 	{
+		Language language = languagesDAO.getLanguageByName(locale.toString());
+		ArrayList<TranslationFigurine> figurines = translationFigurineDAO.getAllTranslationFigurinesByLanguage(language.getIdLanguage());
+		for(int i = 0; i < figurines.size();i++)
+		{
+			System.out.println(figurines.get(i).getName());
+		}
 		return "integrated:userCommand";
 	}
 	

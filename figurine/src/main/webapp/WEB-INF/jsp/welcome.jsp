@@ -53,7 +53,7 @@
 		      				   action="/figurine/welcome/searchName"
 		      				   modelAttribute="figurineName">
 						<div class="input-field">
-							<form:input path="name" id="search" type="search" required/>
+							<form:input path="name" id="search" type="search"/>
 							<form:label path="name" for="search"><i class="material-icons">search</i></form:label>
 							<i class="material-icons">close</i>
 						</div>
