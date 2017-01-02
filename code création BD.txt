@@ -1,7 +1,7 @@
 
 create table Promotion
 (
-	idPromotion int not null,
+	idPromotion int not null AUTO_INCREMENT,
 	amountPourc float not null check (amountPourc > 0),
 	dateBegin date not null,
 	dateEnd date not null,
@@ -12,7 +12,7 @@ create table Promotion
 
 create table Category
 (
-	idCategory int not null,
+	idCategory int not null AUTO_INCREMENT,
 	name varchar(50) not null,
 	dateOut date not null,
 	producer varchar(50) not null,
@@ -22,7 +22,7 @@ create table Category
 
 create table Figurine
 (
-	idFigurine int not null,
+	idFigurine int not null AUTO_INCREMENT,
 	name varchar(50) not null,
 	description varchar(300) not null,
 	size float not null,
@@ -61,7 +61,7 @@ create table User
 
 create table Command
 (
-	idCommand int not null,
+	idCommand int not null AUTO_INCREMENT,
 	dateCommand date not null,
 	user varchar(50) not null,
 
@@ -72,7 +72,7 @@ create table Command
 
 create table CommandLine
 (
-	idCommandLine int not null,
+	idCommandLine int not null AUTO_INCREMENT,
 	nbFigurine int not null,
 	prizeCommand float not null,
 	command int not null,
@@ -88,7 +88,7 @@ create table CommandLine
 
 create table Language
 (
-	idLanguage int not null,
+	idLanguage int not null AUTO_INCREMENT,
 	name varchar(50) not null,
 
 	constraint pk_Language primary key(idLanguage)
@@ -97,27 +97,27 @@ create table Language
 
 create table TranslationFigurine
 (
-	idTranslationFigurine int not null,
+	idTranslationFigurine int not null AUTO_INCREMENT,
 	name varchar(50) not null,
 	description varchar(300) not null,
 	language int not null,
 	figurine int not null,
 	category int not null,
 	
-	constraint fk_FigurineTranslation foreign key(figurine) references Figurine(idFigurine),
-	constraint fk_FigurineTranslation foreign keycategory references Figurine(idCategory),
+	constraint fk_FigurineTranslationFigurine foreign key(figurine) references Figurine(idFigurine),
+	constraint fk_CategoryTranslationFigurine foreign key(category) references Category(idCategory),
 	constraint fk_LanguageFigurine foreign key(language) references Language(idLanguage),
 	constraint pk_TranslationFigurine primary key(idTranslationFigurine )
 );
 
 create table TranslationCategory
 (
-	idTranslationCateogry int not null,
+	idTranslationCateogry int not null AUTO_INCREMENT,
 	name varchar(50) not null,
 	language int not null,
 	category int not null,
 
-	constraint fk_CategoryTranslation foreign key(category) references Category(idCategory),
+	constraint fk_CategoryTranslationCategory foreign key(category) references Category(idCategory),
 	constraint fk_LanguageCategory foreign key(language) references Language(idLanguage),
 	constraint pk_TranslationCategory primary key(idTranslationCateogry )
 );
@@ -208,10 +208,10 @@ values(18,"Sora","Héro du meilleur jeu du monde, Kingdhom Hearts",50.35,3700.0,"
 
 
 insert into User
-values("damien","Jacques","Damien","damien@gmail.com","080/ 00 00 00","078/ 00 00 00","Eug","Namur","5000","Belgique","1234");
+values("damien","Jacques","Damien","damien@gmail.com","080/ 00 00 00","078/ 00 00 00","Eug","Namur","5000","Belgique","81dc9bdb52d04dc20036dbd8313ed055");
 
 insert into User
-values("louis","Van DenDoren","Louis","louis@gmail.com","070/ 00 00 00","090/ 00 00 00","Tre","Charleroi","7000","Belgique","5678");
+values("louis","Van DenDoren","Louis","louis@gmail.com","070/ 00 00 00","090/ 00 00 00","Treeee","Charleroi","7000","Belgique","674f3c2c1a8a6f90461e8a66fb5550ba");
 
 
 

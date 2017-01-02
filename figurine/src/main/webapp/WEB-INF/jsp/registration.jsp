@@ -19,7 +19,7 @@
 		      	<form:form 	id="registrationForm"
 		      				method="POST"
 		      				action="/figurine/registration/registrationSend"
-		      				modelAttribute="currentUserRegistration">
+		      				modelAttribute="userRegistration">
 			      	<div class="col s6">
 			      		<form:label path="idUser" ><spring:message code="userName"/></form:label>
 			          	<form:input path="idUser" type="text" class="validate"/>			         

@@ -18,13 +18,12 @@ libellé dynamique BD ->	OK
 
 gestion des promotions -> 
 
-Dans connectionController faire un nouvelle attribut et le mettre à null et test comme ça
 
 Langue :
 
 quand inscription erreur de modification langues ->	
 
-mots passe différents message d'erreur dans les deux langues ->	
+mots passe différents message d'erreur dans les deux langues ->	OK
 
 
 A faire :

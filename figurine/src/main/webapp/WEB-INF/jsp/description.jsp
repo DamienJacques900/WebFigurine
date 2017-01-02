@@ -19,21 +19,41 @@
 			
 			<div class="row">
 				<div class="col s6">
-					<img src="../../images/allFigurine/${figurine.image}" alt="" style="height:400px; width:auto ">
+					<img src="<spring:url value='/images/allFigurine/${figurine.image}'/>" alt="" style="height:400px; width:auto ">
 				</div>
 				<div class="col s6">
-					<div class="card-image">        
-						<p><spring:message code="name"/> :${figurineTranslations.name} </p>						
-						<p><spring:message code="description"/> :${figurineTranslations.description} </p>	
-						<p><spring:message code="size"/> : ${figurine.size} cm</p>	
-						<p><spring:message code="weight"/> : ${figurine.weight} g</p>	
-						<p><spring:message code="brand"/> : ${figurine.brand}</p>
-						<p><spring:message code="prize"/> : ${figurine.cost} euros</p>	
-					</div>
+					 
+							   
+						<div class="card-image">        
+							<p><spring:message code="name"/> :${figurineTranslations.name} </p>						
+							<p><spring:message code="description"/> :${figurineTranslations.description} </p>	
+							<p><spring:message code="size"/> : ${figurine.size} cm</p>	
+							<p><spring:message code="weight"/> : ${figurine.weight} g</p>	
+							<p><spring:message code="brand"/> : ${figurine.brand}</p>
+							<p><spring:message code="prize"/> : ${figurine.cost} euros</p>	
+						</div>
+						
+						
+        
+				
+					<form:form id="newCommandLine"
+							   method="POST"
+							   action="/figurine/description/figurineBasket"
+							   modelAttribute="figurineCommand">
+							
+						<form:label path = "nbFigurine" for="user_lic"><spring:message code="nbFigurine"/> </form:label>
+						<form:input path = "nbFigurine" id="user_lic" type="number" min="1" max="100" step="1" value ="1"/>	
+						   
+						<form:hidden path="figurine" value="${figurine.idFigurine}"/>
+						
+						<form:hidden path="prizeCommand" value="${figurine.cost}"/>
+						
+						<form:button class="waves-effect waves-light btn">
+							<spring:message code="addBasketButton"/>
+						</form:button>
+					</form:form>
 					
-					<button class="waves-effect waves-light btn">
-						<spring:message code="addBasketButton"/>
-					</button>
+					
 				</div>
 			</div>
 		</div>

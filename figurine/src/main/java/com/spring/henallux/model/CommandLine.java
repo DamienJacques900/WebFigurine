@@ -30,7 +30,7 @@ public class CommandLine
 	@NotNull
 	@Min(0)
 	@Max(1000)
-	private CommandEntity command;
+	private int command;
 	
 	@NotNull
 	@Min(0)
@@ -83,12 +83,12 @@ public class CommandLine
 		this.figurine = figurine;
 	}
 
-	public CommandEntity getCommand() 
+	public int getCommand() 
 	{
 		return command;
 	}
 
-	public void setCommand(CommandEntity command) 
+	public void setCommand(int command) 
 	{
 		this.command = command;
 	}

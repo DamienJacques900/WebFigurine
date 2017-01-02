@@ -27,8 +27,8 @@ public class CommandEntity
 	@ManyToOne
 	private UserEntity userEnt;
 	
-	@OneToMany(mappedBy="command", fetch = FetchType.LAZY)
-	private Collection<CommandLineEntity> commandLines;
+	//@OneToMany(mappedBy="command", fetch = FetchType.LAZY)
+	//private Collection<CommandLineEntity> commandLines;
 
 
 

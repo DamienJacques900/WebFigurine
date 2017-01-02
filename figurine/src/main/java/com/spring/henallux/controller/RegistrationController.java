@@ -1,6 +1,8 @@
 package com.spring.henallux.controller;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.validation.Valid;
 
@@ -21,57 +23,55 @@ import com.spring.henallux.service.CryptPassword;
 //***************************COMMENTAIRE************************************
 //Permet d'avoir un attribut session et donc de conserver les valeur que l'on mettre à l'intérieur
 //**************************************************************************
-@SessionAttributes(RegistrationController.CURRENTUSERREGISTRATION)
 public class RegistrationController 
 {
 	@Autowired
 	private UserDAO userDAO;
 	
-	protected static final String CURRENTUSERREGISTRATION = "currentUserRegistration";
-	
-	@ModelAttribute(CURRENTUSERREGISTRATION)
-	public User user()
-	{
-		return new User();
-	}
-	
 	@RequestMapping(method=RequestMethod.GET)
 	public String home(Model model)
 	{
-		model.addAttribute("registration", new User());
+		model.addAttribute("userRegistration", new User());
 		return "integrated:registration";
 	}
 
-	
 	//Bouton pour l'INSCRIPTION====================================
 	@RequestMapping(value="/registrationSend", method=RequestMethod.POST)
-	public String getFormRegistrationData(Model model,@Valid @ModelAttribute(value=CURRENTUSERREGISTRATION) User userRegistration,Errors errors)
+	public String getFormRegistrationData(Model model,@Valid @ModelAttribute(value="userRegistration") User userRegistration,Errors errors)
 	{
 		CryptPassword crypt = new CryptPassword();
+			
+		if(!userRegistration.getPassword().equals(userRegistration.getConfirmationPassword()))
+		{
+			errors.rejectValue("confirmationPassword", "errorNotSamePassword");
+		}
 		
+		String regex = "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)";
+		 
+		Pattern pattern = Pattern.compile(regex);
+		
+		Matcher matcher = pattern.matcher(userRegistration.getEmail());
+		
+		if(!matcher.matches())
+		{
+			errors.rejectValue("email", "errorMail");
+		}								
+			
 		if(!errors.hasErrors())
 		{
-			Boolean existing = false;
-			ArrayList<User> users = userDAO.getUsers();
-			for(int i = 0; i < users.size();i++)
+			User user = userDAO.getUsersById(userRegistration.getIdUser());
+			if(user != null && user.getIdUser().equals(userRegistration.getIdUser()))
 			{
-				if(users.get(i).getIdUser().equals(userRegistration.getIdUser()))
-				{
-					existing = true;
-					break;
-				}					
-			}
-			if(!existing)
+				errors.rejectValue("idUser", "errorUserIdAlreadyExist");
+			}	
+			else
 			{
 				userRegistration.setPassword(crypt.cryptInMD5(userRegistration.getPassword()));
-				userRegistration.setConfirmationPassword(crypt.cryptInMD5(userRegistration.getPassword()));
-				userDAO.save(userRegistration);
-				return "redirect:/userRegistration";	
-			}	
-						
-			return "integrated:registration";
-		}	
+				userDAO.save(userRegistration);	
+				return "redirect:/userRegistration";
+			}
+		}		
 		
-		return "integrated:registration";
+		return "integrated:registration";	
 	}
 }

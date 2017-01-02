@@ -38,14 +38,12 @@ public class UserDAO
 	
 	public User getUsersById(String idUser)
 	{
-		List<UserEntity> userEntities = userRepository.findAll();
-		User user = new User();
-		for (UserEntity entity : userEntities)
-		{
-			if(entity.getIdUser().equals(idUser))
-				user = providerConverter.userEntitytoUserModel(entity);
-		}
-		return user;
+		UserEntity userEntities = userRepository.findOne(idUser);
+	
+		if(userEntities == null)
+			return null;
+		
+		return  providerConverter.userEntitytoUserModel(userEntities);
 	}
 	
 	//***************************COMMENTAIRE************************************

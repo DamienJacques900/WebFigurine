@@ -30,8 +30,7 @@ public class User
 	private String lastName;
 	
 	@NotEmpty
-	@NotNull( message = "Veuillez saisir une adresse email" )
-	@Pattern( regexp = "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)", message = "Merci de saisir une adresse mail valide" )
+	@NotNull( message = "Veuillez saisir une adresse email" )	
 	private String email;
 	
 	private String numTel;

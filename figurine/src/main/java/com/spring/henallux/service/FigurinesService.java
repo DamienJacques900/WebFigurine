@@ -183,6 +183,22 @@ public class FigurinesService
 		return figurinesCategory;
 	}
 	
+	public ArrayList<Figurine> getFigurineByCommand(int idFigurine)
+	{
+		figurinesCategory = new ArrayList<Figurine>();
+		ArrayList <Figurine> figurines = figurineDAO.getAllFigurines();
+		
+		for(int i=0;i<figurines.size();i++)
+		{		
+			if(figurines.get(i).getIdFigurine() ==idFigurine)
+			{
+				figurinesCategory.add(figurines.get(i));
+			}						
+		}
+		return figurinesCategory;
+	}
+	
+	
 	
 
 	public void setFigurinesMovie(ArrayList<Figurine> figurines) 

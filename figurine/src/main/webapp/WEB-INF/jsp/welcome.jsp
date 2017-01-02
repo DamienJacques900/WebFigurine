@@ -63,7 +63,7 @@
 			</h2>
 			<div class="row">
 				<div class="col s3">
-					<form>
+					<form:form>
 						<div class="input-field">
 							<input id="search" type="search" required>
 							<label for="search"><i class="material-icons">search</i></label>
@@ -72,7 +72,7 @@
 						<button class="waves-effect waves-light btn">
 					      	<spring:message code="searchButton"/>
 					    </button>	
-					</form>
+					</form:form>
 				</div>
 			</div>
 			<div class="row">

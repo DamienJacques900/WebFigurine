@@ -54,6 +54,11 @@ public class Figurine
 	
 	private int promotion; //à changer
 
+	
+	
+	
+	
+	
 	public int getPromotion() 
 	{
 		return promotion;
