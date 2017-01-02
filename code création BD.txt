@@ -1,4 +1,3 @@
-
 create table Promotion
 (
 	idPromotion int not null AUTO_INCREMENT,
