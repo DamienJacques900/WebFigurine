@@ -29,7 +29,7 @@ import com.spring.henallux.service.FigurinesService;
 
 @Controller
 @RequestMapping(value="/description")
-@SessionAttributes(DescriptionController.COMMANDLINES)
+@SessionAttributes({DescriptionController.COMMANDLINES,"currentUser"})
 public class DescriptionController 
 {	
 	@Autowired
