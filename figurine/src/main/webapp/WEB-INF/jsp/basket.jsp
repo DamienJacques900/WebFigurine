@@ -136,6 +136,12 @@
 			  			</c:otherwise>
 		  			</c:choose>
 	  			</div>
+	  			<div>
+	  				<h1>TEST :</h1>
+	  				<c:forEach items="${commandLinesWithFigurines}" var="figurine">
+	  					<p>NOM : ${commandLinesWithFigurines.figurine.name}</p>
+	  				</c:forEach>
+	  			</div>
   			</div>
 		</div>
 	</body>
