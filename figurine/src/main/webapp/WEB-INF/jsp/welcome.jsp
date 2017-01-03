@@ -7,19 +7,7 @@
 	<head>
 		<title><spring:message code="reception"/></title>
 		<script type="text/javascript">
-		var slider = document.getElementById('test5');
-		  noUiSlider.create(slider, {
-		   start: [1, 10],
-		   connect: true,
-		   step: 1,
-		   range: {
-		     'min': 1,
-		     'max': 10
-		   },
-		   format: wNumb({
-		     decimals: 0
-		   })
-		  });
+
 		</script>
 	</head>
 	
@@ -176,7 +164,7 @@
 								      			modelAttribute="description">  								      	
 											<div>
 												<p class="center-align" style="font-weight:bold">
-					        						<a href="<spring:url value='/description/figurine/${figurine.idFigurine}'/>">
+					        						<a href="<spring:url value='/description/figurine/${figurineTranslations[status.index].figurine}'/>">
 					        							${figurineTranslations[status.index].name}
 					        						</a>
 					        						
@@ -184,7 +172,7 @@
 				        					</div>
 				        					<div class="card-image">
 				        					
-				        						<a href="<spring:url value='/description/figurine/${figurine.idFigurine}'/>">
+				        						<a href="<spring:url value='/description/figurine/${figurineTranslations[status.index].figurine}'/>">
 				        							<img src="<spring:url value='/images/allFigurine/${figurine.image}'/>" alt="" height="250px" width="auto"/>
 				        						</a>
 				        					

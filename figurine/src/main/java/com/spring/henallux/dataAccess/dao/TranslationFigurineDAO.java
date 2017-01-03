@@ -21,8 +21,6 @@ public class TranslationFigurineDAO
 	@Autowired
 	private ProviderConverter providerConverter;
 	
-	@Autowired
-	private TranslationFigurineDAO translationFigurineDAO;
 	
 	//***************************COMMENTAIRE************************************
 	//Permet de sauvergarder les données dans la BD
@@ -113,20 +111,21 @@ public class TranslationFigurineDAO
 		return translationFigurines;
 	}
 	
-	public ArrayList<TranslationFigurine> getFigurinesByName(String nameFigurine)
+	public ArrayList<TranslationFigurine> getFigurinesByNameAndLanguage(String nameFigurine, Integer language)
 	{
 		ArrayList<TranslationFigurine>figurinesSearch = new ArrayList<TranslationFigurine>();
-		ArrayList <TranslationFigurine> figurines = translationFigurineDAO.getAllTranslationFigurines();
+		List <TranslationFigurineEntity> translationFigurineEntities = translationFigurineRepository.findAll();
 		
-		for(int i=0;i<figurines.size();i++)
-		{		
-			if(figurines.get(i).getName().contains(nameFigurine))
+		for (TranslationFigurineEntity entity : translationFigurineEntities)
+		{
+			if(entity.getLanguage() == language && entity.getName().toLowerCase().contains(nameFigurine))
 			{
-				figurinesSearch.add(figurines.get(i));
-			}	
+				TranslationFigurine translationFigurine = providerConverter.translationFigurineEntitytoTranslationFigurineModel(entity);
+				figurinesSearch.add(translationFigurine);
+			}
 		}
 
-		return figurinesSearch;
+		return figurinesSearch;	
 	}
 	
 }
