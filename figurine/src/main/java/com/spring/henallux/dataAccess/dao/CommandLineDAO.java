@@ -59,6 +59,25 @@ public class CommandLineDAO
 		return commandLines;
 	}
 	
+	
+	public ArrayList<CommandLine> getAllCommandLinesForCurrentUser(Integer idCommand)
+	{
+		List <CommandLineEntity> commandLineEntities = commandLineRepository.findAll();
+		ArrayList <CommandLine> commandLines = new ArrayList<>();
+		for (CommandLineEntity entity : commandLineEntities)
+		{
+			if(entity.getCommand() == idCommand)
+			{
+				CommandLine commandLine = providerConverter.commandLineEntitytoCommandLineModel(entity);
+				commandLines.add(commandLine);
+			}			
+		}
+		return commandLines;
+	}
+	
+	
+	
+	
 	public ArrayList<CommandLine> findCommandForCommandLine()
 	{	
 		Session session = sessionFactory.getCurrentSession();

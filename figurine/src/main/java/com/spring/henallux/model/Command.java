@@ -23,11 +23,25 @@ public class Command
 	private Date dateCommand;
 	
 	@NotNull
+	private boolean isPayed;
+	
+	@NotNull
 	private User user;
 	
 	@OneToMany(mappedBy="command")
 	private Collection<CommandLine> commandsLine;
 	
+	
+
+	public boolean isPayed() 
+	{
+		return isPayed;
+	}
+
+	public void setPayed(boolean isPayed) 
+	{
+		this.isPayed = isPayed;
+	}
 
 	public User getUser() {
 		return user;

@@ -45,4 +45,18 @@ public class CommandDAO
 		}
 		return commands;
 	}
+	
+	public Command getAllCommandsForCurrentUser(String idUser)
+	{
+		List <CommandEntity> commandeEntities = commandRepository.findAll();
+		Command command = new Command();
+		for (CommandEntity entity : commandeEntities)
+		{
+			if(entity.getUserEnt().equals(idUser) && entity.getIsPayed() == false)
+			{
+				command = providerConverter.commandEntitytoCommandModel(entity);				
+			}
+		}
+		return command;
+	}
 }

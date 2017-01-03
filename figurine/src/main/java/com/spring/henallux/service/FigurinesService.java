@@ -198,6 +198,24 @@ public class FigurinesService
 		return figurinesCategory;
 	}
 	
+	public ArrayList<Figurine> getFigurineByCommandLine(ArrayList<CommandLine> commandLine)
+	{
+		figurinesCategory = new ArrayList<Figurine>();
+		ArrayList <Figurine> figurines = figurineDAO.getAllFigurines();
+		
+		for(int i=0;i<figurines.size();i++)
+		{		
+			for(int j = 0; j<commandLine.size(); i++)
+			{
+				if(figurines.get(i).getIdFigurine() == commandLine.get(j).getFigurine())
+				{
+					figurinesCategory.add(figurines.get(i));
+				}
+			}							
+		}
+		return figurinesCategory;
+	}
+	
 	
 	
 

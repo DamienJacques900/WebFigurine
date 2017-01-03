@@ -23,6 +23,10 @@ public class CommandEntity
 	@Column(name="datecommand")
 	private Date dateCommand;
 	
+	@NotNull
+	@Column(name="ispayed")
+	private boolean isPayed;
+	
 	@JoinColumn(name="user", referencedColumnName="iduser")
 	@ManyToOne
 	private UserEntity userEnt;
@@ -30,10 +34,20 @@ public class CommandEntity
 	//@OneToMany(mappedBy="command", fetch = FetchType.LAZY)
 	//private Collection<CommandLineEntity> commandLines;
 
+	
 
-
-	public UserEntity getUserEnt() {
+	public UserEntity getUserEnt() 
+	{
 		return userEnt;
+	}
+
+	public boolean getIsPayed() 
+	{
+		return isPayed;
+	}
+
+	public void setIsPayed(boolean isPayed) {
+		this.isPayed = isPayed;
 	}
 
 	public void setUserEnt(UserEntity userEnt) {
