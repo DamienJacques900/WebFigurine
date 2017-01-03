@@ -87,7 +87,7 @@ public class ConnectionController
 	//Bouton pour la CONNEXION=====================================
 	@RequestMapping(value="/connectionSend", method=RequestMethod.POST)
 	public String getFormConnectionData(Model model, @ModelAttribute(value=CURRENTUSER) User currentUser ,@Valid @ModelAttribute(value=CURRENTUSERCONNECTION) UserConnection userConnection, Errors errors
-			, @ModelAttribute(value=DescriptionController.COMMANDLINES) List<CommandLineWithFigurine> commandLinesWithFigurine)
+			, @ModelAttribute(value=DescriptionController.COMMANDLINES) List<CommandLineWithFigurine> commandLinesWithFigurines)
 	{			
 		CryptPassword crypt = new CryptPassword();
 		
@@ -118,6 +118,38 @@ public class ConnectionController
 		ArrayList<Figurine> userCurrentFigurine = figurineService.getFigurineByCommandLine(userCurrentCommandLines);
 		
 		ArrayList<Integer> figurineFks = new ArrayList<Integer>();
+		
+		
+		for(CommandLineWithFigurine commandLineWithFigurine : commandLinesWithFigurines)
+		{
+			figurineFks.add(commandLineWithFigurine.getFigurine().getIdFigurine());
+		}
+		
+		for(CommandLine commandLineFigurine : userCurrentCommandLines)
+		{
+			Figurine figurineCommand = figurineService.getFigurineById(commandLineFigurine.getFigurine());
+			
+			
+			if(!figurineFks.contains(commandLineFigurine.getFigurine()))
+			{
+				commandLinesWithFigurines.add(new CommandLineWithFigurine(commandLineFigurine, figurineCommand));
+			}
+			else
+			{
+				//Rajout du nombre en plus si existe déjà
+				CommandLine rightCommandLine;
+				int size = commandLinesWithFigurines.size();
+				int i = 0;
+				while(i < size && commandLinesWithFigurines.get(i).getFigurine().getIdFigurine() != figurineCommand.getIdFigurine())
+				{
+					i++;
+				}
+				
+				rightCommandLine = commandLinesWithFigurines.get(i).getCommandLine();
+				rightCommandLine.setNbFigurine(rightCommandLine.getNbFigurine() + commandLineFigurine.getNbFigurine());
+			}
+			
+		}	
 		
 		
 		model.addAttribute("CURRENTUSER",currentUser);
