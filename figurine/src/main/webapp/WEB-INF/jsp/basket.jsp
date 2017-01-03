@@ -15,61 +15,54 @@
 			</div>
 			<div class="row">
 				<div class="col s9">
-			  	<ul class="collection">
-			  		<c:forEach items="${commandLines}" var="commandLine">
+			  	<ul class="collection">		  		
+			  		<c:forEach items="${commandLinesWithItems}" var="commandLinesWithItems">
 			  			<li class="collection-item avatar">
-			  				<c:forEach items="${figurineTranslations}" var="figurine" varStatus="status">
-			  					<c:choose>
-			  						<c:when test="${commandLine.figurine eq figurine.figurine}">
-								    	<img src="<spring:url value='/images/allFigurine/${figurineAllCommand[status.index].image}'/>" alt="" height="50px">
-								    	<p>
-								    		<spring:message code="name"/> : ${figurine.name} <br>									      	
-									     </p>
-									     <p><spring:message code="brand"/> : ${figurineAllCommand[status.index].brand} <br>
-									      	<spring:message code="description"/> : ${figurine.description}
-									     </p>
-									     
-									     
-									     <p class="secondary-content">
-									     	<spring:message code="prize"/> : ${commandLine.prizeCommand*commandLine.nbFigurine} <spring:message code="euro"/><br>
+			  				<img src="<spring:url value='/images/allFigurine/${commandLinesWithItems.figurine.image}'/>" alt="" height="50px">
+							<p>
+								<spring:message code="name"/> : ${commandLinesWithItems.figurine.name} <br>									      	
+							</p>
+							 <p><spring:message code="brand"/> : ${commandLinesWithItems.figurine.brand} <br>
+								<spring:message code="description"/> : ${commandLinesWithItems.figurine.description}
+							</p>
+							
+							<p class="secondary-content">
+								<spring:message code="prize"/> : ${commandLinesWithItems.commandLine.prizeCommand*commandLinesWithItems.commandLine.nbFigurine} <spring:message code="euro"/><br>
 									     	
-							    			<br>
+							<br>
 											
 											
-											<form:form id="newCommandLine"
-													   method="POST"
-													   action="/figurine/basket/nbFigurineBasket"
-													   modelAttribute="figurineBasket">
-												<p><spring:message code="nbFigurine"/></p>
-												<form:input path="nbFigurine" id="user_lic" type="number" min="1" max="100" step="1" value ="${commandLine.nbFigurine}"/>
-										     	<form:hidden path="prizeCommand" value="${commandLine.prizeCommand}"/>
-										     	<form:hidden path="figurine" value="${commandLine.figurine}"/>
-										     	<form:hidden path="command" value="${commandLine.command}"/>
-										     	<form:hidden path="idCommandeLine" value="${commandLine.idCommandeLine}"/>
+							<form:form id="newCommandLine"
+									   method="POST"
+									   action="/figurine/basket/nbFigurineBasket"
+									   modelAttribute="figurineBasket">
+							<p><spring:message code="nbFigurine"/></p>
+							<form:input path="nbFigurine" id="user_lic" type="number" min="1" max="100" step="1" value ="${commandLinesWithItems.commandLine.nbFigurine}"/>
+							<form:hidden path="prizeCommand" value="${commandLinesWithItems.commandLine.prizeCommand}"/>
+							<form:hidden path="figurine" value="${commandLinesWithItems.commandLine.figurine}"/>
+							<form:hidden path="command" value="${commandLinesWithItems.commandLine.command}"/>
+							<form:hidden path="idCommandeLine" value="${commandLinesWithItems.commandLine.idCommandeLine}"/>
 										     										     	
 										     	
-								    			<form:button class="waves-effect waves-light btn">
-								    				<spring:message code="modify"/>
-								    			</form:button>
-							    			</form:form>
-							    			<form:form id="newCommandLine"
-													   method="POST"
-													   action="/figurine/basket/deleteFigurineBasket"
-													   modelAttribute="deleteBasket">
+							<form:button class="waves-effect waves-light btn">
+								<spring:message code="modify"/>
+							</form:button>
+							</form:form>
+							<form:form id="newCommandLine"
+										method="POST"
+										action="/figurine/basket/deleteFigurineBasket"
+										modelAttribute="deleteBasket">
 													   
-												<form:hidden path="idCommandeLine" value="${commandLine.idCommandeLine}"/>
+							<form:hidden path="idCommandeLine" value="${commandLinesWithItems.commandLine.idCommandeLine}"/>
 													  
-								    			<form:button class="waves-effect waves-light btn">
-								    				<spring:message code="delete"/>
-								    			</form:button>
-							    			</form:form>
+							<form:button class="waves-effect waves-light btn">
+								<spring:message code="delete"/>
+							</form:button>
+							</form:form>
 									     	
-									     </p>
-									</c:when>	
-							  	</c:choose>
-							</c:forEach>							          
-				    	</li>				    	
-			  		</c:forEach>			   
+							</p>
+			  			</li>
+			  		</c:forEach>		   
 				  </ul>
 	                   	
 	  			</div>
@@ -80,17 +73,18 @@
 		  					<spring:message code="command"/>
 						</h5>
 		  				<ul>
-		  					<c:forEach items="${commandLines}" var="commandLine" varStatus="status">
+		  				
+		  					<c:forEach items="${commandLinesWithItems}" var="commandLinesWithItems" varStatus="status">
 			  					<div class="row">
 				  					<c:forEach items="${figurineTranslations}" var="figurine" varStatus="status">
 				  						<li>
 					  						<c:choose>
-					  							<c:when test="${commandLine.figurine eq figurine.figurine}">
+					  							<c:when test="${commandLinesWithItems.commandLine.figurine eq figurine.figurine}">
 						  							<div class="col s7">
-						  								${figurineTranslations[status.index].name} (${commandLine.nbFigurine}*)
+						  								${figurineTranslations[status.index].name} (${commandLinesWithItems.commandLine.nbFigurine}X)
 						  							</div>
 						  							<div class="col s5">
-						  								${commandLine.prizeCommand*commandLine.nbFigurine} <spring:message code="euro"/>
+						  								${commandLinesWithItems.commandLine.prizeCommand*commandLinesWithItems.commandLine.nbFigurine} <spring:message code="euro"/>
 						  							</div>
 					  							</c:when>
 					  						</c:choose>
@@ -135,12 +129,6 @@
 				  			</form:form>
 			  			</c:otherwise>
 		  			</c:choose>
-	  			</div>
-	  			<div>
-	  				<h1>TEST :</h1>
-	  				<c:forEach items="${commandLinesWithFigurines}" var="figurine">
-	  					<p>NOM : ${commandLinesWithFigurines.figurine.name}</p>
-	  				</c:forEach>
 	  			</div>
   			</div>
 		</div>

@@ -6,6 +6,10 @@ public class CommandLineWithFigurine
 	
 	private Figurine figurine;
 
+	public CommandLineWithFigurine() 
+	{
+	}
+	
 	public CommandLineWithFigurine(CommandLine commandLine, Figurine figurine) 
 	{
 		this.commandLine = commandLine;

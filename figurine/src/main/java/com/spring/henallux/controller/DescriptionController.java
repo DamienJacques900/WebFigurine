@@ -108,13 +108,15 @@ public class DescriptionController
 	{		
 		Figurine figurine = figurineService.getFigurineById(commandLine.getFigurine());
 		
+		//A REVOIR????
+		commandLine.setIdCommandeLine(commandLinesWithFigurine.size()+1);
 		if(currentUser.getIdUser() == null)
 		{
 			commandLinesWithFigurine.add(new CommandLineWithFigurine(commandLine, figurine));
 		}
 		commandLine.setCommand(1);
 		
-		commandLineDAO.save(commandLine);
+		//commandLineDAO.save(commandLine);
 
 		return "redirect:/basket";
 	}

@@ -71,7 +71,12 @@ public class BasketController
 		model.addAttribute("figurineAllCommand",figurineDAO.getAllFigurines());
 		Language language = languagesDAO.getLanguageByName(locale.toString());
 		model.addAttribute("figurineTranslations", translationFigurineDAO.getAllTranslationFigurinesByLanguage(language.getIdLanguage()));
-		model.addAttribute("totalValue",commandLinesService.getTotalValueCommandLine());
+		double TotalValue = 0;
+		for(CommandLineWithFigurine entity : commandLinesWithFigurines)
+		{
+			TotalValue += entity.getFigurine().getCost()*entity.getCommandLine().getNbFigurine();
+		}
+		model.addAttribute("totalValue",TotalValue);
 		model.addAttribute("figurineBasket", new CommandLine());
 		model.addAttribute("deleteBasket", new CommandLine());
 		return "integrated:basket";
@@ -93,18 +98,34 @@ public class BasketController
 	
 	//Bouton pour MODIFIER===============================================
 	@RequestMapping(value="/nbFigurineBasket", method = RequestMethod.POST)
-	public String modifiyCommandLine(Model model, @ModelAttribute(value="figurineBasket") CommandLine commandLine)
-	{			
-		commandLine.setNbFigurine(commandLine.getNbFigurine());		
-		commandLineDAO.save(commandLine);
+	public String modifiyCommandLine(Model model, @ModelAttribute(value="figurineBasket") CommandLine commandLine, @ModelAttribute(value=DescriptionController.COMMANDLINES) List<CommandLineWithFigurine> commandLinesWithFigurine)
+	{	
+		for(CommandLineWithFigurine entity : commandLinesWithFigurine)
+		{
+			if(commandLine.getIdCommandeLine() == entity.getCommandLine().getIdCommandeLine())
+			{
+				entity.getCommandLine().setNbFigurine(commandLine.getNbFigurine());
+			}
+		}
+		//commandLine.setNbFigurine(commandLine.getNbFigurine());		
+		//commandLineDAO.save(commandLine);
 		return "redirect:/basket";
 	}
 	
 	//Bouton pour SUPPRIMER===============================================
 	@RequestMapping(value="/deleteFigurineBasket", method = RequestMethod.POST)
-	public String deleteCommandLine(Model model, @ModelAttribute(value="deleteBasket") CommandLine commandLine)
-	{				
-		commandLineDAO.delete(commandLine);
+	public String deleteCommandLine(Model model, @ModelAttribute(value="deleteBasket") CommandLine commandLine,@ModelAttribute(value=DescriptionController.COMMANDLINES) List<CommandLineWithFigurine> commandLinesWithFigurine)
+	{		
+		
+		for(CommandLineWithFigurine entity : commandLinesWithFigurine)
+		{
+			if(commandLine.getIdCommandeLine() == entity.getCommandLine().getIdCommandeLine())
+			{
+				commandLinesWithFigurine.remove(entity);
+				break;
+			}
+		}
+		//commandLineDAO.delete(commandLine);
 		return "redirect:/basket";
 	}
 	
