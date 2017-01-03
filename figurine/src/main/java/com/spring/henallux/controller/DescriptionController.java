@@ -44,6 +44,9 @@ public class DescriptionController
 	@Autowired
 	private CommandLineDAO commandLineDAO;
 	
+	@Autowired
+	private FigurinesService figurineService;
+	
 	
 	@ModelAttribute(value=ConnectionController.CURRENTUSER)
 	public User currentUser()
@@ -100,9 +103,15 @@ public class DescriptionController
 	
 	//Bouton pour la COMMANDE===============================================
 	@RequestMapping(value="/figurineBasket", method = RequestMethod.POST)
-	public String getCommand(Model model, @ModelAttribute(value="figurineCommand") CommandLine commandLine)
+	public String getCommand(Model model, @ModelAttribute(value="figurineCommand") CommandLine commandLine, @ModelAttribute(value="currentUser") User currentUser
+			, @ModelAttribute(value=COMMANDLINES) ArrayList<CommandLineWithFigurine> commandLinesWithFigurine)
 	{		
+		Figurine figurine = figurineService.getFigurineById(commandLine.getFigurine());
 		
+		if(currentUser.getIdUser() == null)
+		{
+			commandLinesWithFigurine.add(new CommandLineWithFigurine(commandLine, figurine));
+		}
 		commandLine.setCommand(1);
 		
 		commandLineDAO.save(commandLine);

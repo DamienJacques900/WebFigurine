@@ -1,6 +1,7 @@
 package com.spring.henallux.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -19,6 +20,7 @@ import com.spring.henallux.dataAccess.dao.CommandLineDAO;
 import com.spring.henallux.dataAccess.dao.UserDAO;
 import com.spring.henallux.model.Command;
 import com.spring.henallux.model.CommandLine;
+import com.spring.henallux.model.CommandLineWithFigurine;
 import com.spring.henallux.model.Figurine;
 import com.spring.henallux.model.User;
 import com.spring.henallux.model.UserConnection;
@@ -30,7 +32,7 @@ import com.spring.henallux.service.FigurinesService;
 //***************************COMMENTAIRE************************************
 //Permet d'avoir un attribut session et donc de conserver les valeur que l'on mettre à l'intérieur
 //**************************************************************************
-@SessionAttributes(ConnectionController.CURRENTUSERCONNECTION)
+@SessionAttributes({ConnectionController.CURRENTUSERCONNECTION, ConnectionController.CURRENTUSER, DescriptionController.COMMANDLINES})
 public class ConnectionController 
 {
 	@Autowired
@@ -68,7 +70,11 @@ public class ConnectionController
 	}
 	
 	
-	
+	@ModelAttribute(value=DescriptionController.COMMANDLINES)
+	public List<CommandLineWithFigurine> commandLinesWithItems()
+	{
+		return new ArrayList<CommandLineWithFigurine>();
+	}
 	
 
 	@RequestMapping(method=RequestMethod.GET)
@@ -80,7 +86,8 @@ public class ConnectionController
 	//
 	//Bouton pour la CONNEXION=====================================
 	@RequestMapping(value="/connectionSend", method=RequestMethod.POST)
-	public String getFormConnectionData(Model model, @ModelAttribute(value=CURRENTUSER) User currentUser ,@Valid @ModelAttribute(value=CURRENTUSERCONNECTION) UserConnection userConnection, Errors errors)
+	public String getFormConnectionData(Model model, @ModelAttribute(value=CURRENTUSER) User currentUser ,@Valid @ModelAttribute(value=CURRENTUSERCONNECTION) UserConnection userConnection, Errors errors
+			, @ModelAttribute(value=DescriptionController.COMMANDLINES) List<CommandLineWithFigurine> commandLinesWithFigurine)
 	{			
 		CryptPassword crypt = new CryptPassword();
 		
