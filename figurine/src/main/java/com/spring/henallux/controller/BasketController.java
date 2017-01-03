@@ -1,5 +1,7 @@
 package com.spring.henallux.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.*;
@@ -8,12 +10,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.spring.henallux.dataAccess.dao.CommandLineDAO;
 import com.spring.henallux.dataAccess.dao.FigurineDAO;
 import com.spring.henallux.dataAccess.dao.LanguageDAO;
 import com.spring.henallux.dataAccess.dao.TranslationFigurineDAO;
 import com.spring.henallux.model.CommandLine;
+import com.spring.henallux.model.CommandLineWithFigurine;
 import com.spring.henallux.model.Language;
 import com.spring.henallux.model.User;
 import com.spring.henallux.service.*;
@@ -21,6 +25,7 @@ import com.spring.henallux.service.*;
 
 @Controller
 @RequestMapping(value="/basket")
+@SessionAttributes({ConnectionController.CURRENTUSERCONNECTION, ConnectionController.CURRENTUSER, DescriptionController.COMMANDLINES})
 public class BasketController 
 {
 	@Autowired
@@ -40,6 +45,20 @@ public class BasketController
 	
 	@Autowired
 	private LanguageDAO languagesDAO;
+	
+	
+	@ModelAttribute(value=ConnectionController.CURRENTUSER)
+	public User currentUser()
+	{
+		return new User();
+	}
+	
+	@ModelAttribute(value=DescriptionController.COMMANDLINES)
+	public List<CommandLineWithFigurine> commandLinesWithItems()
+	{
+		return new ArrayList<CommandLineWithFigurine>();
+	}
+	
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public String home(Model model, Locale locale)
