@@ -61,7 +61,7 @@ public class BasketController
 	
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public String home(Model model, Locale locale)
+	public String home(Model model, Locale locale, @ModelAttribute(value=ConnectionController.CURRENTUSER) User currentUser, @ModelAttribute(value=DescriptionController.COMMANDLINES) List<CommandLineWithFigurine> commandLinesWithFigurines)
 	{
 		//***************************COMMENTAIRE************************************
 		//Récupération des valeurs de la BD pour les command et commandLine
