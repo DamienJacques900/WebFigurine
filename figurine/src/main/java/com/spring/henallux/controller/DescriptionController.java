@@ -1,6 +1,7 @@
 package com.spring.henallux.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +12,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.spring.henallux.dataAccess.dao.CommandLineDAO;
 import com.spring.henallux.dataAccess.dao.LanguageDAO;
 import com.spring.henallux.dataAccess.dao.TranslationCategoryDAO;
 import com.spring.henallux.dataAccess.dao.TranslationFigurineDAO;
 import com.spring.henallux.model.CommandLine;
+import com.spring.henallux.model.CommandLineWithFigurine;
 import com.spring.henallux.model.Figurine;
 import com.spring.henallux.model.Language;
 import com.spring.henallux.model.User;
@@ -26,6 +29,7 @@ import com.spring.henallux.service.FigurinesService;
 
 @Controller
 @RequestMapping(value="/description")
+@SessionAttributes(DescriptionController.COMMANDLINES)
 public class DescriptionController 
 {	
 	@Autowired
@@ -39,6 +43,23 @@ public class DescriptionController
 	
 	@Autowired
 	private CommandLineDAO commandLineDAO;
+	
+	
+	@ModelAttribute(value=ConnectionController.CURRENTUSER)
+	public User currentUser()
+	{
+		return new User();
+	}
+	
+	protected static final String COMMANDLINES = "commandLinesWithItems";
+	
+	@ModelAttribute(value=COMMANDLINES)
+	public List<CommandLineWithFigurine> commandLinesWithFigurine()
+	{
+		return new ArrayList<CommandLineWithFigurine>();
+	}
+	
+		
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public String home(Model model, Locale locale)
@@ -66,12 +87,14 @@ public class DescriptionController
 	
 	
 	@RequestMapping("/figurine/{figurineId}")
-	public String byCategory(Model model, @PathVariable("figurineId") Integer figurineId, Locale locale)
+	public String byCategory(Model model, @PathVariable("figurineId") Integer figurineId, Locale locale, @ModelAttribute(value=COMMANDLINES) List<CommandLineWithFigurine> commandLinesWithFigurine)
 	{
 		model.addAttribute("figurine", figurinesService.getFigurineById(figurineId));	
 		Language language = languagesDAO.getLanguageByName(locale.toString());	
 		model.addAttribute("figurineTranslations", translationFigurineDAO.getTransalationFigurineById(figurineId,language.getIdLanguage()));
 		model.addAttribute("figurineCommand", new CommandLine());
+		model.addAttribute(COMMANDLINES, commandLinesWithFigurine);
+		
 		return "integrated:description";
 	}
 	
