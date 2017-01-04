@@ -31,6 +31,14 @@ public class CommandDAO
 		return providerConverter.commandEntitytoCommandModel(commandEntity);
 	}
 	
+	
+	public void delete(Command command)
+	{
+		CommandEntity commandEntity = providerConverter.commandModeltoCommandEntity(command);
+		commandRepository.delete(commandEntity);
+	}
+	
+	
 	//***************************COMMENTAIRE************************************
 	//Permet de récupérer les données dans la BD
 	//**************************************************************************
@@ -46,7 +54,7 @@ public class CommandDAO
 		return commands;
 	}
 	
-	public Command getAllCommandsForCurrentUser(String idUser)
+	public Command getCommandById(String idUser)
 	{
 		List <CommandEntity> commandeEntities = commandRepository.findAll();
 		Command command = new Command();
@@ -58,5 +66,5 @@ public class CommandDAO
 			}
 		}
 		return command;
-	}
+	}	
 }

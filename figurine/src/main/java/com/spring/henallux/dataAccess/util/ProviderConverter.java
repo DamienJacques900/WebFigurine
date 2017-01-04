@@ -211,7 +211,7 @@ public class ProviderConverter
 		commandEntity.setIdCommand(command.getIdCommand());
 		commandEntity.setDateCommand(command.getDateCommand());
 		commandEntity.setIsPayed(command.isPayed());
-		//commandEntity.setUserEnt(command.getUser());
+		commandEntity.setUserEnt(command.getUser());
 		
 		return commandEntity;
 	}
@@ -222,7 +222,7 @@ public class ProviderConverter
 		command.setIdCommand(commandEntity.getIdCommand());
 		command.setDateCommand(commandEntity.getDateCommand());
 		command.setPayed(commandEntity.getIsPayed());
-		//IL faut changer pour le setter
+		command.setUser(commandEntity.getUserEnt());
 		
 		return command;
 	}

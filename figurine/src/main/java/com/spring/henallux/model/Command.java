@@ -26,7 +26,7 @@ public class Command
 	private boolean isPayed;
 	
 	@NotNull
-	private User user;
+	private String user;
 	
 	@OneToMany(mappedBy="command")
 	private Collection<CommandLine> commandsLine;
@@ -43,11 +43,11 @@ public class Command
 		this.isPayed = isPayed;
 	}
 
-	public User getUser() {
+	public String getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(String user) {
 		this.user = user;
 	}
 

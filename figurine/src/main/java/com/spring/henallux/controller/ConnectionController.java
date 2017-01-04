@@ -109,13 +109,13 @@ public class ConnectionController
 			
 		currentUser = user;
 		
-		Command userCurrentCommand = commandDAO.getAllCommandsForCurrentUser(currentUser.getIdUser());
+		Command userCurrentCommand = commandDAO.getCommandById(currentUser.getIdUser());
 		
 		ArrayList<CommandLine> userCurrentCommandLines = commandLineDAO.getAllCommandLinesForCurrentUser(userCurrentCommand.getIdCommand());
 		
 		//ICI il faut prendre les figurines déjà entré dans le panier et les rajouter à celles déjà existantes
 		
-		ArrayList<Figurine> userCurrentFigurine = figurineService.getFigurineByCommandLine(userCurrentCommandLines);
+		//ArrayList<Figurine> userCurrentFigurine = figurineService.getFigurineByCommandLine(userCurrentCommandLines);
 		
 		ArrayList<Integer> figurineFks = new ArrayList<Integer>();
 		

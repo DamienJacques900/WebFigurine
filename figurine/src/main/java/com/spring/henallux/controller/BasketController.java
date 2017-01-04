@@ -106,18 +106,23 @@ public class BasketController
 	@RequestMapping(value="/command", method=RequestMethod.POST)
 	public String getCommand(Model model, @ModelAttribute(value="command") Command command, @ModelAttribute(value=ConnectionController.CURRENTUSER) User currentUser,@ModelAttribute(value=DescriptionController.COMMANDLINES) List<CommandLineWithFigurine> commandLinesWithFigurines)
 	{	
-		command.setUser(currentUser.getUser());
+		command.setUser(currentUser.getIdUser());
 		command.setPayed(false);
 		Date dateNow = new Date();
 		command.setDateCommand(dateNow);
 		commandDAO.save(command);
+		Command currentCommand = commandDAO.getCommandById(command.getUser());
 		for(CommandLineWithFigurine entity : commandLinesWithFigurines)
 		{
-			entity.getCommandLine().setCommand(command.getIdCommand());
-			System.out.println(entity.getFigurine().getIdFigurine());
+			entity.getCommandLine().setCommand(currentCommand.getIdCommand());
 			commandLineDAO.save(entity.getCommandLine());
 		}
-		
+
+		command.setUser(currentUser.getIdUser());
+		command.setDateCommand(dateNow);
+		currentCommand.setPayed(true);
+		commandDAO.save(currentCommand);
+				
 		model.addAttribute("commandLinesWithItems", new ArrayList<CommandLineWithFigurine>());
 		
 		return "integrated:userCommand";

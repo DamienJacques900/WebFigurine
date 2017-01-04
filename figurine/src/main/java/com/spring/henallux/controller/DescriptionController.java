@@ -113,11 +113,12 @@ public class DescriptionController
 		if(currentUser.getIdUser() == null)
 		{
 			commandLinesWithFigurine.add(new CommandLineWithFigurine(commandLine, figurine));
+			commandLine.setCommand(1);//UTILE????
 		}
 		else
 		{
 			commandLinesWithFigurine.add(new CommandLineWithFigurine(commandLine, figurine));
-			commandLine.setCommand(1);			
+			commandLine.setCommand(1);//UTILE????					
 		}
 		
 

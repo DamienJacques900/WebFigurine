@@ -25,16 +25,17 @@ public class CommandEntity
 	@Column(name="ispayed")
 	private boolean isPayed;
 	
-	@JoinColumn(name="user", referencedColumnName="iduser")
-	@ManyToOne
-	private UserEntity userEnt;
+	//@JoinColumn(name="user", referencedColumnName="iduser")
+	//@ManyToOne
+	@Column(name="user")
+	private String userEnt;
 	
 	//@OneToMany(mappedBy="command", fetch = FetchType.LAZY)
 	//private Collection<CommandLineEntity> commandLines;
 
 	
 
-	public UserEntity getUserEnt() 
+	public String getUserEnt() 
 	{
 		return userEnt;
 	}
@@ -48,7 +49,7 @@ public class CommandEntity
 		this.isPayed = isPayed;
 	}
 
-	public void setUserEnt(UserEntity userEnt) {
+	public void setUserEnt(String userEnt) {
 		this.userEnt = userEnt;
 	}
 
