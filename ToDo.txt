@@ -23,7 +23,7 @@ gestion des promotions ->
 
 Langue :
 
-quand inscription erreur de modification langues ->	
+quand inscription erreur de modification langues ->	OK
 
 mots passe différents message d'erreur dans les deux langues ->	OK
 
