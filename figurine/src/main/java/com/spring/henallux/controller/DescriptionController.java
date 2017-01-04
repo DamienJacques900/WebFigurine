@@ -114,9 +114,13 @@ public class DescriptionController
 		{
 			commandLinesWithFigurine.add(new CommandLineWithFigurine(commandLine, figurine));
 		}
-		commandLine.setCommand(1);
+		else
+		{
+			commandLinesWithFigurine.add(new CommandLineWithFigurine(commandLine, figurine));
+			commandLine.setCommand(1);
+			commandLineDAO.save(commandLine);
+		}
 		
-		//commandLineDAO.save(commandLine);
 
 		return "redirect:/basket";
 	}

@@ -21,37 +21,7 @@
 	
 	<body ></body>
 	
-		<!-- DropDown figurine structure -->
-		<ul id="dropdownFigurine" class="dropdown-content">
-		  <li>
-		  	<a href="<spring:url value='/movie'/>">
-		  		<spring:message code="movie"/>
-		  	</a>
-		  </li>
-		  <li>
-		  	<a href="<spring:url value='/videoGame'/>">
-		  		<spring:message code="videoGame"/>
-		  	</a>
-		  </li>
-		  <li>
-		  	<a href="<spring:url value='/japaneseAnimation'/>">
-		  		<spring:message code="animationJapanese"/>
-		  	</a>
-		  </li>
-		</ul>
-		
-		<ul id="dropdownAccount" class="dropdown-content">
-		  <li>
-		  	<a href="<spring:url value='/connection'/>">
-		  		<spring:message code="connection"/>
-		  	</a>
-		  </li>
-		  <li>
-		  	<a href="<spring:url value='/registration'/>">
-		  		<spring:message code="registration"/>
-		  	</a>
-		  </li>
-		</ul>
+
 		
 		<spring:url var="localeEn" value="">
 			<spring:param name="locale" value="en"/>
@@ -117,15 +87,10 @@
 						 			</li>						 		
 						 		</c:otherwise>
 						 	</c:choose>
-						 
-				 		
-				 		<li><a class="nav-btn waves-effect waves-light" href="<spring:url value='${localeFr}'/>">	
-								<img src ='<spring:url value="/images/francais.png"/>' height="30px" width="30px"/>
-							</a>
-						</li>
-				 		<li><a class="nav-btn waves-effect waves-light" href="<spring:url value='${localeEn}'/>">
-								<img src ='<spring:url value="/images/anglais.png"/>' height="30px" width="30px"/>
-				 			</a>
+				 		<li>
+				 			<a class="nav-btn waves-effect waves-light" href="<spring:url value='/option'/>">
+						 		<spring:message code="option"/>
+						 	</a>
 				 		</li>
 				 				
 				 	</ul>

@@ -110,7 +110,7 @@
 				      					action="/figurine/basket/commandNotPossible"
 				      					modelAttribute="command">
 					  			
-							  	<form:button class="btn waves-effect waves-light" type="submit" name="action" disabled="${commandLines[0].figurine eq null}">
+							  	<form:button class="btn waves-effect waves-light" type="submit" name="action" disabled="${commandLinesWithItems[0].commandLine.figurine eq null}">
 									<spring:message code="commandButton"/>
 							  	</form:button>
 						  								  			
@@ -122,7 +122,7 @@
 				      					action="/figurine/basket/command"
 				      					modelAttribute="command">
 				      					
-				      			<form:button class="btn waves-effect waves-light" type="submit" name="action" disabled="${commandLines[0].figurine eq null}">
+				      			<form:button class="btn waves-effect waves-light" type="submit" name="action" disabled="${commandLinesWithItems[0].commandLine.figurine eq null}">
 									<spring:message code="commandButton"/>									
 							  	</form:button>
 							  	

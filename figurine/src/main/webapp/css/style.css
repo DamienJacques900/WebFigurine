@@ -95,6 +95,13 @@ errors
 	color : red;
 }
 
+.whiteCard
+{
+	 margin-top: 100px;
+	 margin-left: auto;
+	 margin-right: auto;
+	 padding: 20px;
+}
 
 
 /*input:invalid {
