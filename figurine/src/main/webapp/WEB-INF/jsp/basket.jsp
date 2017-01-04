@@ -16,14 +16,14 @@
 			<div class="row">
 				<div class="col s9">
 			  	<ul class="collection">		  		
-			  		<c:forEach items="${commandLinesWithItems}" var="commandLinesWithItems">
+			  		<c:forEach items="${commandLinesWithItems}" var="commandLinesWithItems" varStatus="status">
 			  			<li class="collection-item avatar">
 			  				<img src="<spring:url value='/images/allFigurine/${commandLinesWithItems.figurine.image}'/>" alt="" height="50px">
 							<p>
-								<spring:message code="name"/> : ${commandLinesWithItems.figurine.name} <br>									      	
+								<spring:message code="name"/> : ${figurineTranslations[status.index].name} <br>									      	
 							</p>
 							 <p><spring:message code="brand"/> : ${commandLinesWithItems.figurine.brand} <br>
-								<spring:message code="description"/> : ${commandLinesWithItems.figurine.description}
+								<spring:message code="description"/> : ${figurineTranslations[status.index].description}
 							</p>
 							
 							<p class="secondary-content">

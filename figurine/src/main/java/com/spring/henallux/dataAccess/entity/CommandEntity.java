@@ -12,9 +12,7 @@ import javax.validation.constraints.*;
 public class CommandEntity 
 {
 	@Id
-	@Min(1)
-	@Max(1000)
-	@NotNull
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="idcommand")
 	private int idCommand;
 	

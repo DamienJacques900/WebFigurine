@@ -117,8 +117,7 @@ public class DescriptionController
 		else
 		{
 			commandLinesWithFigurine.add(new CommandLineWithFigurine(commandLine, figurine));
-			commandLine.setCommand(1);
-			commandLineDAO.save(commandLine);
+			commandLine.setCommand(1);			
 		}
 		
 

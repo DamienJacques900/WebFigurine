@@ -1,6 +1,7 @@
 package com.spring.henallux.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -12,13 +13,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.spring.henallux.dataAccess.dao.CommandDAO;
 import com.spring.henallux.dataAccess.dao.CommandLineDAO;
 import com.spring.henallux.dataAccess.dao.FigurineDAO;
 import com.spring.henallux.dataAccess.dao.LanguageDAO;
 import com.spring.henallux.dataAccess.dao.TranslationFigurineDAO;
+import com.spring.henallux.model.Command;
 import com.spring.henallux.model.CommandLine;
 import com.spring.henallux.model.CommandLineWithFigurine;
 import com.spring.henallux.model.Language;
+import com.spring.henallux.model.TranslationFigurine;
 import com.spring.henallux.model.User;
 import com.spring.henallux.service.*;
 
@@ -33,6 +37,9 @@ public class BasketController
 	
 	@Autowired
 	private CommandsService commandsService;
+	
+	@Autowired
+	private CommandDAO commandDAO;
 	
 	@Autowired
 	private CommandLineDAO commandLineDAO;
@@ -70,7 +77,20 @@ public class BasketController
 		model.addAttribute("commandLines",commandLinesService.getCommandLines());
 		model.addAttribute("figurineAllCommand",figurineDAO.getAllFigurines());
 		Language language = languagesDAO.getLanguageByName(locale.toString());
-		model.addAttribute("figurineTranslations", translationFigurineDAO.getAllTranslationFigurinesByLanguage(language.getIdLanguage()));
+		
+		ArrayList<TranslationFigurine> translationFigurines = translationFigurineDAO.getAllTranslationFigurines();
+		ArrayList<TranslationFigurine> translationBasket = new ArrayList<TranslationFigurine>();
+		for(int i = 0; i < commandLinesWithFigurines.size(); i++)
+		{
+			for(int j = 0; j < translationFigurines.size();j++)
+			{
+				if(commandLinesWithFigurines.get(i).getFigurine().getIdFigurine() == translationFigurines.get(j).getFigurine() 
+						&& language.getIdLanguage() == translationFigurines.get(j).getLanguage())
+					translationBasket.add(translationFigurines.get(j));
+			}
+		}
+		
+		model.addAttribute("figurineTranslations", translationBasket);
 		double TotalValue = 0;
 		for(CommandLineWithFigurine entity : commandLinesWithFigurines)
 		{
@@ -84,14 +104,28 @@ public class BasketController
 	
 	//Bouton pour COMMANDER si connecté===============================================
 	@RequestMapping(value="/command", method=RequestMethod.POST)
-	public String getCommand(Model model, @ModelAttribute(value="command") User userCommand)
-	{
+	public String getCommand(Model model, @ModelAttribute(value="command") Command command, @ModelAttribute(value=ConnectionController.CURRENTUSER) User currentUser,@ModelAttribute(value=DescriptionController.COMMANDLINES) List<CommandLineWithFigurine> commandLinesWithFigurines)
+	{	
+		command.setUser(currentUser.getUser());
+		command.setPayed(false);
+		Date dateNow = new Date();
+		command.setDateCommand(dateNow);
+		commandDAO.save(command);
+		for(CommandLineWithFigurine entity : commandLinesWithFigurines)
+		{
+			entity.getCommandLine().setCommand(command.getIdCommand());
+			System.out.println(entity.getFigurine().getIdFigurine());
+			commandLineDAO.save(entity.getCommandLine());
+		}
+		
+		model.addAttribute("commandLinesWithItems", new ArrayList<CommandLineWithFigurine>());
+		
 		return "integrated:userCommand";
 	}
 	
 	//Bouton pour COMMANDER si pas connecté===============================================
 	@RequestMapping(value="/commandNotPossible", method=RequestMethod.POST)
-	public String getCommandUserRequired(Model model, @ModelAttribute(value="command") User userCommand)
+	public String getCommandUserRequired(Model model, @ModelAttribute(value="command") Command command)
 	{
 		return "integrated:userCommandRequired";
 	}
