@@ -216,13 +216,18 @@ values("louis","Van DenDoren","Louis","louis@gmail.com","070/ 00 00 00","090/ 00
 
 
 insert into Command
-values(1,STR_TO_DATE('21-11-2013', '%d-%m-%Y'),true,"damien");
+values(1,STR_TO_DATE('8-03-2012', '%d-%m-%Y'),false,"damien");
 
 insert into Command
-values(2,STR_TO_DATE('16-07-2014', '%d-%m-%Y'),false,"louis");
+values(2,STR_TO_DATE('16-07-2012', '%d-%m-%Y'),false,"louis");
 
 insert into Command
-values(3,STR_TO_DATE('8-03-2015', '%d-%m-%Y'),false,"damien");
+values(3,STR_TO_DATE('21-11-2013', '%d-%m-%Y'),true,"damien");
+
+insert into Command
+values(4,STR_TO_DATE('16-07-2013', '%d-%m-%Y'),true,"louis");
+
+
 
 
 
@@ -240,6 +245,12 @@ values(4,1,150.24,2,8);
 
 insert into CommandLine
 values(5,3,137.85,1,9);
+
+insert into CommandLine
+values(6,1,60.75,3,17);
+
+insert into CommandLine
+values(7,1,250.90,3,18);
 
 
 
