@@ -84,7 +84,8 @@
 						  								${figurineTranslations[status.index].name} (${commandLinesWithItems.commandLine.nbFigurine}X)
 						  							</div>
 						  							<div class="col s5">
-						  								${commandLinesWithItems.commandLine.prizeCommand*commandLinesWithItems.commandLine.nbFigurine} <spring:message code="euro"/>
+						  								 
+						  								<fmt:formatNumber type="number" maxFractionDigits="2" value="${commandLinesWithItems.commandLine.prizeCommand*commandLinesWithItems.commandLine.nbFigurine}"/>€
 						  							</div>
 					  							</c:when>
 					  						</c:choose>
@@ -97,7 +98,8 @@
 		  					<div class="row">
 		  						<li>
 		  							<div>
-		  								<spring:message code="total"/> : ${totalValue} <spring:message code="euro"/>
+		  								<spring:message code="total"/> : <fmt:formatNumber type="number" maxFractionDigits="2" value="${totalValue}"/> €
+		  								
 		  							</div>		  							
 		  						</li>
 		  					</div>

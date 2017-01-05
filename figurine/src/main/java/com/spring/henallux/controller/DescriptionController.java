@@ -1,6 +1,7 @@
 package com.spring.henallux.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.spring.henallux.dataAccess.dao.CommandDAO;
 import com.spring.henallux.dataAccess.dao.CommandLineDAO;
 import com.spring.henallux.dataAccess.dao.LanguageDAO;
+import com.spring.henallux.dataAccess.dao.PromotionDAO;
 import com.spring.henallux.dataAccess.dao.TranslationCategoryDAO;
 import com.spring.henallux.dataAccess.dao.TranslationFigurineDAO;
 import com.spring.henallux.model.Command;
@@ -24,6 +26,7 @@ import com.spring.henallux.model.CommandLine;
 import com.spring.henallux.model.CommandLineWithFigurine;
 import com.spring.henallux.model.Figurine;
 import com.spring.henallux.model.Language;
+import com.spring.henallux.model.Promotion;
 import com.spring.henallux.model.User;
 import com.spring.henallux.model.TranslationFigurine;
 import com.spring.henallux.service.FigurinesService;
@@ -39,6 +42,9 @@ public class DescriptionController
 	
 	@Autowired
 	private LanguageDAO languagesDAO;
+	
+	@Autowired
+	private PromotionDAO promotionDAO;
 	
 	@Autowired
 	private TranslationFigurineDAO translationFigurineDAO;
@@ -97,7 +103,32 @@ public class DescriptionController
 	@RequestMapping("/figurine/{figurineId}")
 	public String byCategory(Model model, @PathVariable("figurineId") Integer figurineId, Locale locale, @ModelAttribute(value=COMMANDLINES) List<CommandLineWithFigurine> commandLinesWithFigurine)
 	{
-		model.addAttribute("figurine", figurinesService.getFigurineById(figurineId));	
+		Date todayDate = new Date();
+		Date endDate = new Date();
+		Date beginDate = new Date();
+		ArrayList<Promotion> promotionAll = promotionDAO.getAllPromotions();
+		ArrayList<Promotion> currentPromotion = new ArrayList<Promotion>();
+		for(int i = 0; i < promotionAll.size(); i++)
+		{
+			endDate = promotionAll.get(i).getDateEnd();
+			beginDate = promotionAll.get(i).getDateBegin();
+			if(todayDate.before(endDate) && todayDate.after(beginDate))
+			{ 
+				currentPromotion.add(promotionAll.get(i));
+			}
+		}
+		
+		Figurine figurineDescription = figurinesService.getFigurineById(figurineId);
+		
+		for(int i = 0; i < currentPromotion.size(); i++)
+		{
+			if(currentPromotion.get(i).getIdPromotion() == figurineDescription.getPromotion())
+			{
+				figurineDescription.setCost(figurineDescription.getCost()*(1-currentPromotion.get(i).getAmountPourc()));
+			}
+		}
+		
+		model.addAttribute("figurine", figurineDescription);	
 		Language language = languagesDAO.getLanguageByName(locale.toString());	
 		model.addAttribute("figurineTranslations", translationFigurineDAO.getTransalationFigurineById(figurineId,language.getIdLanguage()));
 		model.addAttribute("figurineCommand", new CommandLine());
@@ -110,8 +141,33 @@ public class DescriptionController
 	@RequestMapping(value="/figurineBasket", method = RequestMethod.POST)
 	public String getCommand(Model model, @ModelAttribute(value="figurineCommand") CommandLine commandLine, @ModelAttribute(value="currentUser") User currentUser
 			, @ModelAttribute(value=COMMANDLINES) ArrayList<CommandLineWithFigurine> commandLinesWithFigurine)
-	{		
+	{	
+		Date todayDate = new Date();
+		Date endDate = new Date();
+		Date beginDate = new Date();
+		ArrayList<Promotion> promotionAll = promotionDAO.getAllPromotions();
+		ArrayList<Promotion> currentPromotion = new ArrayList<Promotion>();
+		for(int i = 0; i < promotionAll.size(); i++)
+		{
+			endDate = promotionAll.get(i).getDateEnd();
+			beginDate = promotionAll.get(i).getDateBegin();
+			if(todayDate.before(endDate) && todayDate.after(beginDate))
+			{ 
+				currentPromotion.add(promotionAll.get(i));
+			}
+		}
+		
 		Figurine figurine = figurineService.getFigurineById(commandLine.getFigurine());
+		
+		for(int i = 0; i < currentPromotion.size(); i++)
+		{
+			if(currentPromotion.get(i).getIdPromotion() == figurine.getPromotion())
+			{
+				figurine.setCost(figurine.getCost()*(1-currentPromotion.get(i).getAmountPourc()));
+			}
+		}
+		
+		
 		
 		if(currentUser.getIdUser() == null)
 		{
