@@ -158,7 +158,7 @@
 	        		<div class="row">
 	        			<c:forEach items="${figurineAll}" var="figurine" varStatus="status" >
 		        			<div class="col s4">
-		        				<div class="card">	
+		        				<div class="card" style="height:400px">	
 		        					<form:form	id="descriptionID"
 								      			method="POST"
 								      			action="/figurine/welcome/description"
@@ -179,17 +179,30 @@
 				        					
 				        						<p class="center-align" style="font-weight:bold">
 				        							${figurine.cost} <spring:message code="euro"/>
-				        						</p>
+				        						</p>	
+				        						<div style="height:70px">		        						
+						        					<c:forEach items="${promotionAll}" var="promotion">
+							        					<c:choose>
+							        						<c:when test="${figurine.promotion eq promotion.idPromotion}">
+							        							<p style="color:red">
+							        								Promo : ${promotion.amountPourc*100} %
+							       								</p>
+							       							</c:when>
+							       						</c:choose>
+						       						</c:forEach>
+					       						</div>
 				        					</div>       														    					
 		        					</form:form> 
 		        				</div>
 		        			</div>
+		        			
 	        			</c:forEach>
+	        				        			
 	        		</div>
-	        	</div>
-        	</div>
+	        			        		
+	        	</div>	        	
+        	</div>   
 		</div>
-
 		
 		
 	</body>
