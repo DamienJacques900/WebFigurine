@@ -35,12 +35,7 @@
 				<spring:message code="findFigurine"/>
 			</h2>
 			<div class="row">
-			<h5>Test :</h5>
-			<p>Current user : ${currentUserConnection.idUser}</p>
-			<p>Current connection : ${currentUser.idUser}</p>
-			<c:forEach items="${commandLinesWithItems}" var="commandLinesWithItems">
-			<p>Current commandLine : ${commandLinesWithItems.figurine.name} et nb : ${commandLinesWithItems.commandLine.idCommandeLine}</p>
-			</c:forEach>
+			
 				<div class="col s3">
 					<form:form id="searchByName"
 		      				   method="POST"

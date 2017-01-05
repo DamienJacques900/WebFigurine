@@ -10,9 +10,7 @@ import javax.validation.constraints.*;
 public class CategoryEntity 
 {
 	@Id
-	@Min(0)
-	@Max(1000)
-	@NotNull
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="idcategory")
 	private int idCategory;
 	

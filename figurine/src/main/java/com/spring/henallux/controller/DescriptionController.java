@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.spring.henallux.dataAccess.dao.CommandDAO;
 import com.spring.henallux.dataAccess.dao.CommandLineDAO;
 import com.spring.henallux.dataAccess.dao.LanguageDAO;
 import com.spring.henallux.dataAccess.dao.TranslationCategoryDAO;
 import com.spring.henallux.dataAccess.dao.TranslationFigurineDAO;
+import com.spring.henallux.model.Command;
 import com.spring.henallux.model.CommandLine;
 import com.spring.henallux.model.CommandLineWithFigurine;
 import com.spring.henallux.model.Figurine;
@@ -43,6 +45,9 @@ public class DescriptionController
 	
 	@Autowired
 	private CommandLineDAO commandLineDAO;
+	
+	@Autowired
+	private CommandDAO commandDAO;
 	
 	@Autowired
 	private FigurinesService figurineService;
@@ -108,17 +113,16 @@ public class DescriptionController
 	{		
 		Figurine figurine = figurineService.getFigurineById(commandLine.getFigurine());
 		
-		//A REVOIR????
-		commandLine.setIdCommandeLine(commandLinesWithFigurine.size()+1);
 		if(currentUser.getIdUser() == null)
 		{
 			commandLinesWithFigurine.add(new CommandLineWithFigurine(commandLine, figurine));
-			commandLine.setCommand(1);//UTILE????
 		}
 		else
-		{
-			commandLinesWithFigurine.add(new CommandLineWithFigurine(commandLine, figurine));
-			commandLine.setCommand(1);//UTILE????					
+		{			
+			commandLinesWithFigurine.add(new CommandLineWithFigurine(commandLine, figurine));	
+			Command command = commandDAO.getCommandById(currentUser.getIdUser());
+			commandLine.setCommand(command.getIdCommand());
+			commandLineDAO.save(commandLine);			
 		}
 		
 

@@ -1,6 +1,7 @@
 package com.spring.henallux.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import com.spring.henallux.dataAccess.dao.CommandDAO;
 import com.spring.henallux.dataAccess.dao.UserDAO;
 import com.spring.henallux.dataAccess.entity.UserEntity;
 import com.spring.henallux.model.*;
@@ -27,6 +29,9 @@ public class RegistrationController
 {
 	@Autowired
 	private UserDAO userDAO;
+	
+	@Autowired
+	private CommandDAO commandDAO;
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public String home(Model model)
@@ -66,8 +71,20 @@ public class RegistrationController
 			}	
 			else
 			{
+				
+				
 				userRegistration.setPassword(crypt.cryptInMD5(userRegistration.getPassword()));
 				userDAO.save(userRegistration);	
+				
+				
+				//création d'une commande
+				Command command = new Command();
+				command.setUser(userRegistration.getIdUser());
+				command.setPayed(false);
+				Date dateNow = new Date();
+				command.setDateCommand(dateNow);
+				commandDAO.save(command);
+				
 				return "redirect:/userRegistration";
 			}
 		}		

@@ -78,7 +78,7 @@ public class WelcomeController
 		model.addAttribute("figurineName", new Figurine());
 		return "integrated:welcome";
 	}
-	/*Pas fonctionnel changement de langues et affichage figurine pas bon
+	//Pas fonctionnel changement de langues et affichage figurine pas bon
 	//Bouton pour RECHERCHER par nom===============================================
 	@RequestMapping(value="/searchName", method=RequestMethod.POST)
 	public String getCommand(Model model, @ModelAttribute(value="figurineName") Figurine figurine, Locale locale)
@@ -95,7 +95,7 @@ public class WelcomeController
 			System.out.println(figurines.get(i).getName());
 		}
 		return "integrated:welcome";
-	}*/
+	}
 	
 	
 }

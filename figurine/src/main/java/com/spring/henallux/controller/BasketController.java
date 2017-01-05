@@ -106,22 +106,27 @@ public class BasketController
 	@RequestMapping(value="/command", method=RequestMethod.POST)
 	public String getCommand(Model model, @ModelAttribute(value="command") Command command, @ModelAttribute(value=ConnectionController.CURRENTUSER) User currentUser,@ModelAttribute(value=DescriptionController.COMMANDLINES) List<CommandLineWithFigurine> commandLinesWithFigurines)
 	{	
-		command.setUser(currentUser.getIdUser());
-		command.setPayed(false);
-		Date dateNow = new Date();
-		command.setDateCommand(dateNow);
-		commandDAO.save(command);
-		Command currentCommand = commandDAO.getCommandById(command.getUser());
+		Command currentCommand = commandDAO.getCommandById(currentUser.getIdUser());
 		for(CommandLineWithFigurine entity : commandLinesWithFigurines)
 		{
 			entity.getCommandLine().setCommand(currentCommand.getIdCommand());
-			commandLineDAO.save(entity.getCommandLine());
+			CommandLine newCommandLine = entity.getCommandLine();
+			newCommandLine.setCommand(currentCommand.getIdCommand());
+			commandLineDAO.save(newCommandLine);
 		}
 
-		command.setUser(currentUser.getIdUser());
-		command.setDateCommand(dateNow);
+		Date dateNow = new Date();
+		currentCommand.setDateCommand(dateNow);
 		currentCommand.setPayed(true);
 		commandDAO.save(currentCommand);
+		
+		command.setUser(currentUser.getIdUser());
+		command.setPayed(false);
+		dateNow = new Date();
+		command.setDateCommand(dateNow);
+		commandDAO.save(command);
+		
+		
 				
 		model.addAttribute("commandLinesWithItems", new ArrayList<CommandLineWithFigurine>());
 		
@@ -137,7 +142,8 @@ public class BasketController
 	
 	//Bouton pour MODIFIER===============================================
 	@RequestMapping(value="/nbFigurineBasket", method = RequestMethod.POST)
-	public String modifiyCommandLine(Model model, @ModelAttribute(value="figurineBasket") CommandLine commandLine, @ModelAttribute(value=DescriptionController.COMMANDLINES) List<CommandLineWithFigurine> commandLinesWithFigurine)
+	public String modifiyCommandLine(Model model, @ModelAttribute(value="figurineBasket") CommandLine commandLine, @ModelAttribute(value=DescriptionController.COMMANDLINES) List<CommandLineWithFigurine> commandLinesWithFigurine
+			, @ModelAttribute(value=ConnectionController.CURRENTUSER) User currentUser)
 	{	
 		for(CommandLineWithFigurine entity : commandLinesWithFigurine)
 		{
@@ -146,14 +152,19 @@ public class BasketController
 				entity.getCommandLine().setNbFigurine(commandLine.getNbFigurine());
 			}
 		}
-		//commandLine.setNbFigurine(commandLine.getNbFigurine());		
-		//commandLineDAO.save(commandLine);
+		if(currentUser.getIdUser() != null)
+		{
+			commandLine.setNbFigurine(commandLine.getNbFigurine());		
+			commandLineDAO.save(commandLine);
+		}
+		
 		return "redirect:/basket";
 	}
 	
 	//Bouton pour SUPPRIMER===============================================
 	@RequestMapping(value="/deleteFigurineBasket", method = RequestMethod.POST)
-	public String deleteCommandLine(Model model, @ModelAttribute(value="deleteBasket") CommandLine commandLine,@ModelAttribute(value=DescriptionController.COMMANDLINES) List<CommandLineWithFigurine> commandLinesWithFigurine)
+	public String deleteCommandLine(Model model, @ModelAttribute(value="deleteBasket") CommandLine commandLine,@ModelAttribute(value=DescriptionController.COMMANDLINES) List<CommandLineWithFigurine> commandLinesWithFigurine
+			, @ModelAttribute(value=ConnectionController.CURRENTUSER) User currentUser)
 	{		
 		
 		for(CommandLineWithFigurine entity : commandLinesWithFigurine)
@@ -164,7 +175,11 @@ public class BasketController
 				break;
 			}
 		}
-		//commandLineDAO.delete(commandLine);
+		if(currentUser.getIdUser() != null)
+		{
+			commandLineDAO.delete(commandLine);
+		}
+		
 		return "redirect:/basket";
 	}
 	

@@ -67,4 +67,18 @@ public class CommandDAO
 		}
 		return command;
 	}	
+	
+	public Command getCommandByIdAndIsPayed(String idUser)
+	{
+		List <CommandEntity> commandeEntities = commandRepository.findAll();
+		Command command = new Command();
+		for (CommandEntity entity : commandeEntities)
+		{
+			if(entity.getUserEnt().equals(idUser) && entity.getIsPayed() == true)
+			{
+				command = providerConverter.commandEntitytoCommandModel(entity);				
+			}
+		}
+		return command;
+	}
 }

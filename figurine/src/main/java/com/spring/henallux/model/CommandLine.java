@@ -27,7 +27,7 @@ public class CommandLine
 	@DecimalMax("10000.00")
 	private double prizeCommand;
 	
-	@NotNull
+	
 	@Min(0)
 	@Max(1000)
 	private int command;

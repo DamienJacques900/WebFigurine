@@ -112,27 +112,34 @@ public class ConnectionController
 		Command userCurrentCommand = commandDAO.getCommandById(currentUser.getIdUser());
 		
 		ArrayList<CommandLine> userCurrentCommandLines = commandLineDAO.getAllCommandLinesForCurrentUser(userCurrentCommand.getIdCommand());
-		
+
 		//ICI il faut prendre les figurines déjà entré dans le panier et les rajouter à celles déjà existantes
 		
 		//ArrayList<Figurine> userCurrentFigurine = figurineService.getFigurineByCommandLine(userCurrentCommandLines);
 		
-		ArrayList<Integer> figurineFks = new ArrayList<Integer>();
-		
+		ArrayList<Integer> figurineFks = new ArrayList<Integer>();		
 		
 		for(CommandLineWithFigurine commandLineWithFigurine : commandLinesWithFigurines)
 		{
 			figurineFks.add(commandLineWithFigurine.getFigurine().getIdFigurine());
 		}
 		
+		for(int i = 0; i < commandLinesWithFigurines.size(); i++)
+		{
+			CommandLine newCommandLine = new CommandLine();
+			newCommandLine = commandLinesWithFigurines.get(i).getCommandLine();
+			newCommandLine.setCommand(userCurrentCommand.getIdCommand());
+			commandLineDAO.save(commandLinesWithFigurines.get(i).getCommandLine());
+		}
+		
 		for(CommandLine commandLineFigurine : userCurrentCommandLines)
 		{
 			Figurine figurineCommand = figurineService.getFigurineById(commandLineFigurine.getFigurine());
-			
-			
+					
 			if(!figurineFks.contains(commandLineFigurine.getFigurine()))
 			{
 				commandLinesWithFigurines.add(new CommandLineWithFigurine(commandLineFigurine, figurineCommand));
+				commandLineDAO.save(commandLineFigurine);
 			}
 			else
 			{

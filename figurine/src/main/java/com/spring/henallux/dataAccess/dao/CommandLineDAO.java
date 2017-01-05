@@ -40,6 +40,7 @@ public class CommandLineDAO
 	public void delete(CommandLine commandLine)
 	{
 		CommandLineEntity commandLineEntity = providerConverter.commandLineModeltoCommandLineEntity(commandLine);
+		System.out.println(commandLineEntity.getFigurine());
 		commandLineRepository.delete(commandLineEntity);
 	}
 	
