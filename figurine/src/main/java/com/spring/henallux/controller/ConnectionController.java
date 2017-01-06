@@ -162,6 +162,6 @@ public class ConnectionController
 		model.addAttribute("CURRENTUSER",currentUser);
 		
 		userConnection.setConnected("ok");
-		return "redirect:/userConnection";
+		return "redirect:/welcome";
 	}
 }
