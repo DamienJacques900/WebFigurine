@@ -65,7 +65,7 @@
 			        <div class="col s6">
 			        	<form:label path="numTel" ><spring:message code="phone"/> (<spring:message code="optional"/>)	</form:label>
 				        <form:input path="numTel" type="text" class="validate"/>	          
-				        <form:errors path="numTel"></form:errors>
+				        <form:errors path="numTel" style="color:red"></form:errors>
 			        </div>
 			        
 			        <div class="col s6">

@@ -60,7 +60,18 @@ public class RegistrationController
 		if(!matcher.matches())
 		{
 			errors.rejectValue("email", "errorMail");
-		}								
+		}	
+				
+		
+		if(!stringIsDigit(userRegistration.getNumTel()))
+		{
+			errors.rejectValue("numTel", "errorNotNumber");
+		}
+		
+		if(!stringIsDigit(userRegistration.getNumFax()))
+		{
+			errors.rejectValue("numFax", "errorNotNumber");
+		}
 			
 		if(!errors.hasErrors())
 		{
@@ -90,5 +101,18 @@ public class RegistrationController
 		}		
 		
 		return "integrated:registration";	
+	}
+	
+	public boolean stringIsDigit(String value)
+	{
+		for(int i = 0; i < value.length(); i++)
+		{
+			if(!Character.isDigit(value.charAt(i)))
+			{
+				return false;
+			}
+		}
+		
+		return true;
 	}
 }
