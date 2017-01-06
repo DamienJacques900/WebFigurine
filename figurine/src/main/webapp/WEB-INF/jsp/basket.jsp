@@ -23,7 +23,10 @@
 								<spring:message code="name"/> : ${figurineTranslations[status.index].name} <br>									      	
 							</p>
 							 <p><spring:message code="brand"/> : ${commandLinesWithItems.figurine.brand} <br>
-								<spring:message code="description"/> : ${figurineTranslations[status.index].description}
+								<spring:message code="description"/> : ${figurineTranslations[status.index].description}								
+							</p>
+							<p>
+								<spring:message code="unityPrize"/> : ${commandLinesWithItems.figurine.cost}
 							</p>
 							
 							<p class="secondary-content">
