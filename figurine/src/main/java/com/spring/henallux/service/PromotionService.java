@@ -15,12 +15,17 @@ public class PromotionService
 	@Autowired
 	private PromotionDAO promotionDAO;
 	
+	Date todayDate;
+	Date endDate;
+	Date beginDate;
+	
 	public ArrayList<Promotion> getPromotionValid()
 	{
-		Date todayDate = new Date();
-		Date endDate = new Date();
-		Date beginDate = new Date();
+		todayDate = new Date();
+		endDate = new Date();
+		beginDate = new Date();
 		ArrayList<Promotion> promotionAll = promotionDAO.getAllPromotions();
+		
 		ArrayList<Promotion> currentPromotion = new ArrayList<Promotion>();
 		for(int i = 0; i < promotionAll.size(); i++)
 		{

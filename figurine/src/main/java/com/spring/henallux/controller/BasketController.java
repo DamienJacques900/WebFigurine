@@ -21,7 +21,9 @@ import com.spring.henallux.dataAccess.dao.TranslationFigurineDAO;
 import com.spring.henallux.model.Command;
 import com.spring.henallux.model.CommandLine;
 import com.spring.henallux.model.CommandLineWithFigurine;
+import com.spring.henallux.model.Figurine;
 import com.spring.henallux.model.Language;
+import com.spring.henallux.model.Promotion;
 import com.spring.henallux.model.TranslationFigurine;
 import com.spring.henallux.model.User;
 import com.spring.henallux.service.*;
@@ -46,6 +48,12 @@ public class BasketController
 	
 	@Autowired
 	private FigurineDAO figurineDAO;
+	
+	@Autowired
+	private FigurinesService figurineService;
+	
+	@Autowired
+	private PromotionService promotionService;
 	
 	@Autowired
 	private TranslationFigurineDAO translationFigurineDAO;
@@ -78,10 +86,29 @@ public class BasketController
 		model.addAttribute("figurineAllCommand",figurineDAO.getAllFigurines());
 		Language language = languagesDAO.getLanguageByName(locale.toString());
 		
+		ArrayList<Promotion> currentPromotion = new ArrayList<Promotion>();
+		currentPromotion = promotionService.getPromotionValid();
+		
+		model.addAttribute("promotionAll", currentPromotion);
+		
 		ArrayList<TranslationFigurine> translationFigurines = translationFigurineDAO.getAllTranslationFigurines();
 		ArrayList<TranslationFigurine> translationBasket = new ArrayList<TranslationFigurine>();
 		for(int i = 0; i < commandLinesWithFigurines.size(); i++)
 		{
+			//=========================================
+			Figurine figurine = figurineService.getFigurineById(commandLinesWithFigurines.get(i).getFigurine().getIdFigurine());
+			
+			for(int k = 0; k < currentPromotion.size(); k++)
+			{
+				if(currentPromotion.get(k).getIdPromotion() == figurine.getPromotion())
+				{				
+					figurine.setCost(figurine.getCost()*(1-currentPromotion.get(k).getAmountPourc()));
+				}
+			}
+			
+			commandLinesWithFigurines.get(i).getFigurine().setCost(figurine.getCost());
+
+			//=================================================
 			for(int j = 0; j < translationFigurines.size();j++)
 			{
 				if(commandLinesWithFigurines.get(i).getFigurine().getIdFigurine() == translationFigurines.get(j).getFigurine() 
@@ -145,13 +172,31 @@ public class BasketController
 	public String modifiyCommandLine(Model model, @ModelAttribute(value="figurineBasket") CommandLine commandLine, @ModelAttribute(value=DescriptionController.COMMANDLINES) List<CommandLineWithFigurine> commandLinesWithFigurine
 			, @ModelAttribute(value=ConnectionController.CURRENTUSER) User currentUser)
 	{	
+		ArrayList<Promotion> currentPromotion = new ArrayList<Promotion>();
+		currentPromotion = promotionService.getPromotionValid();
+		
 		for(CommandLineWithFigurine entity : commandLinesWithFigurine)
 		{
 			if(commandLine.getIdCommandeLine() == entity.getCommandLine().getIdCommandeLine())
 			{
+				//=================================================
+				Figurine figurine = figurineService.getFigurineById(entity.getFigurine().getIdFigurine());
+				
+				for(int k = 0; k < currentPromotion.size(); k++)
+				{
+					if(currentPromotion.get(k).getIdPromotion() == figurine.getPromotion())
+					{				
+						figurine.setCost(figurine.getCost()*(1-currentPromotion.get(k).getAmountPourc()));
+					}
+				}
+				
+				entity.getFigurine().setCost(figurine.getCost());
+				//=================================================
+				
 				entity.getCommandLine().setNbFigurine(commandLine.getNbFigurine());
 			}
 		}
+		
 		if(currentUser.getIdUser() != null)
 		{
 			commandLine.setNbFigurine(commandLine.getNbFigurine());		

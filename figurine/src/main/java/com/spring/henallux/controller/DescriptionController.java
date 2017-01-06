@@ -30,6 +30,7 @@ import com.spring.henallux.model.Promotion;
 import com.spring.henallux.model.User;
 import com.spring.henallux.model.TranslationFigurine;
 import com.spring.henallux.service.FigurinesService;
+import com.spring.henallux.service.PromotionService;
 
 
 @Controller
@@ -45,6 +46,9 @@ public class DescriptionController
 	
 	@Autowired
 	private PromotionDAO promotionDAO;
+	
+	@Autowired
+	private PromotionService promotionService;
 	
 	@Autowired
 	private TranslationFigurineDAO translationFigurineDAO;
@@ -103,30 +107,21 @@ public class DescriptionController
 	@RequestMapping("/figurine/{figurineId}")
 	public String byCategory(Model model, @PathVariable("figurineId") Integer figurineId, Locale locale, @ModelAttribute(value=COMMANDLINES) List<CommandLineWithFigurine> commandLinesWithFigurine)
 	{
-		Date todayDate = new Date();
-		Date endDate = new Date();
-		Date beginDate = new Date();
-		ArrayList<Promotion> promotionAll = promotionDAO.getAllPromotions();
 		ArrayList<Promotion> currentPromotion = new ArrayList<Promotion>();
-		for(int i = 0; i < promotionAll.size(); i++)
-		{
-			endDate = promotionAll.get(i).getDateEnd();
-			beginDate = promotionAll.get(i).getDateBegin();
-			if(todayDate.before(endDate) && todayDate.after(beginDate))
-			{ 
-				currentPromotion.add(promotionAll.get(i));
-			}
-		}
+		currentPromotion = promotionService.getPromotionValid();
 		
 		Figurine figurineDescription = figurinesService.getFigurineById(figurineId);
+		double prizeWithoutPromotion = figurineDescription.getCost();
 		
 		for(int i = 0; i < currentPromotion.size(); i++)
 		{
 			if(currentPromotion.get(i).getIdPromotion() == figurineDescription.getPromotion())
-			{
+			{		
 				figurineDescription.setCost(figurineDescription.getCost()*(1-currentPromotion.get(i).getAmountPourc()));
 			}
 		}
+		
+		model.addAttribute("prizeWithoutPromotion",prizeWithoutPromotion);		
 		
 		model.addAttribute("figurine", figurineDescription);	
 		Language language = languagesDAO.getLanguageByName(locale.toString());	
@@ -142,27 +137,15 @@ public class DescriptionController
 	public String getCommand(Model model, @ModelAttribute(value="figurineCommand") CommandLine commandLine, @ModelAttribute(value="currentUser") User currentUser
 			, @ModelAttribute(value=COMMANDLINES) ArrayList<CommandLineWithFigurine> commandLinesWithFigurine)
 	{	
-		Date todayDate = new Date();
-		Date endDate = new Date();
-		Date beginDate = new Date();
-		ArrayList<Promotion> promotionAll = promotionDAO.getAllPromotions();
 		ArrayList<Promotion> currentPromotion = new ArrayList<Promotion>();
-		for(int i = 0; i < promotionAll.size(); i++)
-		{
-			endDate = promotionAll.get(i).getDateEnd();
-			beginDate = promotionAll.get(i).getDateBegin();
-			if(todayDate.before(endDate) && todayDate.after(beginDate))
-			{ 
-				currentPromotion.add(promotionAll.get(i));
-			}
-		}
+		currentPromotion = promotionService.getPromotionValid();
 		
 		Figurine figurine = figurineService.getFigurineById(commandLine.getFigurine());
 		
 		for(int i = 0; i < currentPromotion.size(); i++)
 		{
 			if(currentPromotion.get(i).getIdPromotion() == figurine.getPromotion())
-			{
+			{				
 				figurine.setCost(figurine.getCost()*(1-currentPromotion.get(i).getAmountPourc()));
 			}
 		}

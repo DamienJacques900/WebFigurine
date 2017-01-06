@@ -30,7 +30,18 @@
 							<p><spring:message code="size"/> : ${figurine.size} cm</p>	
 							<p><spring:message code="weight"/> : ${figurine.weight} g</p>	
 							<p><spring:message code="brand"/> : ${figurine.brand}</p>
-							<p><spring:message code="prize"/> : ${figurine.cost} euros</p>	
+							<c:choose>
+								<c:when test="${figurine.cost eq prizeWithoutPromotion}">
+									<p><spring:message code="prize"/> : ${figurine.cost} €</p>								
+								</c:when>
+								<c:otherwise>	
+									<p>
+										<spring:message code="prize"/> : 
+										<strike>${prizeWithoutPromotion} €</strike>
+										<span style="color:red">${figurine.cost} €</span>	
+									</p>										
+								</c:otherwise>
+							</c:choose>
 						</div>
 						
 						

@@ -27,11 +27,17 @@
 							</p>
 							
 							<p class="secondary-content">
-								<spring:message code="prize"/> : ${commandLinesWithItems.commandLine.prizeCommand*commandLinesWithItems.commandLine.nbFigurine} <spring:message code="euro"/><br>
-									     	
-							<br>
+								<spring:message code="prize"/> : ${commandLinesWithItems.figurine.cost*commandLinesWithItems.commandLine.nbFigurine} <spring:message code="euro"/><br>
 											
-											
+							<c:forEach items="${promotionAll}" var="promotion">
+			     					<c:choose>
+							       		<c:when test="${commandLinesWithItems.figurine.promotion eq promotion.idPromotion}">
+							       			<p style="color:red">
+							        			Promo : ${promotion.amountPourc*100} %
+							       			</p>
+										</c:when>
+									</c:choose>
+		       					</c:forEach>				
 							<form:form id="newCommandLine"
 									   method="POST"
 									   action="/figurine/basket/nbFigurineBasket"
@@ -61,6 +67,7 @@
 							</form:form>
 									     	
 							</p>
+							
 			  			</li>
 			  		</c:forEach>		   
 				  </ul>
@@ -85,7 +92,7 @@
 						  							</div>
 						  							<div class="col s5">
 						  								 
-						  								<fmt:formatNumber type="number" maxFractionDigits="2" value="${commandLinesWithItems.commandLine.prizeCommand*commandLinesWithItems.commandLine.nbFigurine}"/>€
+						  								<fmt:formatNumber type="number" maxFractionDigits="2" value="${commandLinesWithItems.figurine.cost*commandLinesWithItems.commandLine.nbFigurine}"/>€
 						  							</div>
 					  							</c:when>
 					  						</c:choose>

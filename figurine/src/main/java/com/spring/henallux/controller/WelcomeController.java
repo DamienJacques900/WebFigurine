@@ -50,6 +50,7 @@ public class WelcomeController
 	@Autowired
 	private PromotionDAO promotionDAO;
 	
+	@Autowired
 	private PromotionService promotionService;
 	
 	@Autowired
@@ -67,21 +68,10 @@ public class WelcomeController
 		//***************************COMMENTAIRE************************************
 		//Permet de récupérer toutes les figurines de la BD
 		//**************************************************************************	
-		Date todayDate = new Date();
-		Date endDate = new Date();
-		Date beginDate = new Date();
-		ArrayList<Promotion> promotionAll = promotionDAO.getAllPromotions();
 		ArrayList<Promotion> currentPromotion = new ArrayList<Promotion>();
-		for(int i = 0; i < promotionAll.size(); i++)
-		{
-			endDate = promotionAll.get(i).getDateEnd();
-			beginDate = promotionAll.get(i).getDateBegin();
-			if(todayDate.before(endDate) && todayDate.after(beginDate))
-			{ 
-				currentPromotion.add(promotionAll.get(i));
-			}
-		}
-		model.addAttribute("promotionAll", currentPromotion);
+		currentPromotion = promotionService.getPromotionValid();
+		
+		model.addAttribute("promotionAll", currentPromotion);		
 		
 		ArrayList<Figurine> figurineWithPromotion = figurinesDAO.getAllFigurines();
 		for(int i = 0; i < figurineWithPromotion.size(); i++)
@@ -108,7 +98,25 @@ public class WelcomeController
 	@RequestMapping("/byCategory/{categoryId}")
 	public String byCategory(Model model, @PathVariable("categoryId") Integer categoryId, Locale locale)
 	{
-		model.addAttribute("figurineAll", figurinesService.getFigurineByCategory(categoryId));	
+		ArrayList<Promotion> currentPromotion = new ArrayList<Promotion>();
+		currentPromotion = promotionService.getPromotionValid();
+		
+		model.addAttribute("promotionAll", currentPromotion);		
+		
+		ArrayList<Figurine> figurineWithPromotion = figurinesService.getFigurineByCategory(categoryId);
+		for(int i = 0; i < figurineWithPromotion.size(); i++)
+		{
+			for(int j = 0; j < currentPromotion.size(); j++)
+			{
+				if(figurineWithPromotion.get(i).getPromotion() == currentPromotion.get(j).getIdPromotion())
+				{
+					figurineWithPromotion.get(i).setCost(figurineWithPromotion.get(i).getCost()*(1-currentPromotion.get(j).getAmountPourc()));
+				}
+			}
+		}
+		
+		
+		model.addAttribute("figurineAll", figurineWithPromotion);	
 		model.addAttribute("categoryAll", categoriesDAO.getAllCategories());
 		Language language = languagesDAO.getLanguageByName(locale.toString());	
 		model.addAttribute("categoryTranslations", translationCategoriesDAO.getTransalationCategoryById(language.getIdLanguage()));
