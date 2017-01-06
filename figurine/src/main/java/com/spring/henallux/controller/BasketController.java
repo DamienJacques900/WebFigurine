@@ -133,7 +133,7 @@ public class BasketController
 	@RequestMapping(value="/command", method=RequestMethod.POST)
 	public String getCommand(Model model, @ModelAttribute(value="command") Command command, @ModelAttribute(value=ConnectionController.CURRENTUSER) User currentUser,@ModelAttribute(value=DescriptionController.COMMANDLINES) List<CommandLineWithFigurine> commandLinesWithFigurines)
 	{	
-		Command currentCommand = commandDAO.getCommandById(currentUser.getIdUser());
+		/*Command currentCommand = commandDAO.getCommandById(currentUser.getIdUser());
 		for(CommandLineWithFigurine entity : commandLinesWithFigurines)
 		{
 			entity.getCommandLine().setCommand(currentCommand.getIdCommand());
@@ -155,9 +155,9 @@ public class BasketController
 		
 		
 				
-		model.addAttribute("commandLinesWithItems", new ArrayList<CommandLineWithFigurine>());
+		model.addAttribute("commandLinesWithItems", new ArrayList<CommandLineWithFigurine>());*/
 		
-		return "integrated:userCommand";
+		return "integrated:confirmationCommand";
 	}
 	
 	//Bouton pour COMMANDER si pas connecté===============================================

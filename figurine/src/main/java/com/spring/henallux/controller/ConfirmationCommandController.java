@@ -18,6 +18,7 @@ import com.spring.henallux.dataAccess.dao.CommandLineDAO;
 import com.spring.henallux.model.Command;
 import com.spring.henallux.model.CommandLine;
 import com.spring.henallux.model.CommandLineWithFigurine;
+import com.spring.henallux.model.Figurine;
 import com.spring.henallux.model.User;
 
 @Controller
@@ -55,13 +56,10 @@ public class ConfirmationCommandController
 	@RequestMapping(value="/commandValidate", method=RequestMethod.POST)
 	public String getCommand(Model model, @ModelAttribute(value="command") Command command, @ModelAttribute(value=ConnectionController.CURRENTUSER) User currentUser,@ModelAttribute(value=DescriptionController.COMMANDLINES) List<CommandLineWithFigurine> commandLinesWithFigurines)
 	{	
-		/*Command currentCommand = commandDAO.getCommandById(currentUser.getIdUser());
+		Command currentCommand = commandDAO.getCommandById(currentUser.getIdUser());
 		for(CommandLineWithFigurine entity : commandLinesWithFigurines)
 		{
 			entity.getCommandLine().setCommand(currentCommand.getIdCommand());
-			CommandLine newCommandLine = entity.getCommandLine();
-			newCommandLine.setCommand(currentCommand.getIdCommand());
-			commandLineDAO.save(newCommandLine);
 		}
 
 		Date dateNow = new Date();
@@ -78,13 +76,14 @@ public class ConfirmationCommandController
 			
 					
 		model.addAttribute("commandLinesWithItems", new ArrayList<CommandLineWithFigurine>());
-		*/
+		
 		return "integrated:userCommand";
 	}
 	
 
 	@RequestMapping(value="/commandNotValidate", method=RequestMethod.POST)
-	public String getCommandUserRequired(Model model, @ModelAttribute(value="command") Command command,@ModelAttribute(value=ConnectionController.CURRENTUSER) User currentUser,@ModelAttribute(value=DescriptionController.COMMANDLINES) List<CommandLineWithFigurine> commandLinesWithFigurines)
+	public String getCommandUserRequired(Model model, @ModelAttribute(value="command") Command command,@ModelAttribute(value=ConnectionController.CURRENTUSER) User currentUser,@ModelAttribute(value=DescriptionController.COMMANDLINES) List<CommandLineWithFigurine> commandLinesWithFigurines
+			,@ModelAttribute(value="figurineBasket") CommandLine commandLine, @ModelAttribute(value="deleteBasket") CommandLine commandLineD)
 	{
 		return "integrated:basket";
 	}
