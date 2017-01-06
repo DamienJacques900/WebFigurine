@@ -2,23 +2,7 @@
 <%@ include file="include/importTags.jsp" %>
 
 
-<html>
-
-	<!-- <head>
-		<title><spring:message code="reception"/></title>
-		<script type="text/javascript">
-		// Pause slider
-		$('.slider').slider('pause');
-		// Start slider
-		$('.slider').slider('start');
-		// Next slide
-		$('.slider').slider('next');
-		// Previous slide
-		$('.slider').slider('prev');
-		</script>	
-	</head>-->
-	
-	
+<html>	
 	<head>
 		<title><spring:message code="figurine"/></title>
 		<script type="text/javascript">
@@ -100,7 +84,7 @@
 				        						</a>
 				        					
 				        						<p class="center-align" style="font-weight:bold">
-				        							${figurine.cost} <spring:message code="euro"/>
+				        							<fmt:formatNumber type="number" maxFractionDigits="2" value="${figurine.cost}"/>€
 				        						</p>
 				        						<div>		        						
 						        					<c:forEach items="${promotionAll}" var="promotion">

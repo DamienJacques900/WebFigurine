@@ -26,11 +26,13 @@
 								<spring:message code="description"/> : ${figurineTranslations[status.index].description}								
 							</p>
 							<p>
-								<spring:message code="unityPrize"/> : ${commandLinesWithItems.figurine.cost}
+								<spring:message code="unityPrize"/> : <fmt:formatNumber type="number" maxFractionDigits="2" value="${commandLinesWithItems.figurine.cost}"/>€
+								
 							</p>
 							
 							<p class="secondary-content">
-								<spring:message code="prize"/> : ${commandLinesWithItems.figurine.cost*commandLinesWithItems.commandLine.nbFigurine} <spring:message code="euro"/><br>
+								<spring:message code="prize"/> : <fmt:formatNumber type="number" maxFractionDigits="2" value="${commandLinesWithItems.figurine.cost*commandLinesWithItems.commandLine.nbFigurine}"/>€ <spring:message code="euro"/>
+								<br>
 											
 							<c:forEach items="${promotionAll}" var="promotion">
 			     					<c:choose>

@@ -32,13 +32,13 @@
 							<p><spring:message code="brand"/> : ${figurine.brand}</p>
 							<c:choose>
 								<c:when test="${figurine.cost eq prizeWithoutPromotion}">
-									<p><spring:message code="prize"/> : ${figurine.cost} €</p>								
+									<p><spring:message code="prize"/> : <fmt:formatNumber type="number" maxFractionDigits="2" value="${figurine.cost}"/>€</p>								
 								</c:when>
 								<c:otherwise>	
 									<p>
 										<spring:message code="prize"/> : 
 										<strike>${prizeWithoutPromotion} €</strike>
-										<span style="color:red">${figurine.cost} €</span>	
+										<span style="color:red"><fmt:formatNumber type="number" maxFractionDigits="2" value="${figurine.cost}"/>€</span>	
 									</p>										
 								</c:otherwise>
 							</c:choose>
