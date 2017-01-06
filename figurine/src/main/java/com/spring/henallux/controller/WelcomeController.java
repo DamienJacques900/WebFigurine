@@ -28,6 +28,7 @@ import com.spring.henallux.model.Promotion;
 import com.spring.henallux.model.TranslationFigurine;
 import com.spring.henallux.model.User;
 import com.spring.henallux.service.FigurinesService;
+import com.spring.henallux.service.PromotionService;
 
 @Controller
 @RequestMapping(value="/welcome")
@@ -48,6 +49,8 @@ public class WelcomeController
 	
 	@Autowired
 	private PromotionDAO promotionDAO;
+	
+	private PromotionService promotionService;
 	
 	@Autowired
 	private TranslationCategoryDAO translationCategoriesDAO;
