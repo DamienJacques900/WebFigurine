@@ -124,22 +124,26 @@ public class WelcomeController
 		model.addAttribute("figurineName", new Figurine());
 		return "integrated:welcome";
 	}
-	//Pas fonctionnel changement de langues et affichage figurine pas bon
 	//Bouton pour RECHERCHER par nom===============================================
 	@RequestMapping(value="/searchName", method=RequestMethod.POST)
 	public String getCommand(Model model, @ModelAttribute(value="figurineName") Figurine figurine, Locale locale)
 	{
 		model.addAttribute("categoryAll", categoriesDAO.getAllCategories());
-		model.addAttribute("figurineAll", figurinesService.getFigurinesByName(figurine.getName()));
 		Language language = languagesDAO.getLanguageByName(locale.toString());
 		ArrayList<TranslationFigurine> figurines = translationFigurineDAO.getFigurinesByNameAndLanguage(figurine.getName().toLowerCase(), language.getIdLanguage());
+		ArrayList<Figurine> figurineAll = new ArrayList<Figurine>();
+		
+		Figurine figurineValue;
+		for(int i = 0; i < figurines.size(); i++)
+		{
+			figurineValue = figurinesService.getFigurineById(figurines.get(i).getFigurine());
+			figurineAll.add(figurineValue);
+		}
+		model.addAttribute("figurineAll", figurineAll);		
 		model.addAttribute("figurineTranslations", figurines);
 		model.addAttribute("categoryTranslations", translationCategoriesDAO.getTransalationCategoryById(language.getIdLanguage()));
 		model.addAttribute("figurineName", new Figurine());
-		for(int i = 0; i < figurines.size();i++)
-		{
-			System.out.println(figurines.get(i).getName());
-		}
+
 		return "integrated:welcome";
 	}
 	

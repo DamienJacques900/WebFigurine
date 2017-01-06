@@ -122,6 +122,7 @@ public class TranslationFigurineDAO
 			{
 				TranslationFigurine translationFigurine = providerConverter.translationFigurineEntitytoTranslationFigurineModel(entity);
 				figurinesSearch.add(translationFigurine);
+				System.out.println("Nom figurine : "+translationFigurine.getName());
 			}
 		}
 
