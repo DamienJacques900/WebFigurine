@@ -180,7 +180,7 @@
 				        						<p class="center-align" style="font-weight:bold">
 				        							${figurine.cost} <spring:message code="euro"/>
 				        						</p>	
-				        						<div style="height:70px">		        						
+				        						<div>		        						
 						        					<c:forEach items="${promotionAll}" var="promotion">
 							        					<c:choose>
 							        						<c:when test="${figurine.promotion eq promotion.idPromotion}">
