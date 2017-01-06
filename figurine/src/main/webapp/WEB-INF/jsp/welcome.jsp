@@ -56,6 +56,7 @@
 				<div class="col s3">
 				
 			
+				<h4><spring:message code="category"/></h4>
 				<c:forEach items="${categoryTranslations}" var="category">
 					<a href="<spring:url value='/welcome/byCategory/${category.category}'/>">
 						<button class="btn waves-effect waves-light blue" style="width:100%;">
@@ -65,93 +66,7 @@
 				</c:forEach>
 							
 				
-					<ul class="collapsible" data-collapsible="accordion">
-					 	<li>
-							<div class="collapsible-header">
-								<i>
-									<img src="<spring:url value='/images/euro.png'/>" height="20px">
-								</i>
-								<spring:message code="prize"/></div>
-							<div class="collapsible-body">
-								<div class="row">
-					      			<form class="col s12">
-					      				<div class="input-field col s4">
-								          	<input id="icon_prefix" type="text" class="validate">
-								          	<label for="icon_prefix">
-								          		<spring:message code="from"/>
-								          	</label>
-								        </div>
-					      				<div class="input-field col s4">
-								          	<input id="icon_prefix" type="text" class="validate">
-								          	<label for="icon_prefix">
-								          		<spring:message code="to"/>
-								          	</label>
-								        </div>	
-								        <button class="waves-effect waves-light btn">
-					      					<spring:message code="searchButton"/>
-					      				</button>						       
-					      			</form>
-					      		</div>
-							</div>
-					    </li>
-					    <li>
-					      	<div class="collapsible-header">
-					      		<i>
-					      			<img src="<spring:url value='/images/taille.png'/>" height="20px">
-					      		</i>
-					      		<spring:message code="height"/> (<spring:message code="cm"/>)</div>
-					      	<div class="collapsible-body">
-					      		<div class="row">
-					      			<form class="col s12">
-					      				<div class="input-field col s4">
-								          	<input id="icon_prefix" type="text" class="validate">
-								          	<label for="icon_prefix">
-								          		<spring:message code="from"/>
-								          	</label>
-								        </div>
-					      				<div class="input-field col s4">
-								          	<input id="icon_prefix" type="text" class="validate">
-								          	<label for="icon_prefix">
-								          		<spring:message code="to"/>								          		
-								          	</label>							          							          	
-								        </div>	
-								        <button class="waves-effect waves-light btn">
-					      					<spring:message code="searchButton"/>
-					      				</button>						       
-					      			</form>
-					      		</div>
-					      	</div>
-					    </li>
-					    <li>
-					      	<div class="collapsible-header">
-					      		<i>
-					      			<img src="<spring:url value='/images/poids.png'/>" height="20px">
-					      		</i>
-					      		<spring:message code="weight"/> (<spring:message code="gram"/>)</div>
-					      	<div class="collapsible-body">
-					      		<div class="row">
-					      			<form class="col s12">
-					      				<div class="input-field col s4">
-								          	<input id="icon_prefix" type="text" class="validate">
-								          	<label for="icon_prefix">
-								          		<spring:message code="from"/>
-								          	</label>
-								        </div>
-					      				<div class="input-field col s4">
-								          	<input id="icon_prefix" type="text" class="validate">
-								          	<label for="icon_prefix">
-								          		<spring:message code="to"/>								          		
-								          	</label>
-								        </div>	
-								        <button class="waves-effect waves-light btn">
-					      					<spring:message code="searchButton"/>
-					      				</button>						       
-					      			</form>
-					      		</div>
-					      	</div>
-					    </li>
-					   
-					</ul>
+					
 	        	</div>
 	        	
 	        	<div class="col s9">
