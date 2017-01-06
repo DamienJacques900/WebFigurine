@@ -12,12 +12,22 @@
 		<div class="whiteCard card container">
 			<h3 class="header center rbwd-red-text text-base thin-text"><spring:message code="confirmation"/></h3>
 			<div class="header center rbwd-red-text text-base thin-text">
-				<button class="btn waves-effect waves-light" type="submit" >
-					<spring:message code="yes"/>									
-				</button>
-				<button class="btn waves-effect waves-light" type="submit">
-					<spring:message code="no"/>									
-				</button>
+				<form:form 	id="commandUserValidate"
+					      	method="POST"
+					      	action="/figurine/confirmationCommand/commandValidate"
+					      	modelAttribute="command">
+					<form:button class="btn waves-effect waves-light" type="submit" >
+						<spring:message code="yes"/>									
+					</form:button>
+				</form:form>
+				<form:form 	id="commandUserNotValidate"
+					      	method="POST"
+					      	action="/figurine/confirmationCommand/commandNotValidate"
+					      	modelAttribute="command">
+					<form:button class="btn waves-effect waves-light" type="submit">
+						<spring:message code="no"/>									
+					</form:button>
+				</form:form>
 			</div>
 		</div>
 	</body>

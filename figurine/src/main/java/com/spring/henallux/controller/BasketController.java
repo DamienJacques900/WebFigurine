@@ -137,9 +137,9 @@ public class BasketController
 		for(CommandLineWithFigurine entity : commandLinesWithFigurines)
 		{
 			entity.getCommandLine().setCommand(currentCommand.getIdCommand());
-			CommandLine newCommandLine = entity.getCommandLine();
-			newCommandLine.setCommand(currentCommand.getIdCommand());
-			commandLineDAO.save(newCommandLine);
+			//CommandLine newCommandLine = entity.getCommandLine();
+			//newCommandLine.setCommand(currentCommand.getIdCommand());
+			//commandLineDAO.save(newCommandLine);
 		}
 
 		Date dateNow = new Date();
