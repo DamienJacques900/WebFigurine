@@ -6,6 +6,7 @@ import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +19,7 @@ import com.spring.henallux.dataAccess.dao.TranslationFigurineDAO;
 import com.spring.henallux.model.Figurine;
 import com.spring.henallux.model.Language;
 import com.spring.henallux.model.Promotion;
+import com.spring.henallux.model.TranslationFigurine;
 import com.spring.henallux.service.FigurinesService;
 import com.spring.henallux.service.PromotionService;
 
@@ -46,6 +48,9 @@ public class FigurineController
 	
 	@Autowired
 	private TranslationFigurineDAO translationFigurineDAO;
+	
+	@Autowired
+	private TranslationCategoryDAO translationCategoriesDAO;
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public String home(Model model, Locale locale)
@@ -77,6 +82,8 @@ public class FigurineController
 		Language language = languagesDAO.getLanguageByName(locale.toString());		
 		model.addAttribute("categoryTranslations", categoriesTranslationDAO.getTransalationCategoryById(language.getIdLanguage()));
 		model.addAttribute("figurineTranslations", translationFigurineDAO.getAllTranslationFigurinesByLanguage(language.getIdLanguage()));
+		model.addAttribute("figurineName", new Figurine());
+		
 		return "integrated:figurine";
 	}
 	
@@ -106,6 +113,29 @@ public class FigurineController
 		model.addAttribute("categoryTranslations", categoriesTranslationDAO.getTransalationCategoryById(language.getIdLanguage()));
 		model.addAttribute("figurineTranslations", translationFigurineDAO.getTransalationFigurineByIdCatAndLanguage(categoryId,language.getIdLanguage()));
 		return "integrated:figurine";
+	}
+	
+	//Bouton pour RECHERCHER par nom===============================================
+	@RequestMapping(value="/searchName", method=RequestMethod.POST)
+	public String getCommand(Model model, @ModelAttribute(value="figurineName") Figurine figurine, Locale locale)
+	{
+		model.addAttribute("categoryAll", categoriesDAO.getAllCategories());
+		Language language = languagesDAO.getLanguageByName(locale.toString());
+		ArrayList<TranslationFigurine> figurines = translationFigurineDAO.getFigurinesByNameAndLanguage(figurine.getName().toLowerCase(), language.getIdLanguage());
+		ArrayList<Figurine> figurineAll = new ArrayList<Figurine>();
+		
+		Figurine figurineValue;
+		for(int i = 0; i < figurines.size(); i++)
+		{
+			figurineValue = figurinesService.getFigurineById(figurines.get(i).getFigurine());
+			figurineAll.add(figurineValue);
+		}
+		model.addAttribute("figurineAll", figurineAll);		
+		model.addAttribute("figurineTranslations", figurines);
+		model.addAttribute("categoryTranslations", translationCategoriesDAO.getTransalationCategoryById(language.getIdLanguage()));
+		model.addAttribute("figurineName", new Figurine());
+		
+		return "integrated:welcome";
 	}
 	
 }

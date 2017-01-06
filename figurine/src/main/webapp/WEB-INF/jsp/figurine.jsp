@@ -22,19 +22,7 @@
 	<head>
 		<title><spring:message code="figurine"/></title>
 		<script type="text/javascript">
-		var slider = document.getElementById('test5');
-		  noUiSlider.create(slider, {
-		   start: [1, 10],
-		   connect: true,
-		   step: 1,
-		   range: {
-		     'min': 1,
-		     'max': 10
-		   },
-		   format: wNumb({
-		     decimals: 0
-		   })
-		  });
+
 		</script>
 	</head>
 	
@@ -56,16 +44,19 @@
 			</h2>
 			<div class="row">
 				<div class="col s3">
-					<form>
+					<form:form id="searchByName"
+		      				   method="POST"
+		      				   action="/figurine/welcome/searchName"
+		      				   modelAttribute="figurineName">
 						<div class="input-field">
-							<input id="search" type="search" required>
-							<label for="search"><i class="material-icons">search</i></label>
+							<form:input path="name" id="search" type="search"/>
+							<form:label path="name" for="search"><i class="material-icons">search</i></form:label>
 							<i class="material-icons">close</i>
 						</div>
-						<button class="waves-effect waves-light btn">
+						<form:button class="waves-effect waves-light btn">
 					      	<spring:message code="searchButton"/>
-					    </button>	
-					</form>
+					    </form:button>	
+					</form:form>
 				</div>
 			</div>
 			<div class="row">

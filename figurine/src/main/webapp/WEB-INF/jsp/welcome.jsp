@@ -93,7 +93,7 @@
 				        						</a>
 				        					
 				        						<p class="center-align" style="font-weight:bold">
-				        							${figurine.cost} <spring:message code="euro"/>
+				        							<fmt:formatNumber type="number" maxFractionDigits="2" value="${figurine.cost}"/>€
 				        						</p>	
 				        						<div>		        						
 						        					<c:forEach items="${promotionAll}" var="promotion">
