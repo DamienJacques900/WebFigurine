@@ -36,9 +36,9 @@ Modifier lien figurine template! -> OK
 
 Modifier les controller et jsp pour les connexion réussi et inscription réussi -> OK 
 
-Erreur figurine promo, affiche pas bon prix ->
+Erreur recherche promo, affiche pas bon prix -> OK
 
-Quand on refuse la commande, le prix total ne ce fait pas ->
+Quand on refuse la commande, le prix total ne ce fait pas -> OK
 
 
 Attention : 
