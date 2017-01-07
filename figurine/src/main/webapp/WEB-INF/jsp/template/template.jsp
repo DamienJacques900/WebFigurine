@@ -92,6 +92,12 @@
 						 		<spring:message code="option"/>
 						 	</a>
 				 		</li>
+				 		
+				 		<li>
+				 			<a class="nav-btn waves-effect waves-light" href="<spring:url value='/society'/>">
+				 			<spring:message code="society"/>
+				 			</a>
+				 		</li>
 				 				
 				 	</ul>
 				 	<ul class="side-nav" id="nav-mobile" >

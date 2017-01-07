@@ -5,8 +5,6 @@ import javax.validation.constraints.*;
 
 public class Category 
 {
-	@Min(0)
-	@Max(1000)
 	@NotNull
 	private int idCategory;
 	

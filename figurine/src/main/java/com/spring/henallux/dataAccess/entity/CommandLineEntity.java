@@ -30,7 +30,7 @@ public class CommandLineEntity
 	@NotNull
 	@DecimalMin("1.00")
 	@DecimalMax("10000.00")
-	@Column(name="prizecommand")
+	@Column(name="prizeunity ")
 	private double prizeCommand;
 		
 	
