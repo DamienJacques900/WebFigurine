@@ -5,7 +5,7 @@
 <html>
 
 	<head>
-		<title><spring:message code="registrationConnection"/></title>
+		<title><spring:message code="option"/></title>
 	</head>
 	
 	<body>

@@ -31,7 +31,7 @@
 							</p>
 							
 							<p class="secondary-content">
-								<spring:message code="prize"/> : <fmt:formatNumber type="number" maxFractionDigits="2" value="${commandLinesWithItems.figurine.cost*commandLinesWithItems.commandLine.nbFigurine}"/>€ <spring:message code="euro"/>
+								<spring:message code="prize"/> : <fmt:formatNumber type="number" maxFractionDigits="2" value="${commandLinesWithItems.figurine.cost*commandLinesWithItems.commandLine.nbFigurine}"/>€ 
 								<br>
 											
 							<c:forEach items="${promotionAll}" var="promotion">
