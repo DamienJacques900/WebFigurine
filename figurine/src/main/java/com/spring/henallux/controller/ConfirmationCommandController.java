@@ -85,6 +85,14 @@ public class ConfirmationCommandController
 	public String getCommandUserRequired(Model model, @ModelAttribute(value="command") Command command,@ModelAttribute(value=ConnectionController.CURRENTUSER) User currentUser,@ModelAttribute(value=DescriptionController.COMMANDLINES) List<CommandLineWithFigurine> commandLinesWithFigurines
 			,@ModelAttribute(value="figurineBasket") CommandLine commandLine, @ModelAttribute(value="deleteBasket") CommandLine commandLineD)
 	{
+		
+		double TotalValue = 0;
+		for(CommandLineWithFigurine entity : commandLinesWithFigurines)
+		{
+			TotalValue += entity.getFigurine().getCost()*entity.getCommandLine().getNbFigurine();
+		}
+		model.addAttribute("totalValue",TotalValue);
+		
 		return "integrated:basket";
 	}
 }

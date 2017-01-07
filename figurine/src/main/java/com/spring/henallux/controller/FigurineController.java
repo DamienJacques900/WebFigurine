@@ -112,6 +112,8 @@ public class FigurineController
 		Language language = languagesDAO.getLanguageByName(locale.toString());		
 		model.addAttribute("categoryTranslations", categoriesTranslationDAO.getTransalationCategoryById(language.getIdLanguage()));
 		model.addAttribute("figurineTranslations", translationFigurineDAO.getTransalationFigurineByIdCatAndLanguage(categoryId,language.getIdLanguage()));
+		model.addAttribute("figurineName", new Figurine());
+		
 		return "integrated:figurine";
 	}
 	

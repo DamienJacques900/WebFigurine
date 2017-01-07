@@ -6,9 +6,9 @@ détails des figurines -> OK
 
 panier (pouvoir supprimer et modifier le nombre) ->	OK
 
-panier ( pouvoir commander et faire en fonction des l'utilisateurs) ->
+panier ( pouvoir commander et faire en fonction des l'utilisateurs) -> OK
 
-gestion des promotions -> 
+gestion des promotions -> OK
 
 avertir connexion bannière ->	OK
 
@@ -36,6 +36,9 @@ Modifier lien figurine template! -> OK
 
 Modifier les controller et jsp pour les connexion réussi et inscription réussi -> OK 
 
+Erreur figurine promo, affiche pas bon prix ->
+
+Quand on refuse la commande, le prix total ne ce fait pas ->
 
 
 Attention : 
