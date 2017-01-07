@@ -1,4 +1,0 @@
-1) Quand on tente une connexion mais que ça foire, les dépliant de la barre de naviguation ne fonctionne plus
-2) Quand on tente une connexion mais que ça foire, les langues ne fonctionnent plus
-3) Savoir qu'où viennent les textes d'affichage d'erreurs et afficher les bons
-4) Si erreurs lors de la connexion les label ne s'affiche plus au-dessus quand on veut remplir l'input
