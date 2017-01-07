@@ -55,10 +55,7 @@ public class FigurineController
 	@RequestMapping(method=RequestMethod.GET)
 	public String home(Model model, Locale locale)
 	{
-		//***************************COMMENTAIRE************************************
-		//Permet de récupérer toutes les figurines de la BD
-		//**************************************************************************
-		
+	
 		ArrayList<Promotion> currentPromotion = new ArrayList<Promotion>();
 		currentPromotion = promotionService.getPromotionValid();
 		
