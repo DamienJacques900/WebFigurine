@@ -128,6 +128,11 @@ public class WelcomeController
 	@RequestMapping(value="/searchName", method=RequestMethod.POST)
 	public String getCommand(Model model, @ModelAttribute(value="figurineName") Figurine figurine, Locale locale)
 	{
+		ArrayList<Promotion> currentPromotion = new ArrayList<Promotion>();
+		currentPromotion = promotionService.getPromotionValid();
+		
+		model.addAttribute("promotionAll", currentPromotion);
+		
 		model.addAttribute("categoryAll", categoriesDAO.getAllCategories());
 		Language language = languagesDAO.getLanguageByName(locale.toString());
 		ArrayList<TranslationFigurine> figurines = translationFigurineDAO.getFigurinesByNameAndLanguage(figurine.getName().toLowerCase(), language.getIdLanguage());
@@ -137,6 +142,13 @@ public class WelcomeController
 		for(int i = 0; i < figurines.size(); i++)
 		{
 			figurineValue = figurinesService.getFigurineById(figurines.get(i).getFigurine());
+			for(int j = 0; j < currentPromotion.size(); j++)
+			{
+				if(figurineValue.getPromotion() == currentPromotion.get(j).getIdPromotion())
+				{
+					figurineValue.setCost(figurineValue.getCost()*(1-currentPromotion.get(j).getAmountPourc()));
+				}
+			}
 			figurineAll.add(figurineValue);
 		}
 		model.addAttribute("figurineAll", figurineAll);		

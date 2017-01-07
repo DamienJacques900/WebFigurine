@@ -30,7 +30,7 @@
 				<div class="col s3">
 					<form:form id="searchByName"
 		      				   method="POST"
-		      				   action="/figurine/welcome/searchName"
+		      				   action="/figurine/figurine/searchName"
 		      				   modelAttribute="figurineName">
 						<div class="input-field">
 							<form:input path="name" id="search" type="search"/>
