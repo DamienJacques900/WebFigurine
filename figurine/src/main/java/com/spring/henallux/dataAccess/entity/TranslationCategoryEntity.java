@@ -8,6 +8,7 @@ import javax.validation.constraints.*;
 public class TranslationCategoryEntity 
 {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="idtranslationcateogry")
 	private int idTranslationCategory;
 	

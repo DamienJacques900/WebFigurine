@@ -15,26 +15,24 @@ public class UserEntity
 {
 	@Id
 	@Column(name="iduser")
-	@NotEmpty
 	@Size(min=5, max=30)
-	@NotNull( message = "Veuillez saisir un nom d'utilisateur" )
 	private String idUser;
 	
 	@Column(name="firstname")
 	@NotEmpty
 	@Size(min=5, max=30)
-	@NotNull( message = "Veuillez saisir votre prénom" )
+	@NotNull
 	private String firstName;
 	
 	@Column(name="lastname")
 	@NotEmpty
 	@Size(min=5, max=50)
-	@NotNull( message = "Veuillez saisir votre nom" )
+	@NotNull
 	private String lastName;
 	
 	@Column(name="email")
 	@NotEmpty
-	@NotNull( message = "Veuillez saisir une adresse email" )
+	@NotNull
 	@Pattern( regexp = "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)", message = "Merci de saisir une adresse mail valide" )
 	private String email;
 	
@@ -47,35 +45,32 @@ public class UserEntity
 	@Column(name="street")
 	@NotEmpty
 	@Size(min=5, max=30)
-	@NotNull( message = "Veuillez saisir votre rue" )
+	@NotNull
 	private String street;
 	
 	@Column(name="city")
 	@NotEmpty
 	@Size(min=5, max=30)
-	@NotNull( message = "Veuillez saisir la ville où vous habitez" )
+	@NotNull
 	private String city;
 	
 	@Column(name="postalcode")
 	@NotEmpty
 	@Size(min=3, max=10)
-	@NotNull( message = "Veuillez saisir votre code postal" )
+	@NotNull
 	private String postalCode;
 	
 	@Column(name="country")
 	@NotEmpty
 	@Size(min=5, max=30)
-	@NotNull( message = "Veuillez saisir votre pays" )
+	@NotNull
 	private String country;
 	
 	@Column(name="password")
 	@NotEmpty
 	@Size(min=4, max=150)
-	@NotNull( message = "Veuillez saisir votre mot de passe" )
+	@NotNull
 	private String password;
-	
-	/*@OneToMany(mappedBy="user", fetch = FetchType.LAZY)
-	private Collection<CommandEntity> commands;*/
 	
 
 	public String getIdUser() 

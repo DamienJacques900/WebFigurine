@@ -9,8 +9,7 @@ public class FigurineEntity
 {
 	@Id
 	@NotNull
-	@Min(1)
-	@Max(1000)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="idfigurine")
 	private int idFigurine;
 	
@@ -26,13 +25,11 @@ public class FigurineEntity
 	
 	@NotNull
 	@DecimalMin("1.00")
-	@DecimalMax("100.00")
 	@Column(name="size")
 	private double size;
 	
 	@NotNull
 	@DecimalMin("1.00")
-	@DecimalMax("10000.00")
 	@Column(name="weight")
 	private double weight;
 	
@@ -47,17 +44,19 @@ public class FigurineEntity
 	
 	@NotNull
 	@DecimalMin("1.00")
-	@DecimalMax("10000.00")
 	@Column(name="cost")
 	private double cost;
 	
 	@NotNull
+	@Column(name="image")
 	private String image;
 	
+	@Column(name="category")
 	@NotNull
 	private int category;
 	
-	private int promotion; //à changer
+	@Column(name="promotion")
+	private int promotion;
 
 	public int getPromotion() 
 	{

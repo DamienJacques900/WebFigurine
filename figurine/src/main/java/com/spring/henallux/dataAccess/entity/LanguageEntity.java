@@ -9,8 +9,7 @@ public class LanguageEntity
 {
 	@Id
 	@NotNull
-	@Min(1)
-	@Max(1000)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="idlanguage")
 	private int idLanguage;
 	

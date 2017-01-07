@@ -8,6 +8,7 @@ import javax.validation.constraints.*;
 public class TranslationFigurineEntity 
 {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="idtranslationfigurine")
 	private int idTranslationFigurine;
 	
@@ -22,20 +23,14 @@ public class TranslationFigurineEntity
 	private String description;
 	
 	@NotNull
-	@Min(1)
-	@Max(1000)
 	@Column(name="figurine")
 	private int figurine;
 	
 	@NotNull
-	@Min(1)
-	@Max(1000)
 	@Column(name="language")
 	private int language;
 	
 	@NotNull
-	@Min(1)
-	@Max(1000)
 	@Column(name="category")
 	private int category;
 

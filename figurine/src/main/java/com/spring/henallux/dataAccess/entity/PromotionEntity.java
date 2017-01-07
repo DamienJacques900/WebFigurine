@@ -10,24 +10,20 @@ public class PromotionEntity
 {
 	@Id
 	@NotNull
-	@Min(1)
-	@Max(1000)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="idpromotion")
 	private int idPromotion;
 	
 	@NotNull
 	@DecimalMin("0.00")
-	@DecimalMax("100.00")
 	@Column(name="amountpourc")
 	private double amountPourc;
 	
 	@NotNull
-	@Past
 	@Column(name="datebegin")
 	private Date dateBegin;
 	
 	@NotNull
-	@Future
 	@Column(name="dateend")
 	private Date dateEnd;
 

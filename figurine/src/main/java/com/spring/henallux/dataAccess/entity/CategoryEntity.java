@@ -21,7 +21,6 @@ public class CategoryEntity
 	
 	@Column(name="dateout")
 	@NotNull
-	@Past
 	private Date dateOut;
 	
 	@Column(name="producer")
