@@ -5,6 +5,7 @@ import javax.validation.constraints.Size;
 
 public class TranslationCategory 
 {
+	@NotNull
 	private int idTranslationCategory;
 	
 	@NotNull

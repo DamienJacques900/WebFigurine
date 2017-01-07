@@ -15,22 +15,21 @@ public class User
 {
 	@NotEmpty
 	@Size(min=5, max=30)
-	@Column(name="iduser")
-	@NotNull( message = "Veuillez saisir un nom d'utilisateur" )
+	@NotNull
 	private String idUser;
 	
 	@NotEmpty
 	@Size(min=5, max=30)
-	@NotNull( message = "Veuillez saisir votre prénom" )
+	@NotNull
 	private String firstName;
 	
 	@NotEmpty
 	@Size(min=5, max=50)
-	@NotNull( message = "Veuillez saisir votre nom" )
+	@NotNull
 	private String lastName;
 	
 	@NotEmpty
-	@NotNull( message = "Veuillez saisir une adresse email" )	
+	@NotNull	
 	private String email;
 	
 	private String numTel;
@@ -39,32 +38,32 @@ public class User
 	
 	@NotEmpty
 	@Size(min=5, max=30)
-	@NotNull( message = "Veuillez saisir votre rue" )
+	@NotNull
 	private String street;
 	
 	@NotEmpty
 	@Size(min=5, max=30)
-	@NotNull( message = "Veuillez saisir la ville où vous habitez" )
+	@NotNull
 	private String city;
 	
 	@NotEmpty
 	@Size(min=3, max=10)
-	@NotNull( message = "Veuillez saisir votre code postal" )
+	@NotNull
 	private String postalCode;
 	
 	@NotEmpty
 	@Size(min=5, max=30)
-	@NotNull( message = "Veuillez saisir votre pays" )
+	@NotNull
 	private String country;
 	
 	@NotEmpty
 	@Size(min=4, max=150)
-	@NotNull( message = "Veuillez saisir votre mot de passe" )
+	@NotNull
 	private String password;
 	
 	@NotEmpty
 	@Size(min=4, max=150)
-	@NotNull( message = "Veuillez saisir votre mot de passe" )
+	@NotNull
 	private String confirmationPassword;
 	
 	public User()

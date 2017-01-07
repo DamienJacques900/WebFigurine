@@ -12,8 +12,6 @@ import javax.validation.constraints.Size;
 public class Figurine 
 {
 	@NotNull
-	@Min(1)
-	@Max(1000)
 	private int idFigurine;
 	
 	@NotNull
@@ -26,24 +24,21 @@ public class Figurine
 	
 	@NotNull
 	@DecimalMin("1.00")
-	@DecimalMax("10000.00")
 	private double weight;
 	
 	@NotNull
 	@DecimalMin("1.00")
-	@DecimalMax("100.00")
 	private double size;
 	
 	@NotNull
 	@Size(min=5, max=30)
-	private String brand; //marque
+	private String brand;
 	
 	@NotNull
 	private boolean painting;
 	
 	@NotNull
 	@DecimalMin("1.00")
-	@DecimalMax("10000.00")
 	private double cost;
 	
 	@NotNull
@@ -52,13 +47,8 @@ public class Figurine
 	@NotNull
 	private int category;
 	
-	private int promotion; //à changer
+	private int promotion;
 
-	
-	
-	
-	
-	
 	public int getPromotion() 
 	{
 		return promotion;

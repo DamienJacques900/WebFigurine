@@ -8,6 +8,7 @@ public class CommandLineWithFigurine
 
 	public CommandLineWithFigurine() 
 	{
+		
 	}
 	
 	public CommandLineWithFigurine(CommandLine commandLine, Figurine figurine) 

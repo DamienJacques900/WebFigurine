@@ -26,9 +26,6 @@ public class Command
 	@NotNull
 	private String user;
 	
-	@OneToMany(mappedBy="command")
-	private Collection<CommandLine> commandsLine;
-	
 	
 
 	public boolean isPayed() 

@@ -4,12 +4,17 @@ import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class UserConnection 
 {
+	@NotEmpty
+	@NotNull
 	@Size(min=5, max=30)
-	@Column(name="iduser")
 	private String idUser;
 	
+	@NotEmpty
+	@NotNull
 	@Size(min=4, max=150)
 	private String password;
 	

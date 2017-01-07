@@ -13,21 +13,16 @@ import javax.validation.constraints.Past;
 public class Promotion 
 {
 	@NotNull
-	@Min(1)
-	@Max(1000)
 	private int idPromotion;
 	
 	@NotNull
 	@DecimalMin("0.00")
-	@DecimalMax("100.00")
 	private double amountPourc;
 	
 	@NotNull
-	@Past
 	private Date dateBegin;
 	
 	@NotNull
-	@Future
 	private Date dateEnd;
 	
 	public Promotion()

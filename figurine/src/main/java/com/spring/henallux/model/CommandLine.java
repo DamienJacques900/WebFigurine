@@ -13,8 +13,7 @@ import com.spring.henallux.dataAccess.entity.UserEntity;
 
 public class CommandLine 
 {
-	@Min(1)
-	@Max(1000)
+	@NotNull
 	private int idCommandeLine;
 	
 	@NotNull
@@ -24,17 +23,12 @@ public class CommandLine
 	
 	@NotNull
 	@DecimalMin("1.00")
-	@DecimalMax("10000.00")
 	private double prizeCommand;
 	
-	
-	@Min(0)
-	@Max(1000)
+	@NotNull
 	private int command;
 	
 	@NotNull
-	@Min(0)
-	@Max(1000)
 	private int figurine;
 
 	

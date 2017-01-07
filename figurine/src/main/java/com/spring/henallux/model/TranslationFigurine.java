@@ -7,6 +7,7 @@ import javax.validation.constraints.Size;
 
 public class TranslationFigurine 
 {
+	@NotNull
 	private int idTranslationFigurine;
 	
 	@NotNull
@@ -18,18 +19,12 @@ public class TranslationFigurine
 	private String description;
 	
 	@NotNull
-	@Min(1)
-	@Max(1000)
 	private int figurine;
 	
 	@NotNull
-	@Min(1)
-	@Max(1000)
 	private int language;
 	
 	@NotNull
-	@Min(1)
-	@Max(1000)
 	private int category;
 	
 	public int getCategory() 
