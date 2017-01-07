@@ -40,11 +40,9 @@ Erreur recherche promo, affiche pas bon prix -> OK
 
 Quand on refuse la commande, le prix total ne ce fait pas -> OK
 
-Vérifier dans la bd si on peut mettre rien pour le promotion
+Vérifier dans la bd si on peut mettre rien pour le promotion OK
 
-Ajouter le numéro pour l'adresse
-
-Lien dans le menu pour la société? 
+Lien dans le menu pour la société? OK
 
 
 Attention : 

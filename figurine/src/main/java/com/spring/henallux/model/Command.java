@@ -13,8 +13,6 @@ import com.spring.henallux.dataAccess.entity.CommandEntity;
 
 public class Command 
 {
-	@Min(1)
-	@Max(1000)
 	@NotNull
 	private int idCommand;
 	

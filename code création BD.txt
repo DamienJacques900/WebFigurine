@@ -6,7 +6,8 @@ create table Promotion
 	dateEnd date not null,
 
 	constraint pk_Promotion primary key(idPromotion),
-	check(startDate < enDate)	
+	check(startDate < enDate),
+	check (amountPourc < 1)	
 );
 
 create table Category
@@ -36,7 +37,9 @@ create table Figurine
 	constraint pk_Figurine primary key(idFigurine),
 	constraint fk_Category foreign key(category) references Category(idCategory),
 	constraint fk_Promotion foreign key(promotion) references Promotion(idPromotion),
-	check(cost > 0)
+	check(cost > 0),
+	check(weight > 0),
+	check(size > 0)
 );
 
 
@@ -74,7 +77,7 @@ create table CommandLine
 (
 	idCommandLine int not null AUTO_INCREMENT,
 	nbFigurine int not null,
-	prizeCommand float not null,
+	prizeUnity float not null,
 	command int not null,
 	figurine int not null,
 	
@@ -82,7 +85,7 @@ create table CommandLine
 	constraint fk_Command foreign key(command) references Command(idCommand),
 	constraint fk_Figurine foreign key(figurine) references Figurine(idFigurine),	
 	check(nbFigurine > 0),
-	check(prizeCommand > 0)
+	check(prizeUnity  > 0)
 );
 
 
@@ -369,7 +372,6 @@ values(35,"Ezio","Traduction FR 17",2,17,3);
 
 insert into TranslationFigurine
 values(36,"Sora","Traduction FR 18",2,18,3);
-
 
 
 
