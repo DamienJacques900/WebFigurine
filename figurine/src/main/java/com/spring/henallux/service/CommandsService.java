@@ -1,11 +1,13 @@
 package com.spring.henallux.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.henallux.dataAccess.dao.*;
+import com.spring.henallux.dataAccess.entity.CommandEntity;
 import com.spring.henallux.model.*;
 
 @Service
@@ -38,26 +40,32 @@ public class CommandsService
 
 		return commands;
 	}
-
-	public ArrayList<Command> getCommands() 
-	{
-		return commands;
-	}
-
-	public void setCommands(ArrayList<Command> commands) 
-	{
-		this.commands = commands;
-	}
-
-	public CommandDAO getCommandDAO() 
-	{
-		return commandDAO;
-	}
-
-	public void setCommandDAO(CommandDAO commandDAO) 
-	{
-		this.commandDAO = commandDAO;
-	}
 	
+	public Command getCommandById(String idUser)
+	{
+		ArrayList <Command> commands = commandDAO.getAllCommands();
+		Command command = new Command();
+		for(int i=0;i<commands.size();i++)
+		{
+			if(commands.get(i).getUser().equals(idUser) && commands.get(i).isPayed() == false)
+			{
+				command = commands.get(i);				
+			}
+		}
+		return command;
+	}	
 	
+	public Command getCommandByIdAndIsPayed(String idUser)
+	{
+		ArrayList <Command> commands = commandDAO.getAllCommands();
+		Command command = new Command();
+		for(int i=0;i<commands.size();i++)
+		{
+			if(commands.get(i).getUser().equals(idUser) && commands.get(i).isPayed() == true)
+			{
+				command = commands.get(i);				
+			}
+		}
+		return command;
+	}
 }

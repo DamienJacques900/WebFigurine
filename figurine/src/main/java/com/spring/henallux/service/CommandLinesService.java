@@ -2,11 +2,15 @@ package com.spring.henallux.service;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 
 import com.spring.henallux.dataAccess.dao.*;
+import com.spring.henallux.dataAccess.entity.CommandLineEntity;
 import com.spring.henallux.model.*;
 
 @Service
@@ -16,11 +20,6 @@ public class CommandLinesService
 	
 	@Autowired
 	private CommandLineDAO commandLineDAO;
-	
-	public CommandLinesService()
-	{
-		
-	}
 	
 	public ArrayList<CommandLine> getCommandLines()
 	{
@@ -52,27 +51,19 @@ public class CommandLinesService
 		}
 		
 		return String.format("%.2f",totalValue);
-	}
-
-	public ArrayList<CommandLine> getCommandLine() 
-	{
-		return commandLine;
-	}
-
-	public void setCommandLine(ArrayList<CommandLine> commandLine) 
-	{
-		this.commandLine = commandLine;
-	}
-
-	public CommandLineDAO getCommandLineDAO() 
-	{
-		return commandLineDAO;
-	}
-
-	public void setCommandLineDAO(CommandLineDAO commandLineDAO) 
-	{
-		this.commandLineDAO = commandLineDAO;
-	}
+	}	
 	
-	
+	public ArrayList<CommandLine> getAllCommandLinesForCurrentUser(Integer idCommand)
+	{
+		ArrayList <CommandLine> commandLine = commandLineDAO.getAllCommandLines();
+		ArrayList <CommandLine> commandLines = new ArrayList<>();
+		for(int i=0;i<commandLine.size();i++)
+		{
+			if(commandLine.get(i).getCommand() == idCommand)
+			{
+				commandLines.add(commandLine.get(i));
+			}			
+		}
+		return commandLines;
+	}
 }

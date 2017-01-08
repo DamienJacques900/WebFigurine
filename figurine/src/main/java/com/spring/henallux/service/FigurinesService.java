@@ -22,7 +22,7 @@ public class FigurinesService
 	
 	public FigurinesService()
 	{
-		//ArrayList <Figurine> figurines = figurineDAO.getAllFigurines();
+		
 	}
 
 	

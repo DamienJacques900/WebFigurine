@@ -16,6 +16,7 @@ public class PromotionEntity
 	
 	@NotNull
 	@DecimalMin("0.00")
+	@DecimalMax("1.00")
 	@Column(name="amountpourc")
 	private double amountPourc;
 	

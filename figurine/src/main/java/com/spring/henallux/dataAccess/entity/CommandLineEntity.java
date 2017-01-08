@@ -23,7 +23,7 @@ public class CommandLineEntity
 	@Column(name="prizeunity ")
 	private double prizeCommand;
 		
-	
+	@Column(name="command ")
 	private int command;
 	
 	@NotNull

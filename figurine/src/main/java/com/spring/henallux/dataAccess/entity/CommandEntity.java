@@ -17,7 +17,6 @@ public class CommandEntity
 	private int idCommand;
 	
 	@NotNull
-	@Past
 	@Column(name="datecommand")
 	private Date dateCommand;
 	
