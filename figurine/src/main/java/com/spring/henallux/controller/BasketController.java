@@ -133,30 +133,6 @@ public class BasketController
 	@RequestMapping(value="/command", method=RequestMethod.POST)
 	public String getCommand(Model model, @ModelAttribute(value="command") Command command, @ModelAttribute(value=ConnectionController.CURRENTUSER) User currentUser,@ModelAttribute(value=DescriptionController.COMMANDLINES) List<CommandLineWithFigurine> commandLinesWithFigurines)
 	{	
-		/*Command currentCommand = commandDAO.getCommandById(currentUser.getIdUser());
-		for(CommandLineWithFigurine entity : commandLinesWithFigurines)
-		{
-			entity.getCommandLine().setCommand(currentCommand.getIdCommand());
-			//CommandLine newCommandLine = entity.getCommandLine();
-			//newCommandLine.setCommand(currentCommand.getIdCommand());
-			//commandLineDAO.save(newCommandLine);
-		}
-
-		Date dateNow = new Date();
-		currentCommand.setDateCommand(dateNow);
-		currentCommand.setPayed(true);
-		commandDAO.save(currentCommand);
-		
-		command.setUser(currentUser.getIdUser());
-		command.setPayed(false);
-		dateNow = new Date();
-		command.setDateCommand(dateNow);
-		commandDAO.save(command);
-		
-		
-				
-		model.addAttribute("commandLinesWithItems", new ArrayList<CommandLineWithFigurine>());*/
-		
 		return "integrated:confirmationCommand";
 	}
 	
@@ -179,7 +155,10 @@ public class BasketController
 		{
 			if(commandLine.getIdCommandeLine() == entity.getCommandLine().getIdCommandeLine())
 			{
-				//=================================================
+				//***************************COMMENTAIRE************************************
+				//Ici on va récupérer la figurine courante et vérifier si elle a une
+				//promotion ou pas. Si c'est le cas, on va modifier le prix
+				//**************************************************************************
 				Figurine figurine = figurineService.getFigurineById(entity.getFigurine().getIdFigurine());
 				
 				for(int k = 0; k < currentPromotion.size(); k++)

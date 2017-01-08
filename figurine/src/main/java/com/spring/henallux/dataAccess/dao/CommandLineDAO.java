@@ -75,26 +75,6 @@ public class CommandLineDAO
 		}
 		return commandLines;
 	}
-	
-	
-	
-	
-	public ArrayList<CommandLine> findCommandForCommandLine()
-	{	
-		Session session = sessionFactory.getCurrentSession();
-		session.beginTransaction();	
-		Query query = session.getNamedQuery("findCommandLineByCommandId").setInteger("valueIdCommand",1);//A modifier		
-		List<CommandLineEntity> commandLineEntities = query.list();
-		ArrayList<CommandLine> commandLines = new ArrayList<CommandLine>();		
-		for(CommandLineEntity entity : commandLineEntities)
-		{
-			CommandLine commandLine = providerConverter.commandLineEntitytoCommandLineModel(entity);
-			commandLines.add(commandLine);
-			System.out.println(commandLine.getFigurine());
-		}
-		session.getTransaction().commit();
-		return commandLines;
-	}
 }
 
 

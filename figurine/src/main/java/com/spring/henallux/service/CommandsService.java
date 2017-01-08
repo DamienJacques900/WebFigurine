@@ -25,11 +25,6 @@ public class CommandsService
 	
 	public ArrayList<Command> getCommand()
 	{
-		//***************************COMMENTAIRE************************************
-		//On fait deux arrayList pour récupérer les valeurs de la BD mais ici c'est
-		//un peu inutile, on pourrait juste faire directement dans le controller
-		//la requête avec le DAO
-		//**************************************************************************
 		commands = new ArrayList<Command>();
 		ArrayList<Command> command = commandDAO.getAllCommands();
 		

@@ -32,8 +32,9 @@
 		    	<div class="row">
 					<div class="col s6">
 						<h1>Madoline qu'est-ce que c'est?</h1>
+						
 						<p>
-						Madoline est une site de vente en ligne qui permet d'acheter toutes les figurines de son choix selon ses préférences.
+						<spring:message code="societyText"/>
 
 						Nec piget dicere avide magis hanc insulam populum Romanum invasisse quam iuste. Ptolomaeo enim rege foederato nobis et socio ob aerarii nostri angustias iusso sine ulla culpa proscribi ideoque hausto veneno voluntaria morte deleto et tributaria facta est et velut hostiles eius exuviae classi inpositae in urbem advectae sunt per Catonem, nunc repetetur ordo gestorum.
 						</p><p>

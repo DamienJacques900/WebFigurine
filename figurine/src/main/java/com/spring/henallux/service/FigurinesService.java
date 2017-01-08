@@ -19,11 +19,6 @@ public class FigurinesService
 	
 	@Autowired
 	private FigurineDAO figurineDAO;
-	
-	public FigurinesService()
-	{
-		
-	}
 
 	
 	public ArrayList<Figurine> getFigurinesByName(String nameFigurine)
@@ -106,25 +101,5 @@ public class FigurinesService
 			}							
 		}
 		return figurinesCategory;
-	}
-	
-	
-	
-
-	public void setFigurinesMovie(ArrayList<Figurine> figurines) 
-	{
-		this.figurinesMovie = figurines;
-	}
-	
-	public void setFigurinesJapaneseAnimation(ArrayList<Figurine> figurines) 
-	{
-		this.figurinesJapaneseAnimation = figurines;
-	}
-	
-	public void setFigurinesVideoGame(ArrayList<Figurine> figurines) 
-	{
-		this.figurinesVideoGame = figurines;
-	}
-	
-	
+	}	
 }

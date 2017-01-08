@@ -88,7 +88,10 @@ public class RegistrationController
 				userDAO.save(userRegistration);	
 				
 				
-				//création d'une commande
+				//***************************COMMENTAIRE************************************
+				//Création d'une commande car on estime que si il s'inscrit, il va faire
+				//au moins une commande, elle sera juste encore impayé, d'où le setPaye(false)
+				//**************************************************************************
 				Command command = new Command();
 				command.setUser(userRegistration.getIdUser());
 				command.setPayed(false);

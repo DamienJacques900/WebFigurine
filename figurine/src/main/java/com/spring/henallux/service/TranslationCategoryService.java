@@ -20,16 +20,16 @@ public class TranslationCategoryService
 	{
 		ArrayList<TranslationCategory> translationCategories = translationCategoryDAO.getAllTranslationCategories();
 		
-		ArrayList<TranslationCategory> translationCategory = new ArrayList<TranslationCategory>();
+		ArrayList<TranslationCategory> translationCategoriesSearch = new ArrayList<TranslationCategory>();
 		
 		for(int i=0;i<translationCategories.size();i++)
 		{	
 			if(translationCategories.get(i).getLanguage() == languageId)
 			{
-				translationCategory.add(translationCategories.get(i));
+				translationCategoriesSearch.add(translationCategories.get(i));
 			}			
 		}
 		
-		return translationCategory;
+		return translationCategoriesSearch;
 	}
 }
