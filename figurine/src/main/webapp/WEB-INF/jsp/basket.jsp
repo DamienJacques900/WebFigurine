@@ -95,8 +95,7 @@
 						  							<div class="col s7">
 						  								${figurineTranslations[status.index].name} (${commandLinesWithItems.commandLine.nbFigurine}X)
 						  							</div>
-						  							<div class="col s5">
-						  								 
+						  							<div class="col s5">			  								 
 						  								<fmt:formatNumber type="number" maxFractionDigits="2" value="${commandLinesWithItems.figurine.cost*commandLinesWithItems.commandLine.nbFigurine}"/>€
 						  							</div>
 					  							</c:when>

@@ -35,7 +35,7 @@ import com.spring.henallux.service.PromotionService;
 
 @Controller
 @RequestMapping(value="/description")
-@SessionAttributes({DescriptionController.COMMANDLINES,"currentUser"})
+@SessionAttributes({DescriptionController.COMMANDLINES,ConnectionController.CURRENTUSER})
 public class DescriptionController 
 {	
 	@Autowired
@@ -83,24 +83,8 @@ public class DescriptionController
 	public String home(Model model, Locale locale)
 	{
 		model.addAttribute("figurineCommand", new Figurine());
-		//Language language = languagesDAO.getLanguageByName(locale.toString());
-		//model.addAttribute("figurineTranslations", translationFigurineDAO.getTransalationFigurineById(language.getIdLanguage()));
 		return "integrated:description";
 	}
-	
-	/*@RequestMapping(value="/figurine",
-					params={"idFigurine"},
-					method=RequestMethod.GET)
-	public String getFigurineDescription(@RequestParam(required=false, defaultValue="0")final int idFigurine, final Model model, Locale locale)
-	{
-		TranslationFigurine translationFigurine = new TranslationFigurine();
-		model.addAttribute("figurine", figurinesService.getFigurineById(idFigurine));	
-		Language language = languagesDAO.getLanguageByName(locale.toString());	
-		translationFigurine = translationFigurineDAO.getTransalationFigurineById(idFigurine,language.getIdLanguage());
-		model.addAttribute("figurineTranslations", translationFigurine );
-
-		return "integrated:description";
-	}*/
 	
 	
 	
@@ -150,19 +134,44 @@ public class DescriptionController
 			}
 		}
 		
-		
+		Boolean alreadyExist = false;
 		
 		if(currentUser.getIdUser() == null)
 		{
-			commandLinesWithFigurine.add(new CommandLineWithFigurine(commandLine, figurine));
+			for(int i = 0; i < commandLinesWithFigurine.size(); i++)
+			{
+				if(commandLinesWithFigurine.get(i).getFigurine().getIdFigurine() == figurine.getIdFigurine())
+				{
+					int nbFigurine = commandLinesWithFigurine.get(i).getCommandLine().getNbFigurine()+commandLine.getNbFigurine();
+					commandLinesWithFigurine.get(i).getCommandLine().setNbFigurine(nbFigurine);
+					alreadyExist=true;
+				}
+			}
+			if(!alreadyExist)
+			{
+				commandLinesWithFigurine.add(new CommandLineWithFigurine(commandLine, figurine));
+			}			
 		}
 		else
-		{			
-			commandLinesWithFigurine.add(new CommandLineWithFigurine(commandLine, figurine));	
+		{	
+			for(int i = 0; i < commandLinesWithFigurine.size(); i++)
+			{
+				if(commandLinesWithFigurine.get(i).getFigurine().getIdFigurine() == figurine.getIdFigurine())
+				{
+					int nbFigurine = commandLinesWithFigurine.get(i).getCommandLine().getNbFigurine()+commandLine.getNbFigurine();
+					commandLinesWithFigurine.get(i).getCommandLine().setNbFigurine(nbFigurine);
+					alreadyExist=true;
+				}
+			}
+			if(!alreadyExist)
+			{
+				commandLinesWithFigurine.add(new CommandLineWithFigurine(commandLine, figurine));
+			}	
 			Command command = commandDAO.getCommandById(currentUser.getIdUser());
 			commandLine.setCommand(command.getIdCommand());
 			commandLineDAO.save(commandLine);			
 		}
+		
 		
 
 		return "redirect:/basket";

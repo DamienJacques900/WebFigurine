@@ -22,9 +22,6 @@ import com.spring.henallux.service.CryptPassword;
 
 @Controller
 @RequestMapping(value="/registration")
-//***************************COMMENTAIRE************************************
-//Permet d'avoir un attribut session et donc de conserver les valeur que l'on mettre à l'intérieur
-//**************************************************************************
 public class RegistrationController 
 {
 	@Autowired

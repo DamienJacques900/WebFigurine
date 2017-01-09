@@ -14,7 +14,7 @@ import com.spring.henallux.model.UserConnection;
 
 @Controller
 @RequestMapping(value="/disconnect")
-@SessionAttributes({"currentUserConnection","currentUser","commandLinesWithItems"})
+@SessionAttributes({ConnectionController.CURRENTUSERCONNECTION, ConnectionController.CURRENTUSER, DescriptionController.COMMANDLINES})
 public class DisconnectController 
 {
 	 @RequestMapping(method=RequestMethod.GET)

@@ -29,9 +29,6 @@ import com.spring.henallux.service.FigurinesService;
 
 @Controller
 @RequestMapping(value="/connection")
-//***************************COMMENTAIRE************************************
-//Permet d'avoir un attribut session et donc de conserver les valeur que l'on mettre à l'intérieur
-//**************************************************************************
 @SessionAttributes({ConnectionController.CURRENTUSERCONNECTION, ConnectionController.CURRENTUSER, DescriptionController.COMMANDLINES})
 public class ConnectionController 
 {
@@ -50,7 +47,7 @@ public class ConnectionController
 	protected static final String CURRENTUSERCONNECTION = "currentUserConnection";
 	
 	//***************************COMMENTAIRE************************************
-	//Permet de dire que CURRENTUSERCONNECTION sera un objet de la classe User
+	//Permet de dire que CURRENTUSERCONNECTION sera un objet de la classe UserConnection
 	//**************************************************************************
 	@ModelAttribute(CURRENTUSERCONNECTION)
 	public UserConnection userConnection()
@@ -112,10 +109,6 @@ public class ConnectionController
 		Command userCurrentCommand = commandDAO.getCommandById(currentUser.getIdUser());
 		
 		ArrayList<CommandLine> userCurrentCommandLines = commandLineDAO.getAllCommandLinesForCurrentUser(userCurrentCommand.getIdCommand());
-
-		//ICI il faut prendre les figurines déjà entré dans le panier et les rajouter à celles déjà existantes
-		
-		//ArrayList<Figurine> userCurrentFigurine = figurineService.getFigurineByCommandLine(userCurrentCommandLines);
 		
 		ArrayList<Integer> figurineFks = new ArrayList<Integer>();		
 		
@@ -143,7 +136,10 @@ public class ConnectionController
 			}
 			else
 			{
-				//Rajout du nombre en plus si existe déjà
+				//***************************COMMENTAIRE************************************
+				//Permet de rajouter le nombre de figurine en plus si elle existe déjà
+				//dans le panier de la personne qui se connecte
+				//**************************************************************************
 				CommandLine rightCommandLine;
 				int size = commandLinesWithFigurines.size();
 				int i = 0;
