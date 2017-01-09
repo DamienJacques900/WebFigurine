@@ -37,7 +37,7 @@ public class RegistrationController
 		return "integrated:registration";
 	}
 
-	//Bouton pour l'INSCRIPTION====================================
+	//Bouton pour l'INSCRIPTION==================================
 	@RequestMapping(value="/registrationSend", method=RequestMethod.POST)
 	public String getFormRegistrationData(Model model,@Valid @ModelAttribute(value="userRegistration") User userRegistration,Errors errors)
 	{
