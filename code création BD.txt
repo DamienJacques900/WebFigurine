@@ -129,13 +129,13 @@ create table TranslationCategory
 
 
 insert into Promotion
-value (1,0.25,STR_TO_DATE('1-10-2016', '%d-%m-%Y'),STR_TO_DATE('15-03-2017', '%d-%m-%Y'));
+value (1,0.25,STR_TO_DATE('1-10-2016', '%d-%m-%Y'),STR_TO_DATE('15-01-2017', '%d-%m-%Y'));
 
 insert into Promotion
 value (2,0.50,STR_TO_DATE('1-11-2016', '%d-%m-%Y'),STR_TO_DATE('15-02-2017', '%d-%m-%Y'));
 
 insert into Promotion
-value (3,0.75,STR_TO_DATE('1-12-2016', '%d-%m-%Y'),STR_TO_DATE('15-01-2017', '%d-%m-%Y'));
+value (3,0.75,STR_TO_DATE('1-12-2016', '%d-%m-%Y'),STR_TO_DATE('05-01-2017', '%d-%m-%Y'));
 
 
 
