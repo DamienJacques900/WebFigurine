@@ -91,11 +91,14 @@ public class BasketController
 		
 		model.addAttribute("promotionAll", currentPromotion);
 		
+		//***************************COMMENTAIRE************************************
+		//Permet d'ajouter les promos au figurine qui en ont
+		//**************************************************************************
 		ArrayList<TranslationFigurine> translationFigurines = translationFigurineDAO.getAllTranslationFigurines();
 		ArrayList<TranslationFigurine> translationBasket = new ArrayList<TranslationFigurine>();
 		for(int i = 0; i < commandLinesWithFigurines.size(); i++)
 		{
-			//=========================================
+			
 			Figurine figurine = figurineService.getFigurineById(commandLinesWithFigurines.get(i).getFigurine().getIdFigurine());
 			
 			for(int k = 0; k < currentPromotion.size(); k++)
@@ -108,7 +111,7 @@ public class BasketController
 			
 			commandLinesWithFigurines.get(i).getFigurine().setCost(figurine.getCost());
 
-			//=================================================
+			
 			for(int j = 0; j < translationFigurines.size();j++)
 			{
 				if(commandLinesWithFigurines.get(i).getFigurine().getIdFigurine() == translationFigurines.get(j).getFigurine() 

@@ -44,6 +44,61 @@ Vérifier dans la bd si on peut mettre rien pour le promotion OK
 
 Lien dans le menu pour la société? OK
 
+VérificationController :
+
+Basket -> OK
+ConfirmationCommandController -> OK
+ConnectionController -> OK
+DescriptionController -> OK
+DisconnectController -> OK
+ErroConnectionController -> OK
+ErrorRegistrationController -> OK
+FigurineController -> OK
+OptionController -> OK
+RegistrationController -> OK
+SocietyController -> OK
+UserCommandController -> OK
+UserCommandRequiredController -> OK
+UserRegistrationController -> OK
+WelcomeController -> OK
+
+Vérification service DAO des controller :
+
+Basket ->
+ConfirmationCommandController ->
+ConnectionController ->
+DescriptionController ->
+DisconnectController ->
+ErroConnectionController ->
+ErrorRegistrationController ->
+FigurineController ->
+OptionController ->
+RegistrationController ->
+SocietyController ->
+UserCommandController ->
+UserCommandRequiredController ->
+UserRegistrationController ->
+WelcomeController ->
+
+Vérification commentaires :
+
+Basket -> OK
+ConfirmationCommandController -> OK
+ConnectionController -> OK
+DescriptionController -> OK
+DisconnectController -> OK
+ErroConnectionController -> OK
+ErrorRegistrationController -> OK
+FigurineController -> OK
+OptionController -> OK
+RegistrationController -> OK
+SocietyController -> OK
+UserCommandController -> OK
+UserCommandRequiredController -> OK
+UserRegistrationController -> OK
+WelcomeController -> OK
+
+
 
 Attention : 
 

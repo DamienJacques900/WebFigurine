@@ -61,6 +61,9 @@ public class FigurineController
 		
 		model.addAttribute("promotionAll", currentPromotion);		
 		
+		//***************************COMMENTAIRE************************************
+		//Permet de calculer le valeur de la figurine avec la promotion
+		//**************************************************************************
 		ArrayList<Figurine> figurineWithPromotion = figurinesDAO.getAllFigurines();
 		for(int i = 0; i < figurineWithPromotion.size(); i++)
 		{
@@ -91,7 +94,9 @@ public class FigurineController
 		currentPromotion = promotionService.getPromotionValid();
 		
 		model.addAttribute("promotionAll", currentPromotion);		
-		
+		//***************************COMMENTAIRE************************************
+		//Permet de calculer le valeur de la figurine avec la promotion
+		//**************************************************************************
 		ArrayList<Figurine> figurineWithPromotion = figurinesService.getFigurineByCategory(categoryId);
 		for(int i = 0; i < figurineWithPromotion.size(); i++)
 		{
@@ -129,6 +134,9 @@ public class FigurineController
 		ArrayList<TranslationFigurine> figurines = translationFigurineDAO.getFigurinesByNameAndLanguage(figurine.getName().toLowerCase(), language.getIdLanguage());
 		ArrayList<Figurine> figurineAll = new ArrayList<Figurine>();
 		
+		//***************************COMMENTAIRE************************************
+		//Permet de calculer le valeur de la figurine avec la promotion
+		//**************************************************************************
 		Figurine figurineValue;
 		for(int i = 0; i < figurines.size(); i++)
 		{

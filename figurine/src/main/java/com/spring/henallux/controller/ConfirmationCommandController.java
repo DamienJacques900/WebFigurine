@@ -77,6 +77,10 @@ public class ConfirmationCommandController
 			entity.getCommandLine().setCommand(currentCommand.getIdCommand());
 		}
 
+		//***************************COMMENTAIRE************************************
+		//On va terminer la commande actuel et en refaire une pour la prochaine
+		//fois
+		//**************************************************************************	
 		Date dateNow = new Date();
 		currentCommand.setDateCommand(dateNow);
 		currentCommand.setPayed(true);
@@ -102,6 +106,9 @@ public class ConfirmationCommandController
 	{
 		Language language = languagesDAO.getLanguageByName(locale.toString());
 		
+		//***************************COMMENTAIRE************************************
+		//Permet le réaffichage des données dans le panier
+		//**************************************************************************
 		ArrayList<Promotion> currentPromotion = new ArrayList<Promotion>();
 		currentPromotion = promotionService.getPromotionValid();
 		

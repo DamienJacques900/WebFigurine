@@ -97,6 +97,9 @@ public class DescriptionController
 		Figurine figurineDescription = figurinesService.getFigurineById(figurineId);
 		double prizeWithoutPromotion = figurineDescription.getCost();
 		
+		//***************************COMMENTAIRE************************************
+		//Permet de récupérer les promotions pour les figurines qui en ont
+		//**************************************************************************
 		for(int i = 0; i < currentPromotion.size(); i++)
 		{
 			if(currentPromotion.get(i).getIdPromotion() == figurineDescription.getPromotion())
@@ -138,6 +141,10 @@ public class DescriptionController
 		
 		if(currentUser.getIdUser() == null)
 		{
+			//***************************COMMENTAIRE************************************
+			//Permet que si la figurine existe déjà dans le commandLinesWhiteFigurine
+			//de simplement ajouter le nombre de figurine en plus
+			//**************************************************************************
 			for(int i = 0; i < commandLinesWithFigurine.size(); i++)
 			{
 				if(commandLinesWithFigurine.get(i).getFigurine().getIdFigurine() == figurine.getIdFigurine())
@@ -154,6 +161,10 @@ public class DescriptionController
 		}
 		else
 		{	
+			//***************************COMMENTAIRE************************************
+			//Permet que si la figurine existe déjà dans le commandLinesWhiteFigurine
+			//de simplement ajouter le nombre de figurine en plus
+			//**************************************************************************
 			for(int i = 0; i < commandLinesWithFigurine.size(); i++)
 			{
 				if(commandLinesWithFigurine.get(i).getFigurine().getIdFigurine() == figurine.getIdFigurine())
